@@ -17,6 +17,9 @@
 \subpreamble{chapter_introduction.tex}
 
 \endsubpreamble
+\subpreamble{chapter_theory.tex}
+
+\endsubpreamble
 \subpreamble{chapter_method.tex}
 
 \endsubpreamble

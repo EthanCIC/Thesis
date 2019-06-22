@@ -11,8 +11,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces short caption}}{7}{figure.caption.14}% 
-\contentsline {figure}{\numberline {7.2}{\ignorespaces caption, 使用 \subref {fig:subfig_fig2}取得子圖（Debian）編號 \relax }}{8}{figure.caption.15}% 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces short caption}}{8}{figure.caption.14}% 
+\contentsline {figure}{\numberline {8.2}{\ignorespaces caption, 使用 \subref {fig:subfig_fig2}取得子圖（Debian）編號 \relax }}{9}{figure.caption.15}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
