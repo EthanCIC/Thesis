@@ -20,6 +20,9 @@
 \subpreamble{chapter_theory.tex}
 
 \endsubpreamble
+\subpreamble{chapter_simulation.tex}
+
+\endsubpreamble
 \subpreamble{chapter_method.tex}
 
 \endsubpreamble
