@@ -18,7 +18,7 @@
 
 \endsubpreamble
 \subpreamble{chapter_theory.tex}
-
+\usepackage {mathrsfs,amsmath}
 \endsubpreamble
 \subpreamble{chapter_simulation.tex}
 

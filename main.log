@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.6.20)  22 JUN 2019 18:10
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.6.20)  23 JUN 2019 03:09
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1488,7 +1488,10 @@ LaTeX Info: Redefining \nameref on input line 21.
 \@outlinefile=\write6
 \openout6 = `main.out'.
 
- (./main.sta (/usr/local/texlive/2019/texmf-dist/tex/latex/showexpl/showexpl.sty
+ (./main.sta (/usr/local/texlive/2019/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup5
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/showexpl/showexpl.sty
 Package: showexpl 2016/12/11 v0.3o Typesetting example code (RN)
  (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
@@ -1502,7 +1505,10 @@ File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
 ))
 \openout5 = `main.sta'.
 
- (./titlepage.tex
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 21.
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+) (./titlepage.tex
 \g_sppmg_profTotal_int=\count501
 
 
@@ -1593,6 +1599,14 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <18> not available
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <12.59995> not available
+(Font)              size <12> substituted on input line 78.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <18> not available
+(Font)              size <17.28> substituted on input line 78.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <12.59995> not available
 (Font)              size <12> substituted on input line 78.
 
 [1
@@ -1707,40 +1721,38 @@ Overfull \hbox (44.7667pt too wide) in paragraph at lines 7--9
 ]
 章 2.
 
-Overfull \hbox (44.7667pt too wide) in paragraph at lines 11--13
-[]|\TU/LiSongPro(0)/m/n/14.4 （可 以 複 製 \TU/lmr/m/n/14.4 chapter_template.tex \TU/LiSongPro(0)/m/n/14.4 新 增 子 檔 或 是 \TU/lmr/m/n/14.4 chapter_template_demo.tex
- []
+Underfull \vbox (badness 1448) has occurred while \output is active []
 
-) (./chapter_simulation.tex [2
+ [2
 
-]
+]) (./chapter_simulation.tex [3] [4]
 章 3.
 
 Overfull \hbox (44.7667pt too wide) in paragraph at lines 8--10
 []|\TU/LiSongPro(0)/m/n/14.4 （可 以 複 製 \TU/lmr/m/n/14.4 chapter_template.tex \TU/LiSongPro(0)/m/n/14.4 新 增 子 檔 或 是 \TU/lmr/m/n/14.4 chapter_template_demo.tex
  []
 
-) (./chapter_method.tex [3
+) (./chapter_method.tex [5
 
 ]
 章 4.
-) (./chapter_result.tex [4
+) (./chapter_result.tex [6
 
 ]
 章 5.
-) (./chapter_conclusion.tex [5
+) (./chapter_conclusion.tex [7
 
 ]
 章 6.
-) (./chapter_template_demo.tex [6
+) (./chapter_template_demo.tex [8
 
 ]
 章 7.
-[7
+[9
 
 ]
 章 8.
-[8
+[10
 
 ]
 章 9.
@@ -1752,27 +1764,27 @@ File: ./figures/fig2.eps Graphic file (type eps)
 <./figures/fig2.eps>
 File: ./figures/fig3.png Graphic file (type bmp)
 <./figures/fig3.png>
-[9
+[11
 
-] [10]
+] [12]
 章 10.
-) [11
+) [13
 
 ] (./bibliography.tex
 
 Package fontspec Warning: Font "LiSong Pro" does not contain requested Script
 (fontspec)                "CJK".
 
-) (./appendix_device.tex [12
+) (./appendix_device.tex [14
 
 
 ]
 附錄 A.
-) (./appendix_solution.tex [13
+) (./appendix_solution.tex [15
 
 ]
 附錄 B.
-) (./appendix_codes.tex [14
+) (./appendix_codes.tex [16
 
 ]
 附錄 C.
@@ -1801,7 +1813,7 @@ Missing character: There is no ‌ in font [lmroman12-regular]:mapping=tex-text;
 Missing character: There is no ​ in font [lmroman12-regular]:mapping=tex-text;!
 Missing character: There is no ‌ in font [lmroman12-regular]:mapping=tex-text;!
 Missing character: There is no ​ in font [lmroman12-regular]:mapping=tex-text;!
- (./codes/hello_world_idl.pro)) [15
+ (./codes/hello_world_idl.pro)) [17
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 90.
@@ -1982,8 +1994,10 @@ gettitlestring.sty    2016/05/16 v1.5 Cleanup title references (HO)
     main.out
     main.out
     main.sta
+mathrsfs.sty    1996/01/01 Math RSFS package v1.0 (jk)
 showexpl.sty    2016/12/11 v0.3o Typesetting example code (RN)
  lstmisc.sty    2019/02/27 1.8b (Carsten Heinz)
+   ursfs.fd    1998/03/24 rsfs font definition file (jk)
 titlepage.tex
 titlepage.tex
 abstract_zh.tex
@@ -2031,12 +2045,12 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 51815 strings out of 492916
- 1054587 string characters out of 6133345
- 1501447 words of memory out of 5000000
- 55046 multiletter control sequences out of 15000+600000
- 540259 words of font info for 114 fonts, out of 8000000 for 9000
+ 51876 strings out of 492916
+ 1057130 string characters out of 6133345
+ 1502198 words of memory out of 5000000
+ 55097 multiletter control sequences out of 15000+600000
+ 541579 words of font info for 122 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  68i,18n,98p,1166b,4723s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (27 pages).
+Output written on main.pdf (29 pages).
