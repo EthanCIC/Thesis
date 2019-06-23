@@ -12,17 +12,17 @@
 \subsection{數學形式}
 此小節介紹相位調製的數學形式。設入射光電調製器的雷射波函數為 $E_{0}(t)$，調製函數 (modulation function) 為 $M(t)$，經調製後的波函數 $E_{m}(t)$ 可表示成：
 \begin{equation}
-\label{eq:modulation_function}
     E_{m}(t)=E_{0}(t)e^{iM(t)}
 \end{equation}
 若對此式做傅立葉轉換，根據 convolution theorem，可得：
 \begin{equation}
+\label{eq:modulation_function}
     \mathscr{F}\{E_{0}(t)e^{iM(t)}\}=\tilde{E_{0}}(\omega)*\mathscr{F}\{{e^{iM(t)}}\}
 \end{equation}
 $\tilde{E_{0}}(\omega)$ 為入射光之頻譜，所以在數學分析上，我們可以把入射光頻譜與相位調製的部分分開處理，都計算好後再做摺積即可得到調製後的頻譜。
 
 \subsection{單頻波}
-若入射光的頻譜為中心頻率在 $\nu_{0}$ 的勞倫茲分佈(lorenz distribution)，調製函數為頻率 $\nu_{m}$ 的單頻波，意即輸入的電訊號強度隨時間的函數可表示為 $\phi_{0} sin(2\pi \nu_{m} \omega t)$，則可將 (\ref{eq:modulation_function})改寫為：
+若入射光的頻譜為中心頻率在 $\nu_{0}$ 的勞倫茲分佈(lorenz distribution)，調製函數為頻率 $\nu_{m}$ 的單頻波，意即輸入的電訊號強度隨時間的函數可表示為 $\phi_{0} sin(2\pi \nu_{m} \omega t)$，則可將 (\ref{eq:modulation_function}) 改寫為：
 \begin{equation}
 \label{eq:convolution_theorem}
     \mathscr{F}\{E_{0}(t)e^{i\phi_{0} sin(2\pi \nu_{m} \omega t)}\}=\tilde{E_{0}}(\omega)*\mathscr{F}\{{e^{i\phi_{0} sin(2\pi \nu_{m} \omega t)}}\}
@@ -37,11 +37,8 @@ $\tilde{E_{0}}(\omega)$ 為入射光之頻譜，所以在數學分析上，我�
 \end{equation}
 可從上式看出，調製項的頻譜是由頻率為 $n \nu_{m}$ 的狄拉克函數(Dirac function) 組成，$n=0, \pm1, \pm2, ...$，強度分佈為 $J_{n}(\phi_{0})$。
 
-以 $\phi_{0}=\pi$ 為例，從 (\ref{eq:convolution_theorem}) 可知，將入射光與調製項的頻譜做摺積可得調製後的結果，如下圖：
+以 $\phi_{0}=\pi$ 為例，從 (\ref{eq:convolution_theorem}) 可知，將入射光與調製項的頻譜做摺積可得調製後的結果，如下圖：\\
+(單頻波調製圖)\\
 
-\subsection{隨機訊號}
-從單頻波調製的例子可看出，可將原先頻率集中於 $\nu_{0}$ 的光，分散至 $\nu_{0}\pm\nu_{m}, \nu_{0}\pm2\nu_{m},\dots$，若調製函數改為時間寬度為 $\Delta T$ 的隨機方波的話，則可將頻譜展開如下：
-（展頻圖）
-其形狀接近 $sinc^2(\omega)$，展開的寬度為 $\pm\frac{1}{\Delta T}$，在我們實驗中使用的隨機訊號的產生率為 10 Gb/s，單一比特的時間寬度為 100 ps，相當於能將頻譜從數 MHz 展至 10 GHz 寬。
 
 \end{document}

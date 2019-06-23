@@ -21,7 +21,7 @@
 \usepackage {mathrsfs,amsmath}
 \endsubpreamble
 \subpreamble{chapter_simulation.tex}
-
+\usepackage {mathrsfs,amsmath}
 \endsubpreamble
 \subpreamble{chapter_method.tex}
 
