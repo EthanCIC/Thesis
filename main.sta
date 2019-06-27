@@ -38,13 +38,7 @@
 \subpreamble{bibliography.tex}
 
 \endsubpreamble
-\subpreamble{appendix_device.tex}
-
-\endsubpreamble
 \subpreamble{appendix_solution.tex}
-
-\endsubpreamble
-\subpreamble{appendix_codes.tex}
 
 \endsubpreamble
 \endstandalonepreambles
