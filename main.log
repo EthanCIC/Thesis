@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.6.20)  29 JUN 2019 19:14
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.6.20)  29 JUN 2019 23:34
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1398,6 +1398,12 @@ LaTeX Warning: Label `fig:label' multiply defined.
 LaTeX Warning: Label `fig:label@cref' multiply defined.
 
 
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
+
 LaTeX Warning: Label `fig:subfig_fig1' multiply defined.
 
 
@@ -1751,51 +1757,51 @@ File: ./figures/temp.png Graphic file (type bmp)
 章 3.
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
 [5
 
 ]
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 22.
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 24.
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+ [6]
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
-File: ./figures/temp.png Graphic file (type bmp)
-<./figures/temp.png>
-) (./chapter_method.tex [6] [7]
+) (./chapter_method.tex [7] [8]
 章 4.
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
-[8
+[9
 
 ]
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
- [9]
-Underfull \vbox (badness 1642) has occurred while \output is active []
-
- [10]
+ [10] [11]
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
- [11]
+ [12]
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
-) (./chapter_result.tex [12]
+) (./chapter_result.tex [13]
 章 5.
 File: ./figures/eom-transmission.png Graphic file (type bmp)
 <./figures/eom-transmission.png>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13
+ [14
 
 ]
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
- [14]
+ [15]
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
 File: ./figures/temp.png Graphic file (type bmp)
@@ -1804,7 +1810,7 @@ File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
- [15] [16]
+ [16] [17]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 80.
@@ -1817,9 +1823,9 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 80.
 
-) (./chapter_conclusion.tex [17]
+) (./chapter_conclusion.tex [18]
 章 6.
-) [18
+) [19
 
 ] (./bibliography.tex
 
@@ -2018,6 +2024,7 @@ chapter_simulation.tex
 ./figures/temp.png
 ./figures/temp.png
 ./figures/temp.png
+./figures/temp.png
 chapter_method.tex
 ./figures/temp.png
 ./figures/temp.png
@@ -2059,4 +2066,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  68i,12n,88p,1166b,3602s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (26 pages).
+Output written on main.pdf (27 pages).
