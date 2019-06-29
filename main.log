@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.6.20)  27 JUN 2019 19:53
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.6.20)  29 JUN 2019 13:58
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1324,7 +1324,26 @@ File: english.lbx 2018/11/02 v3.12 biblatex localization (PK/MW)
 )
 \@quotelevel=\count496
 \@quotereset=\count497
- (./main.aux)
+ (./main.aux
+
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
@@ -1646,9 +1665,9 @@ Underfull \vbox (badness 4341) has occurred while \output is active []
 
 ]
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <14.4> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 50.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 53.
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <10> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 50.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 53.
  [7])
 \tf@toc=\write9
 \openout9 = `main.toc'.
@@ -1700,32 +1719,39 @@ Package hyperref Info: bookmark level for unknown todo defaults to 0 on input li
 
 ] [7]) (./chapter_result.tex [8]
 章 5.
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
 [9
 
 ]
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+ [10] [11]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 23.
+(hyperref)                removing `math shift' on input line 42.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 23.
+(hyperref)                removing `superscript' on input line 42.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 23.
+(hyperref)                removing `math shift' on input line 42.
 
-) (./chapter_conclusion.tex [10]
+) (./chapter_conclusion.tex [12]
 章 6.
-) (./chapter_template_demo.tex [11
+) (./chapter_template_demo.tex [13
 
 ]
 章 7.
-[12
+[14
 
 ]
 章 8.
-[13
+[15
 
 ]
 章 9.
@@ -1737,23 +1763,23 @@ File: ./figures/fig2.eps Graphic file (type eps)
 <./figures/fig2.eps>
 File: ./figures/fig3.png Graphic file (type bmp)
 <./figures/fig3.png>
-[14
+[16
 
-] [15]
+] [17]
 章 10.
-) [16
+) [18
 
 ] (./bibliography.tex
 
 Package fontspec Warning: Font "LiSong Pro" does not contain requested Script
 (fontspec)                "CJK".
 
-) (./appendix_solution.tex [17
+) (./appendix_solution.tex [19
 
 
 ]
 附錄 A.
-) [18
+) [20
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 88.
@@ -1952,6 +1978,9 @@ chapter_theory.tex
 chapter_simulation.tex
 chapter_method.tex
 chapter_result.tex
+./figures/temp.png
+./figures/temp.png
+./figures/temp.png
 chapter_conclusion.tex
 chapter_template_demo.tex
 ./figures/logo-Linux.png
@@ -1964,22 +1993,25 @@ appendix_solution.tex
 
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 88.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 925F9ABF00592193D7D39E993D5D2167.
+(rerunfilecheck)             Checksum: 9AB67176FC6E02E8E2A922703B7BB86B.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.72pt have occurred.
+
+
+LaTeX Warning: There were multiply-defined labels.
 
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 51164 strings out of 492916
- 1049973 string characters out of 6133345
- 1475955 words of memory out of 5000000
- 54418 multiletter control sequences out of 15000+600000
+ 51168 strings out of 492916
+ 1050056 string characters out of 6133345
+ 1474955 words of memory out of 5000000
+ 54422 multiletter control sequences out of 15000+600000
  541595 words of font info for 124 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  68i,18n,98p,1166b,4723s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (29 pages).
+Output written on main.pdf (31 pages).
