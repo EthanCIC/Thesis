@@ -5,21 +5,22 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces 窄頻雷射頻譜\relax }}{4}{figure.caption.8}% 
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces 展寬後頻譜模擬圖\relax }}{5}{figure.caption.9}% 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces $\Delta t_{p}>\Delta t_{RF}$ 時壓縮頻譜\relax }}{6}{figure.caption.11}% 
+\contentsline {figure}{\numberline {3.3}{\ignorespaces 展寬後頻譜模擬圖\relax }}{7}{figure.caption.12}% 
+\contentsline {figure}{\numberline {3.4}{\ignorespaces 展寬後頻譜模擬圖\relax }}{7}{figure.caption.13}% 
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces 隨機訊號眼圖\relax }}{8}{figure.caption.14}% 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces 放大後的隨機訊號眼圖\relax }}{9}{figure.caption.15}% 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces 雷射頻譜量測光路圖\relax }}{11}{figure.caption.19}% 
+\contentsline {figure}{\numberline {4.4}{\ignorespaces 原子吸收譜量測光路圖\relax }}{12}{figure.caption.20}% 
+\contentsline {figure}{\numberline {4.5}{\ignorespaces 單光子量測光路圖\relax }}{12}{figure.caption.21}% 
 \addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces EOM 開啟前後之功率變化率\relax }}{9}{figure.caption.16}% 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces 窄頻雷射頻譜\relax }}{10}{figure.caption.17}% 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces 5 Gb/s 訊號之展頻頻譜\relax }}{11}{figure.caption.18}% 
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {9.1}{\ignorespaces short caption}}{17}{figure.caption.22}% 
-\contentsline {figure}{\numberline {9.2}{\ignorespaces caption, 使用 \subref {fig:subfig_fig2}取得子圖（Debian）編號 \relax }}{18}{figure.caption.23}% 
-\addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces EOM 開啟前後之功率變化率\relax }}{13}{figure.caption.22}% 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces 窄頻雷射頻譜\relax }}{14}{figure.caption.23}% 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces 5 Gb/s 訊號之展頻頻譜\relax }}{15}{figure.caption.24}% 
 \addvspace {10\p@ }
 \contentsfinish 
 \contentsfinish 

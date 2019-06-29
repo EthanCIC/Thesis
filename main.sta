@@ -11,9 +11,6 @@
 \subpreamble{acknowledgements.tex}
 
 \endsubpreamble
-\subpreamble{abbreviation.tex}
-
-\endsubpreamble
 \subpreamble{chapter_introduction.tex}
 
 \endsubpreamble
@@ -32,13 +29,7 @@
 \subpreamble{chapter_conclusion.tex}
 
 \endsubpreamble
-\subpreamble{chapter_template_demo.tex}
-\usepackage {showexpl}
-\endsubpreamble
 \subpreamble{bibliography.tex}
-
-\endsubpreamble
-\subpreamble{appendix_solution.tex}
 
 \endsubpreamble
 \endstandalonepreambles
