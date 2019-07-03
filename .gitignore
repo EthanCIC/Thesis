@@ -24,3 +24,14 @@
 *.bcf *.backup *~ *.kilepr
 # sppmg. this only
 *.xml *-blx.bib *.pdf
+
+## Build tool auxiliary files:
+*.fdb_latexmk
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
+*.pdfsync
+
+# todonotes
+*.tdo
