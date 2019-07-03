@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.6.20)  29 JUN 2019 17:06
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.6.20)  3 JUL 2019 18:03
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1290,6 +1290,12 @@ LaTeX Warning: Label `fig:label' multiply defined.
 LaTeX Warning: Label `fig:label@cref' multiply defined.
 
 
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
+
 LaTeX Warning: Label `fig:subfig_fig1' multiply defined.
 
 
@@ -1312,6 +1318,42 @@ LaTeX Warning: Label `sub@fig:subfig_fig2' multiply defined.
 
 
 LaTeX Warning: Label `sub@fig:subfig_fig2@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
 
 )
 \openout1 = `chapter_result.aux'.
@@ -1510,7 +1552,7 @@ Package fontspec Info: Font family 'KaitiTCRegular(0)' created for font 'Kaiti
 File: ./figures/eom-transmission.png Graphic file (type bmp)
 <./figures/eom-transmission.png>
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 4492) has occurred while \output is active []
 
  [1
 
@@ -1533,24 +1575,42 @@ File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
  [3]
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+ [4]
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+ [5]
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+ [6]
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 76.
+(hyperref)                removing `math shift' on input line 99.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 76.
+(hyperref)                removing `superscript' on input line 99.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 76.
+(hyperref)                removing `math shift' on input line 99.
 
-[4] [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 83.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+[7] [8]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 108.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 108.
  (./chapter_result.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 83.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 108.
 
 
  *File List*
@@ -1719,11 +1779,18 @@ chapter_result.out
 ./figures/temp.png
 ./figures/temp.png
 ./figures/temp.png
+./figures/temp.png
+./figures/temp.png
+./figures/temp.png
+./figures/temp.png
+./figures/temp.png
+./figures/temp.png
+./figures/temp.png
  ***********
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 83.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 108.
 Package rerunfilecheck Info: File `chapter_result.out' has not changed.
-(rerunfilecheck)             Checksum: CE895D7F1186BCF7B958249848D4F068.
+(rerunfilecheck)             Checksum: CA83F4249B57C4811765C44237F1BD25.
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1732,12 +1799,12 @@ Package logreq Info: Writing requests to 'chapter_result.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 49260 strings out of 492916
- 1006871 string characters out of 6133345
- 1458606 words of memory out of 5000000
- 52680 multiletter control sequences out of 15000+600000
+ 49257 strings out of 492916
+ 1006821 string characters out of 6133345
+ 1456606 words of memory out of 5000000
+ 52677 multiletter control sequences out of 15000+600000
  536641 words of font info for 76 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  80i,11n,100p,1225b,3602s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on chapter_result.pdf (5 pages).
+Output written on chapter_result.pdf (8 pages).

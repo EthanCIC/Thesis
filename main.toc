@@ -17,29 +17,23 @@
 \contentsline {chapter}{\numberline {3}理論模擬}{5}{chapter.3}% 
 \contentsline {section}{\numberline {3.1}展頻及壓縮}{5}{section.3.1}% 
 \contentsline {section}{\numberline {3.2}銣原子氣體吸收}{7}{section.3.2}% 
-\contentsline {chapter}{\numberline {4}實驗方法與架設}{9}{chapter.4}% 
+\contentsline {chapter}{\numberline {4}實驗儀器與優化流程}{9}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}儀器介紹}{9}{section.4.1}% 
 \contentsline {subsection}{\numberline {4.1.1}隨機訊號產生器}{9}{subsection.4.1.1}% 
 \contentsline {subsection}{\numberline {4.1.2}電光調製器}{10}{subsection.4.1.2}% 
-\contentsline {subsection}{\numberline {4.1.3}高頻電訊號放大器}{10}{subsection.4.1.3}% 
-\contentsline {subsection}{\numberline {4.1.4}Fabry-Perot 干涉儀}{11}{subsection.4.1.4}% 
-\contentsline {subsection}{\numberline {4.1.5}Etalon 干涉儀}{11}{subsection.4.1.5}% 
-\contentsline {section}{\numberline {4.2}單光子光源製備}{11}{section.4.2}% 
-\contentsline {section}{\numberline {4.3}光路架設}{12}{section.4.3}% 
-\contentsline {subsection}{\numberline {4.3.1}古典光量測}{12}{subsection.4.3.1}% 
-\contentsline {subsubsection}{\numberline {4.3.1.1}雷射頻譜量測}{12}{subsubsection.4.3.1.1}% 
-\contentsline {subsubsection}{\numberline {4.3.1.2}銣原子吸收譜量測}{12}{subsubsection.4.3.1.2}% 
-\contentsline {subsection}{\numberline {4.3.2}單光子量測}{13}{subsection.4.3.2}% 
-\contentsline {chapter}{\numberline {5}實驗結果與討論}{14}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}相位調製對光強的影響}{14}{section.5.1}% 
-\contentsline {section}{\numberline {5.2}古典光量測}{15}{section.5.2}% 
-\contentsline {subsection}{\numberline {5.2.1}展頻與壓縮}{15}{subsection.5.2.1}% 
-\contentsline {subsubsection}{\numberline {5.2.1.1}入射光之頻譜}{15}{subsubsection.5.2.1.1}% 
-\contentsline {subsubsection}{\numberline {5.2.1.2}5 Gb/s 隨機訊號之相位調製}{15}{subsubsection.5.2.1.2}% 
-\contentsline {paragraph}{\numberline {5.2.1.2.1}10 Gb/s 隨機訊號之相位調製}{17}{paragraph.5.2.1.2.1}% 
+\contentsline {subsection}{\numberline {4.1.3}高頻電訊號放大器}{11}{subsection.4.1.3}% 
+\contentsline {subsection}{\numberline {4.1.4}法布立－培若干涉儀}{11}{subsection.4.1.4}% 
+\contentsline {subsection}{\numberline {4.1.5}Etalon 干涉儀}{12}{subsection.4.1.5}% 
+\contentsline {chapter}{\numberline {5}實驗架設與結果討論}{13}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}相位調製對光強的影響}{13}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}古典光量測}{14}{section.5.2}% 
+\contentsline {subsection}{\numberline {5.2.1}雷射頻譜量測}{14}{subsection.5.2.1}% 
+\contentsline {subsubsection}{\numberline {5.2.1.1}2 Gb/s 隨機訊號之相位調製}{15}{subsubsection.5.2.1.1}% 
+\contentsline {subsubsection}{\numberline {5.2.1.2}10 Gb/s 隨機訊號之相位調製}{16}{subsubsection.5.2.1.2}% 
 \contentsline {subsection}{\numberline {5.2.2}銣原子吸收譜}{17}{subsection.5.2.2}% 
-\contentsline {section}{\numberline {5.3}單光子量測}{17}{section.5.3}% 
-\contentsline {subsection}{\numberline {5.3.1}展頻與壓縮}{17}{subsection.5.3.1}% 
-\contentsline {subsection}{\numberline {5.3.2}$^{87}Rb$吸收}{18}{subsection.5.3.2}% 
-\contentsline {chapter}{\numberline {6}總結}{19}{chapter.6}% 
+\contentsline {section}{\numberline {5.3}單光子量測}{18}{section.5.3}% 
+\contentsline {section}{\numberline {5.4}單光子光源製備}{18}{section.5.4}% 
+\contentsline {subsection}{\numberline {5.4.1}展頻與壓縮}{19}{subsection.5.4.1}% 
+\contentsline {subsection}{\numberline {5.4.2}$^{87}Rb$吸收}{20}{subsection.5.4.2}% 
+\contentsline {chapter}{\numberline {6}總結}{21}{chapter.6}% 
 \contentsfinish 

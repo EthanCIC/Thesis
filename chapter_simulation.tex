@@ -15,13 +15,19 @@
 
 \fig[0.5][fig:label][!htb]{temp.png}[展寬後頻譜模擬圖]
 
-其包絡線接近 $sinc$ 的平方，展開的寬度為 $\pm\frac{1}{\Delta T}$，在我們實驗中使用的隨機訊號的產生率為 10 Gb/s，單一比特的時間寬度為 100 ps，相當於能將頻譜從數 MHz 展至 10 GHz 寬。
+其包絡線接近 $sinc$ 的平方，展開的寬度為 $\pm\frac{1}{\Delta T}$，在我們實驗中使用的隨機訊號的產生率為 10 Gb/s，單一位元的時間寬度為 100 ps，相當於能將頻譜從數 MHz 展至 10 GHz 寬。
 
 經展頻後的訊號，可以降低環境的影響，避免光子被特定原子團吸收，但若想還原光子初始相位的資訊，則需要一個反向的操作，讓光子再經過第二台 EOM，輸入的電訊號為與 $PRBS(t)$ 互補的訊號 $\overline{PRBS}(t)$，這兩個訊號要滿足以下關係：
 \begin{equation}
-    PRBS(t)\times \overline{PRBS}(t)=1
+    PRBS(t)+\overline{PRBS}(t)=0
 \end{equation}
-\todo[inline]{這樣寫有問題，重新想要如何以數學表達互補的訊號}
+
+或
+
+\begin{equation}
+    e^{i PRBS(t)}\times e^{i \overline{PRBS}(t)}=1
+\end{equation}
+
 若光子在兩台 EOM 行經的時間間距為 $\Delta t_{p}$，兩個電訊號抵達的時間差為 $\Delta t_{RF}$，當 $\Delta t_{p}=\Delta t_{RF}$ 時，理論上可以對相位進行反向的調製，將展頻後的訊號壓縮回原本的樣子，但若 $\Delta t_{p}>\Delta t_{RF}$，則無法完全還原頻譜，如下圖：
 
 \fig[0.5][fig:label][!htb]{temp.png}[$\Delta t_{p}>\Delta t_{RF}$ 時壓縮頻譜]
@@ -31,10 +37,10 @@
 
 \fig[0.5][fig:label][!htb]{temp.png}[展寬後頻譜模擬圖]
 
-此時再讓光經過第二台 EOM 將頻譜壓縮，結果比較圖如下：
+此時再讓光經過第二台 EOM 將頻譜壓縮，結果比較圖：
 
 \fig[0.5][fig:label][!htb]{temp.png}[壓縮後頻譜模擬圖]
 
-從圖上可以看出，光被部分吸收後，雖然還是能將頻譜還原成窄頻，但整體的功率會下降。
+從圖中可以看出，光被部分吸收後，還是能透過反向的操作將已展寬的頻譜變窄。
 
 \end{document}

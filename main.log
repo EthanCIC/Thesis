@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.6.20)  29 JUN 2019 23:34
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.6.20)  3 JUL 2019 21:50
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1427,6 +1427,42 @@ LaTeX Warning: Label `sub@fig:subfig_fig2' multiply defined.
 
 LaTeX Warning: Label `sub@fig:subfig_fig2@cref' multiply defined.
 
+
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:label' multiply defined.
+
+
+LaTeX Warning: Label `fig:label@cref' multiply defined.
+
 )
 \openout1 = `main.aux'.
 
@@ -1732,13 +1768,13 @@ LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <14.4> not available
 (Font)              Font shape `TU/lmss/m/sl' tried instead on input line 72.
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <10> not available
 (Font)              Font shape `TU/lmss/m/sl' tried instead on input line 72.
- [7] (./main.lof)
+ [7] (./main.lof [8
+
+])
 \tf@lof=\write9
 \openout9 = `main.lof'.
 
- [8
-
-] (./chapter_introduction.tex
+ [9] (./chapter_introduction.tex
 章 1.
 ) (./chapter_theory.tex [1
 
@@ -1762,7 +1798,6 @@ File: ./figures/temp.png Graphic file (type bmp)
 [5
 
 ]
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 24.
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
  [6]
@@ -1779,24 +1814,34 @@ File: ./figures/temp.png Graphic file (type bmp)
 ]
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
- [10] [11]
+ [10]
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
- [12]
-File: ./figures/temp.png Graphic file (type bmp)
-<./figures/temp.png>
-) (./chapter_result.tex [13]
+ [11]
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 60.
+) (./chapter_result.tex [12]
 章 5.
 File: ./figures/eom-transmission.png Graphic file (type bmp)
 <./figures/eom-transmission.png>
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 4492) has occurred while \output is active []
 
- [14
+ [13
 
 ]
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+ [14]
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
 File: ./figures/temp.png Graphic file (type bmp)
@@ -1804,28 +1849,36 @@ File: ./figures/temp.png Graphic file (type bmp)
  [15]
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
+ [16]
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+ [17]
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+ [18]
+File: ./figures/temp.png Graphic file (type bmp)
+<./figures/temp.png>
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 108.
+
+[19]
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
 File: ./figures/temp.png Graphic file (type bmp)
 <./figures/temp.png>
-File: ./figures/temp.png Graphic file (type bmp)
-<./figures/temp.png>
- [16] [17]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 80.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 80.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 80.
-
-) (./chapter_conclusion.tex [18]
+) (./chapter_conclusion.tex [20]
 章 6.
-) [19
+) [21
 
 ] (./bibliography.tex
 
@@ -2030,9 +2083,15 @@ chapter_method.tex
 ./figures/temp.png
 ./figures/temp.png
 ./figures/temp.png
-./figures/temp.png
 chapter_result.tex
 ./figures/eom-transmission.png
+./figures/temp.png
+./figures/temp.png
+./figures/temp.png
+./figures/temp.png
+./figures/temp.png
+./figures/temp.png
+./figures/temp.png
 ./figures/temp.png
 ./figures/temp.png
 ./figures/temp.png
@@ -2045,7 +2104,7 @@ bibliography.tex
 
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 88.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F07A1EDDFA9F080AB3A826848AE09337.
+(rerunfilecheck)             Checksum: F67F0EE468522533BC2B6C8CB66A0F03.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.72pt have occurred.
@@ -2058,12 +2117,12 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 50714 strings out of 492916
- 1038473 string characters out of 6133345
- 1474938 words of memory out of 5000000
- 53995 multiletter control sequences out of 15000+600000
+ 50706 strings out of 492916
+ 1038328 string characters out of 6133345
+ 1473938 words of memory out of 5000000
+ 53987 multiletter control sequences out of 15000+600000
  541587 words of font info for 123 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  68i,12n,88p,1166b,3602s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (27 pages).
+Output written on main.pdf (30 pages).
