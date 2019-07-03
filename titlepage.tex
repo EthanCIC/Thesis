@@ -33,9 +33,9 @@
     \clist_gpop:NNTF \g_sppmg_profsEn_cl \l_tmpb_tl {}{ \tl_clear:N \l_tmpb_tl}
     \tl_gput_right:Nx \g_sppmg_tableContent_tl {
         \int_case:nnTF {#1}{
-            {1} {指導教授： & \l_tmpa_tl & 博士 & (Prof.~ \l_tmpb_tl ) \exp_not:n {\\} }
+            {1} {指導教授： & \l_tmpa_tl & 教授 & (Prof.~ \l_tmpb_tl ) \exp_not:n {\\} }
         }{}{
-            & \l_tmpa_tl & 博士 & (Prof.~ \l_tmpb_tl ) \exp_not:n {\\} 
+            & \l_tmpa_tl & 教授 & (Prof.~ \l_tmpb_tl ) \exp_not:n {\\} 
         }
     }
 }

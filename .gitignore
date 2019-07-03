@@ -35,3 +35,6 @@
 
 # todonotes
 *.tdo
+
+*.out
+*.run.xml
