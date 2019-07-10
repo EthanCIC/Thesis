@@ -1,0 +1,124 @@
+\documentclass[class=NCU_thesis, crop=false]{standalone}
+\begin{document}
+
+\chapter{實驗架設與結果討論}
+
+\section{相位調製對光強的影響}
+我們先以兩種方式去確認相位調製對光強的影響，第一種是用功率計 (power meter) ，分別測量在兩台 EOM 同時開啟與關閉時的光強，再將兩個數值相除得到變化率；另一種方法是透過 Fabry-Perot 測量頻譜，比較相位調製前後的總面積大小，測量結果如下。
+
+\fig[0.75][fig:label][!htb]{eom-transmission.png}[EOM 開啟前後之功率變化率]
+
+從隨機訊號 1 Gb/s 到 10 Gb/s 的調製，看不出有特定的變化趨勢，可見展頻與壓縮只會影響頻率的分佈，不會明顯改變光強度。
+
+\section{雷射光量測}
+雷射光源為 Toptica 的半導體雷射，可產生波長 795 nm 的窄頻雷射，這部分的量測主要可以分成兩個部分，第一個部分是測量雷射的頻譜，觀察相位調製如何影響頻率的分佈；另一部分是讓雷射通過 $Rb^{87}$ 原子氣體管，調整入射雷射的頻率測量 $Rb^{87}$ 的吸收譜。
+
+\subsection{雷射頻譜量測}
+
+實驗光路架設如圖，我們將窄頻雷射通過兩台 EOM 對其進行相位調製，第一台為展頻用，第二台用來做反向的調製還原頻譜，再以 Fabrty-Perot 干涉儀去測量頻譜。
+
+\fig[0.5][fig:label][!htb]{temp.png}[雷射頻譜量測光路圖]
+
+在兩台 EOM 都關閉的情況下，可以測到波長 795 奈米窄頻雷射的頻譜，結果如圖，以此 Fabry-Perot 的解析度掃出的雷射頻寬約為 30 MHz。
+
+\fig[0.5][fig:label][!htb]{temp.png}[窄頻雷射頻譜]
+
+若只開啟第一台 EOM，在 10 Gb/s 隨機訊號的調製下可將窄頻雷射光的頻譜展至 10 GHz 寬，但由於我們的使用的 Fabry-Perot FSR 僅 10 GHz，無法涵蓋完整的頻率區間，會使測量的結果失真，要想掃出完整展開的頻譜需使用 FSR 20 GHz 以上的干涉儀，所以下面會先以 2 Gb/s 的訊號來測試展頻的結果是否符合理論模擬。
+
+\subsubsection{2 Gb/s 隨機訊號之相位調製}
+先以 2 Gb/s 隨機訊號進行相位調製，只開啟第一台能將頻譜展至 $\pm$5 GHz 寬，如下圖。
+
+\fig[0.5][fig:label][!htb]{temp.png}[5 Gb/s 訊號之展頻頻譜]
+
+頻譜的形狀大致上與理論相符，但在 $\pm$2 GHz 的位置有一個突起的訊號，這是由於隨機訊號的上升與下降時間不夠快所致，若在數值模擬中把隨機訊號加上約 30 ps 的上升與下降時間（如圖），則會出現類似的結果，如圖：
+
+\begin{figure}[!hbt]
+    %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
+    \centering
+    \subcaptionbox
+        {caption\_1
+        \label{fig:subfig_fig1}}
+        {\includegraphics[width=0.3\linewidth]{temp.png}}
+    ~~~~
+    \subcaptionbox
+        {caption\_2
+        \label{fig:subfig_fig2}}
+        {\includegraphics[width=0.3\linewidth]{temp.png}}
+\end{figure}
+
+% \fig[0.5][fig:label][!htb]{temp.png}[修正前後之隨機訊號]
+% \fig[0.5][fig:label][!htb]{temp.png}[修正後展頻頻譜]
+
+此外，還可看出該頻譜的包絡線有週期振盪的訊號，原因為我們使用的隨機訊號實際上是個重複出現的週期訊號，每個週期有 $2^{31}-1$ 個位元，若把單位週期的位元數調為 $2^{15}-1$ 做可看到週期更小的震盪週期，如圖：
+
+\begin{figure}[!hbt]
+    %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
+    \centering
+    \subcaptionbox
+        {caption\_1
+        \label{fig:subfig_fig1}}
+        {\includegraphics[width=0.3\linewidth]{temp.png}}
+    ~~~~
+    \subcaptionbox
+        {caption\_2
+        \label{fig:subfig_fig2}}
+        {\includegraphics[width=0.3\linewidth]{temp.png}}
+\end{figure}
+
+從測量的頻譜可以看出，展寬的頻率與理論計算的結果一致，所以我們認為 10 Gb/s 的隨機訊號能將訊號展至 $\pm$10 GHz 寬。
+
+\subsubsection{10 Gb/s 隨機訊號之相位調製}
+
+上一小節我們先以 2 Gb/s 的訊號做展頻的測試，是由於我們使用的 Fabry-Perot 干涉儀 FSR 不夠大，無法涵蓋以 10 Gb/s 訊號調製的展頻頻譜。至於壓縮頻譜的部分，能將頻寬還原成約 10 MHz，所以可使用 10 Gb/s 的訊號進行調製與量測。
+
+當兩台 EOM 同時開啟時，理論上要能將展寬的頻譜還原成調製前的狀態，但從（圖）的實驗結果可以看出，壓縮回來的頻譜與調製前相比，中心頻率的強度僅為本來的 70\%，若只計算中心頻率附近 1 GHz 的頻率區間，與調製前的頻譜相比光強僅約 80\%，剩下 20\% 的能量還分散在其他頻率沒被還原。造成頻譜壓縮效果不佳的可能原因為，兩個隨機訊號的形狀不同，上下也不夠對稱，導致無法將相位做反向的調製，使訊號完美還原成最初的狀態。
+
+\fig[0.5][fig:label][!htb]{temp.png}[10 Gb/s 訊號壓縮後頻譜]
+
+\subsection{銣原子吸收譜}
+為了確定相位調製對於銣原子吸收的影響，我們在兩台 EOM 的後面放上一個如原子氣體管，並以光二極體 (photodiode) 收光，測量透射的強度。只有在入射頻率與銣原子躍遷能階共振時光子才會被吸收，使透射率降低，所以若連續調整入射光的頻率，則能掃出整個吸收譜，如\cref{fig:abs_spec} 黑線。
+
+\fig[1][fig:abs_spec][!htb]{absorption_spectrum.png}[調製後的銣原子吸收譜]
+
+接著打開第一台 EOM，將頻寬從 30 MHz 展至 10 GHz，結果如\cref{fig:abs_spec} 紫線，可見頻譜展寬之後，光能大部分透射銣原子氣體不被吸收，就像隱形了一樣，能降低光子受環境的影響。
+若同時開啟兩台 EOM 將頻譜壓縮，則能再次看到光被吸收，如\cref{fig:abs_spec} 紅線，但吸收率卻明顯降低，原因如上一小節所述，可能為隨機訊號品質不所致，影響頻譜壓縮的效果，有部分的能量還分散在各個頻率上沒能被還原，那些能量不在銣原子的共振頻率上，所以能夠穿透氣體管，使穿透率上升。
+\todo[inline]{重畫圖，把藍線去掉}
+
+\section{單光子量測}
+
+\section{單光子光源製備}
+雙光子的產生機制為 SPDC，入射一道波長 397.5 奈米的藍光雷射進入 PPKTP 晶體，產生 Type-II 的時間 - 能量糾纏光子對 (time-energy entangled biphoton)，波長為 795 奈米。
+實驗上會讓雙光子對經過 PBS 分光，並做 $G^{2}(\tau)$ 的測量，$G^{2}(\tau)$ 的定義如下。
+
+\begin{equation}
+    G^{2}(\tau)=\frac{4\Gamma_{s}\Gamma_{i}}{\Gamma_{s}+\Gamma_{i}}\left\{\begin{matrix}
+        e^{\Gamma_{s}\tau} & ,\tau<0\\
+        e^{-\Gamma_{i}\tau} & ,\tau>0
+        \end{matrix}\right.
+\end{equation}
+
+此為二階強度關聯函數 (second-order intenstiy correlation function)，$\tau$ 為兩顆單光子抵達探測器的時間差。
+
+若調整入射光的頻率與 PPKTP 晶體的溫度，則可改變單光子的頻率。
+
+雙光子在產生出來後會先進 PBS 將訊號分為 signal 和 idler，以 idler 做為觸發訊號，讓 signal 經過 EOM 與銣原子氣體管，進行相位的調製與吸收。
+
+這部分的實驗，我們將單光子 (signal) 的頻率調至銣原子的躍遷頻率，使光子能被吸收，再藉由相位調製展寬光子的頻譜，降低原子對光子的影響，以達到隱形斗篷的效果。但由於單光子能量太弱，無法以 Fabry-Perot 干涉儀掃頻，所以為了要確定兩台 EOM 同時開啟時能否將頻譜還原，我們改用頻寬 60 MHz 的 Etalon 濾波器，限制光子能通過的頻寬，架設如圖。
+
+\fig[0.5][fig:label][!htb]{temp.png}[單光子量測光路圖]
+
+\subsection{展頻與壓縮}
+以（光路圖）的架設，先不要放 $^{87}Rb$ 原子氣體管，讓單光子直接通過 60 MHz 寬的 Etalon 濾波器。若兩台 EOM 都沒開，窄頻的單光子能完全通濾波器，$G^{2}(\tau)$ 的量測結果如圖。此時若開啟第一台 EOM，將頻譜展至 10 GHz 寬，則單光子僅有極低的機率能通過 Etalon，如圖，幾乎測不到單光子的訊號。若同時開啟兩台 EOM，互補的隨機訊號能互相抵銷相位的變化，使頻譜還原至窄頻，如此就能使光子再次通過 Etalon，如圖，與未調製前的結果相比，強度低了些，這是由於壓縮效果不夠好，導致部分的光子沒能通過 Etalon 所致。
+
+\fig[0.5][fig:label][!htb]{temp.png}[nocell 調製比較圖]
+
+\subsection{$^{87}Rb$吸收}
+同上一小節的光路架設，但把 $^{87}Rb$ 原子氣體管放回光路上，如圖。兩台相位調製器都不開的話，單光子幾乎全部被吸收，如圖。若開啟第一台 EOM 將單光子頻譜展寬，雖然光子能幾乎不被吸收，但由於 Etalon 的過濾，探測器仍測不太到光子，如圖。若將第二台相位調製器也開啟，則能把單光子的頻譜壓縮，再通過 Etalon，如圖。
+
+\fig[0.5][fig:label][!htb]{temp.png}[heatcell 調製比較圖]
+
+單獨將圖與圖拿出來比較 (圖)，同樣是測量展頻再壓縮回來的光，黑線為沒放銣原子氣體館，紅線則有，從結果可看出，本來該被完全吸收的單光子，可透過相位的調製大幅降低銣原子氣體的影響，讓部分的光可以穿透，並在頻譜還原後被探測，達到隱形斗篷的效果。
+
+\fig[0.5][fig:label][!htb]{temp.png}[調製後光子之銣原子吸收比較圖]
+
+\end{document}
