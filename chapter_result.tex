@@ -10,7 +10,7 @@
 
 \subsection{單光子}
 雙光子的產生機制為 SPDC，入射一道波長 397.5 奈米的藍光雷射進入 PPKTP 晶體，產生 Type-II 的時間 - 能量糾纏光子對 (time-energy entangled biphoton)，波長為 795 奈米。
-實驗上會讓雙光子對經過 PBS 分光，並做 $G^{2}(\tau)$ 的測量，$G^{2}(\tau)$ 的定義如下。
+實驗上會將產生出來的雙光子對經過 PBS，將訊號分為 signal 和 idler，以 idler 做為觸發訊號，讓 signal 經過 $^{87}Rb$ 原子氣體管與 EOM，讓光子被吸收或對其進行相位的調製，並做 $G^{2}(\tau)$ 的測量，$G^{2}(\tau)$ 的定義如下。
 
 \begin{equation}
     G^{2}(\tau)=\frac{4\Gamma_{s}\Gamma_{i}}{\Gamma_{s}+\Gamma_{i}}\left\{\begin{matrix}
@@ -19,12 +19,9 @@
         \end{matrix}\right.
 \end{equation}
 
-此為二階強度關聯函數 (second-order intenstiy correlation function)，$\tau$ 為兩顆單光子抵達探測器的時間差。
+此為二階強度關聯函數 (second-order intenstiy correlation function)，$\tau$ 為兩顆單光子抵達探測器的時間差。實際測量結果如\cref{fig:single_photon_g2}，此光子之時間波包寬度約為 100 ns，頻寬為 4.5 MHz。
 
-若調整入射光的頻率與 PPKTP 晶體的溫度，則可改變單光子的頻率。
-
-雙光子在產生出來後會先進 PBS 將訊號分為 signal 和 idler，以 idler 做為觸發訊號，讓 signal 經過 EOM 與銣原子氣體管，進行相位的調製與吸收。
-
+\fig[0.5][fig:single_photon_g2][!htb]{temp.png}[雷射頻譜量測光路圖]
 
 \section{雷射頻譜量測}
 
@@ -98,19 +95,44 @@
 若同時開啟兩台 EOM 將頻譜壓縮，則能再次看到光被吸收，如\cref{fig:abs_spec} 紅線，但吸收率卻明顯降低，原因如上一小節所述，可能為隨機訊號品質不所致，影響頻譜壓縮的效果，有部分的能量還分散在各個頻率上沒能被還原，那些能量不在銣原子的共振頻率上，所以能夠穿透氣體管，使穿透率上升。
 \todo[inline]{重畫圖，把藍線去掉}
 
-\section{單光子隱藏}
-從前一小節的實驗結果我們能得知，$^{87}Rb$ 的躍遷頻率約在 105 GHz 與 112 GHz 附近，這時我們將光源從窄頻雷射換成單光子，並透過改變入射光的頻率與晶體溫度，將單光子的頻率調至 112 GHz，使其能被原子吸收，再以\cref{fig:single_photon_no_etalon}的光路架設，對光子進行相位調製與測量。
+\section{單光子相位調製對原子吸收之影響}
+從前一小節的實驗結果能得知，$^{87}Rb$ 的躍遷頻率約在 105 GHz 與 112 GHz 附近，這時我們將光源從窄頻雷射換成單光子，並透過改變入射光的頻率與晶體溫度，將單光子的頻率調至 112 GHz，使其能被原子吸收，再以\cref{fig:single_photon_no_etalon}的光路架設，對光子進行相位調製與測量。
 
 \fig[0.5][fig:single_photon_no_etalon][!htb]{temp.png}[單光子量測光路圖]
 
-當兩台 EOM 皆關閉時，頻寬約為 4.5 MHz 的單光子會幾乎完全被原子吸收，光應該無法通過氣體管，但若對其進行 $G^{2}(\tau)$ 測量，卻會測到訊號，如\cref{fig:remaining_mod_g2}，這是由於我們晶體產生的單光子源非單模 (single-mode)，其中還存在符合別組相位匹配條件 (phase-matching condition) 產生的光，若要去除那些光子對實驗的影響，在此小節的數據處理上，我們直接將其當作雜訊扣除；下一小節的實驗中，我們會外加一個 Etalon 濾波器，只讓 112 GHz 附近的光通過。
+當兩台 EOM 皆關閉時，頻寬約為 4.5 MHz 的單光子會幾乎完全被原子吸收，光無法透射氣體管，但若對其進行 $G^{2}(\tau)$ 測量，卻會測到訊號，如\cref{fig:remaining_mod_g2}，這是由於我們晶體產生的單光子源非單模 (single-mode)，其中還存在符合別組相位匹配條件 (phase-matching condition) 產生的光，若要去除那些光子對實驗的影響，在此小節的數據處理上，我們直接將其當作雜訊扣除；下一小節的實驗中，我們會外加一個 Etalon 濾波器，只讓 112 GHz 附近的光通過。
 
 \fig[0.5][fig:remaining_mod_g2][!htb]{temp.png}[單光子通過 $^{87}Rb$ 氣體管之 $G^{2}(\tau)$ 量測]
 
+若開啟第一台 EOM，使用 10 Gb/s 的隨機訊號對單光子進行相位調製，可以讓單光子的頻寬從 4.5 MHz 展至 10 GHz，使大部分的光可以透射 $^{87}Rb$ 氣體不被吸收，扣除雜訊後的 $G^2(\tau)$ 的測量如\cref{fig:spread_absorption_g2}，透射率為 76\%。另外，此時若將 $^{87}Rb$ 氣體管移除，直接測量展頻後的訊號，能發現單位時間測量到的光子數與調製前相差不多，印證了本章第一小節的結論——相位調製不影響光強。
 
+\fig[0.5][fig:spread_absorption_g2][!htb]{temp.png}[展頻後單光子被部分吸收後之 $G^{2}(\tau)$ 量測]
 
+\section{單光子頻譜壓縮}
 
-\section{光子再現}
+從上一小節的結果可知，使用展頻技術可以有效的降低環境對光子的影響，但若考量到接收訊息端可能會需要光子原始的相位資訊，或者要讓光子與 $^{87}Rb$ 原子進行交互作用，我們必須要開啟第二台 EOM 進行反向的調製，盡量使光子還原到原先的狀態，若以\cref{fig:single_photon_no_etalon}的光路架設，將第二台 EOM 開啟，由於相位調製不影響光強，無從得知頻寬是否有被還原，因此要將光路架設改為\cref{fig:single_photon_with_etalon}，在單光子探測器前加上 Etalon 濾波器，限制只讓頻寬 60 MHz 內的光通過，如此一來，只要能測到訊號就代表部分光子的頻寬有被壓窄至 60 MHz 內，另一方面，這也可以將上一小節及提的雜訊去除。
+
+\fig[0.5][fig:single_photon_with_etalon][!htb]{temp.png}[加上濾波器之單光子量測光路圖]
+
+以\cref{fig:single_photon_with_etalon}的光路架設，只開啟第一台 EOM 時，被展頻的單光子能大部分透射原子團，但由於 Etalon 的過濾，頻寬 10 GHz 的光子幾乎無法抵達探測器，因而測不到明顯的訊號，結果如\cref{fig:spread_single_photon_with_etalon}。若將第二台 EOM 也開啟，將已展頻的單光子頻譜壓縮，則能再次測到訊號，如\cref{fig:compress_single_photon_with_etalon}
+
+\begin{figure}[!hbt]
+    %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
+    \centering
+    \subcaptionbox
+        {caption\_1
+        \label{fig:spread_single_photon_with_etalon}}
+        {\includegraphics[width=0.3\linewidth]{temp.png}}
+    ~~~~
+    \subcaptionbox
+        {caption\_2
+        \label{fig:compress_single_photon_with_etalon『}}
+        {\includegraphics[width=0.3\linewidth]{temp.png}}
+\end{figure}
+
+為了知道原子團的吸收對於單光子頻譜的壓縮有何影響，我們在兩台 EOM 同時開啟時將氣體管移除，測得的結果比較如\cref{fig:no_cell_compress}，有 25\% 的單光子可以在被部分吸收後，重新將頻譜壓縮回 60 MHz 內。
+
+\fig[0.5][fig:no_cell_compress][!htb]{temp.png}[原子吸收對單光子壓縮品質比較圖]
 
 
 \end{document}
