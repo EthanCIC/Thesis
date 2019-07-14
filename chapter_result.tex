@@ -1,4 +1,5 @@
 \documentclass[class=NCU_thesis, crop=false]{standalone}
+
 \begin{document}
 \chapter{實驗架設與結果討論}
 
@@ -9,19 +10,25 @@
 雷射光源為 Toptica 的半導體雷射，可產生波長 795 nm 的窄頻雷射
 
 \subsection{單光子}
-雙光子的產生機制為 SPDC，入射一道波長 397.5 奈米的藍光雷射進入 PPKTP 晶體，產生 Type-II 的時間 - 能量糾纏光子對 (time-energy entangled biphoton)，波長為 795 奈米。
-實驗上會將產生出來的雙光子對經過 PBS，將訊號分為 signal 和 idler，以 idler 做為觸發訊號，讓 signal 經過 $^{87}Rb$ 原子氣體管與 EOM，讓光子被吸收或對其進行相位的調製，並做 $G^{2}(\tau)$ 的測量，$G^{2}(\tau)$ 的定義如下。
+雙光子的產生機制為 SPDC，入射一道波長 397.5 nm 的藍光雷射進入 PPKTP 晶體，產生 Type-II 的時間 - 能量糾纏光子對 (time-energy entangled biphoton)，波長為 795 nm。
+實驗上會將產生出來的雙光子對經過 PBS，將訊號分為 signal 和 idler，以 idler 做為觸發訊號，使 signal 經過 $^{87}Rb$ 原子氣體管與 EOM，讓光子被吸收或對其進行相位的調製，並做 $G^{2}(\tau)$ 的測量，$G^{2}(\tau)$ 的定義如 (\ref{eq:g2_definition})。
 
 \begin{equation}
     G^{2}(\tau)=\frac{4\Gamma_{s}\Gamma_{i}}{\Gamma_{s}+\Gamma_{i}}\left\{\begin{matrix}
         e^{\Gamma_{s}\tau} & ,\tau<0\\
         e^{-\Gamma_{i}\tau} & ,\tau>0
         \end{matrix}\right.
+\label{eq:g2_definition}
 \end{equation}
 
-此為二階強度關聯函數 (second-order intenstiy correlation function)，$\tau$ 為兩顆單光子抵達探測器的時間差。實際測量結果如\cref{fig:single_photon_g2}，此光子之時間波包寬度約為 100 ns，頻寬為 4.5 MHz。
+此為二階強度關聯函數 (second-order intenstiy correlation function)，$\tau$ 為兩顆單光子抵達探測器的時間差。在符合準相位匹配條件 (quasi phase matching condition) 時能最有效率的產生雙光子，實際測量結果如\cref{fig:single_photon_g2}，此光子之時間波包寬度約為 100 ns，頻寬為 4.5 MHz。
 
-\fig[0.5][fig:single_photon_g2][!htb]{temp.png}[雷射頻譜量測光路圖]
+\fig[0.5][fig:single_photon_g2][!htb]{temp.png}[糾纏光子對之 $G^{2}(\tau)$ 量測]
+
+為了找到符合準項未匹配條件的入射光波長與晶體溫度，實驗上我們先將入射光的頻率固定在 105489 MHz，改變晶體溫度測量雙光子的產生率 (biphton rate)，結果如\cref{fig:temp_scan_g2}黑線，在 39.91$^{\circ}C$ 至 40.10$^{\circ}C$ 有四組符合條件的模態，若讓其中一顆光子經過 $^{87}Rb$ 原子氣體管，並做相同的量測，結果如\cref{fig:temp_scan_g2}紅線，可以發現第二和第三個的模態雖有明顯的吸收，但吸收率不高，我們認為這是因為晶體所產生的光子為多模 (multi-mode) 而非單模 (single-mode)，同時產生了兩種以上頻率的單光子，儘管其中一個頻率的光子能完全被吸收，其他頻率的光子仍會透射，因此無法讓透射率趨近於零。為了確認這想法，我們在探測器前面加上一個頻寬為 60 MHz 的 Etalon 濾波器，只允許特定頻率附近的光通過，並針對第二和第三個模態做相同的量測，其結果如\cref{fig:temp_scan_g2_with_etalon}，加了濾波器之後，這兩個頻率的光就能被完全吸收，能確定此時的單光子為單模。後續的實驗我們會選用第二個模態所產生的單光子進行調製與量測。
+
+\fig[0.5][fig:temp_scan_g2][!htb]{temp.png}[調整溫度測量雙光子產生率]
+\fig[0.5][fig:temp_scan_g2_with_etalon][!htb]{temp.png}[調整溫度測量雙光子產生率（加上濾波器）]
 
 \section{雷射頻譜量測}
 
@@ -29,7 +36,7 @@
 
 \fig[0.5][fig:label][!htb]{temp.png}[雷射頻譜量測光路圖]
 
-在兩台 EOM 都關閉的情況下，可以測到波長 795 奈米窄頻雷射的頻譜，結果如圖，以此 Fabry-Perot 的解析度掃出的雷射頻寬約為 30 MHz。
+在兩台 EOM 都關閉的情況下，可以測到波長 795 nm 窄頻雷射的頻譜，結果如圖，以此 Fabry-Perot 的解析度掃出的雷射頻寬約為 30 MHz。
 
 \fig[0.5][fig:label][!htb]{temp.png}[窄頻雷射頻譜]
 
@@ -81,9 +88,9 @@
 
 上一小節我們先以 2 Gb/s 的訊號做展頻的測試，是由於我們使用的 Fabry-Perot 干涉儀 FSR 不夠大，無法涵蓋以 10 Gb/s 訊號調製的展頻頻譜。至於壓縮頻譜的部分，能將頻寬還原成約 10 MHz，所以可使用 10 Gb/s 的訊號進行調製與量測。
 
-當兩台 EOM 同時開啟時，理論上要能將展寬的頻譜還原成調製前的狀態，但從（圖）的實驗結果可以看出，壓縮回來的頻譜與調製前相比，中心頻率的強度僅為本來的 70\%，若只計算中心頻率附近 1 GHz 的頻率區間，與調製前的頻譜相比光強僅約 80\%，剩下 20\% 的能量還分散在其他頻率沒被還原。造成頻譜壓縮效果不佳的可能原因為，兩個隨機訊號的形狀不同，上下也不夠對稱，導致無法將相位做反向的調製，使訊號完美還原成最初的狀態。
+當兩台 EOM 同時開啟時，理論上要能將展寬的頻譜還原成調製前的狀態，但從\cref{fig:10gbs_compress_sprectrum}的實驗結果可以看出，壓縮回來的頻譜與調製前相比，中心頻率的強度僅為本來的 70\%，若只計算中心頻率附近 1 GHz 的頻率區間，與調製前的頻譜相比光強僅約 80\%，剩下 20\% 的能量還分散在其他頻率沒被還原。造成頻譜壓縮效果不佳的可能原因為，兩個隨機訊號的形狀與穩定度皆不同（如\cref{fig:amplified_signal}），上下也不夠對稱，導致無法將相位做反向的調製，使訊號完美還原成最初的狀態。
 
-\fig[0.5][fig:label][!htb]{temp.png}[10 Gb/s 訊號壓縮後頻譜]
+\fig[0.5][fig:10gbs_compress_sprectrum][!htb]{temp.png}[10 Gb/s 訊號壓縮後頻譜]
 
 \section{$^{87}Rb$ 原子吸收譜}
 
@@ -107,6 +114,12 @@
 若開啟第一台 EOM，使用 10 Gb/s 的隨機訊號對單光子進行相位調製，可以讓單光子的頻寬從 4.5 MHz 展至 10 GHz，使大部分的光可以透射 $^{87}Rb$ 氣體不被吸收，扣除雜訊後的 $G^2(\tau)$ 的測量如\cref{fig:spread_absorption_g2}，透射率為 76\%。另外，此時若將 $^{87}Rb$ 氣體管移除，直接測量展頻後的訊號，能發現單位時間測量到的光子數與調製前相差不多，印證了本章第一小節的結論——相位調製不影響光強。
 
 \fig[0.5][fig:spread_absorption_g2][!htb]{temp.png}[展頻後單光子被部分吸收後之 $G^{2}(\tau)$ 量測]
+
+從前述的結果可知，未經調製的窄頻單光子會幾乎被 $^{87}RB$ 原子吸收，無法透射氣體管，透射率幾乎為零，但經過 10 Gb/s 隨機訊號的調製後，可讓透射率提升至 76％，如同穿上隱形斗篷般，能大部分的光子不會與原子產生交互作用，直接穿透原子團。
+
+由 \ref{section:simulation_absorption} 的模擬可知，使用越高頻的隨機訊號去展頻可提升光子隱形的效果，為驗證此模擬，我們分別使用 2, 4, 6, 8, 10 Gb/s 的隨機訊號去展頻，並經過原子團測量吸收率，實驗結果如\cref{fig:different_gbs_abs}，從結果可看出，使用越高的頻率的確能增加光子的隱匿性，降低環境或竊聽者的影響。而我們實驗上使用 10 Gb/s 的訊號為儀器的限制。
+
+\fig[0.5][fig:different_gbs_abs][!htb]{temp.png}[展頻後單光子被部分吸收後之 $G^{2}(\tau)$ 量測]
 
 \section{單光子頻譜壓縮}
 
