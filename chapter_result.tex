@@ -26,10 +26,27 @@
 
 \fig[0.5][fig:single_photon_g2][!htb]{temp.png}[糾纏光子對之 $G^{2}(\tau)$ 量測]
 
-為了找到符合準項未匹配條件的入射光波長與晶體溫度，實驗上我們先將入射光的頻率固定在 105489 MHz，改變晶體溫度測量雙光子的產生率 (biphton rate)，結果如\cref{fig:temp_scan_g2}黑線，在 39.91$^{\circ}C$ 至 40.10$^{\circ}C$ 有四組符合條件的模態，若讓其中一顆光子經過 $^{87}Rb$ 原子氣體管，並做相同的量測，結果如\cref{fig:temp_scan_g2}紅線，可以發現第二和第三個的模態雖有明顯的吸收，但吸收率不高，我們認為這是因為晶體所產生的光子為多模 (multi-mode) 而非單模 (single-mode)，同時產生了兩種以上頻率的單光子，儘管其中一個頻率的光子能完全被吸收，其他頻率的光子仍會透射，因此無法讓透射率趨近於零。為了確認這想法，我們在探測器前面加上一個頻寬為 60 MHz 的 Etalon 濾波器，只允許特定頻率附近的光通過，並針對第二和第三個模態做相同的量測，其結果如\cref{fig:temp_scan_g2_with_etalon}，加了濾波器之後，這兩個頻率的光就能被完全吸收，能確定此時的單光子為單模。後續的實驗我們會選用第二個模態所產生的單光子進行調製與量測。
+為了找到符合準項未匹配條件的入射光波長與晶體溫度，實驗上我們先將入射光的頻率固定在 105489 MHz，改變晶體溫度測量雙光子的產生率 (biphton rate)，結果如\cref{fig:temp_scan_g2}黑線，在 39.91$^{\circ}C$ 至 40.10$^{\circ}C$ 有四組符合條件的模態，若讓其中一顆光子經過 $^{87}Rb$ 原子氣體管，並做相同的量測，結果如\cref{fig:temp_scan_g2}紅線，可以發現第二和第三個的模態雖有明顯的吸收，但吸收率不高，我們認為這是因為晶體所產生的光子為多模 (multi-mode) 而非單模 (single-mode)，同時產生了兩種以上頻率的單光子，儘管其中一個頻率的光子能完全被吸收，其他頻率的光子仍會透射，因此無法讓透射率趨近於零。為了確認這想法，我們在探測器前面加上一個頻寬為 60 MHz 的 Etalon 濾波器，只允許特定頻率附近的光通過，並在沒放 $^{87}Rb$ 原子氣體管時改變晶體溫度，重新測量產生率，有無 Etalon 濾波器測量之結果比較如\cref{fig:temp_scan_g2_with_etalon}，黑色為沒放 Etalon 濾波器時測量到的訊號，紅色經過濾波後之訊號，兩者相比可明顯看出，有放濾波器時能將其他產生效率較低的模態過濾掉，一次只讓一個特定頻率區間內的光通過。此時再將 $^{87}Rb$ 原子氣體管放回，並對其中第二和第三個模態進行相同的量測，結果如\cref{fig:absorption_etalon_temp_scanning}，黑線為加上 Etalon 過濾之後測到的訊號，若放上 $^{87}Rb$ 原子氣體管讓光子通過，測量結果如藍線，光子幾乎完全被吸收，與\cref{fig:temp_scan_g2}相比，可明顯看出，在過濾前的光源的確有其他頻率的成分，要避免其他頻率成分影響後續的實驗與分析，需加上 Etalon 濾波器。
 
-\fig[0.5][fig:temp_scan_g2][!htb]{temp.png}[調整溫度測量雙光子產生率]
-\fig[0.5][fig:temp_scan_g2_with_etalon][!htb]{temp.png}[調整溫度測量雙光子產生率（加上濾波器）]
+\fig[0.75][fig:temp_scan_g2][!htb]{temp_scanning.png}[調整溫度測量雙光子產生率，黑線為直接對雙光子進行量測；紅線為先讓其中一顆單光子通過 $^{87}Rb$ 氣體管再測量，其中第二和第三個模態有部分吸收。][調整溫度測量雙光子產生率]
+
+\fig[0.75][fig:temp_scan_g2_with_etalon][!htb]{temp_scanning_with_etalon.png}[黑色為無濾波器時測量之訊號，在二與三個模態附近測量到一些明顯的訊號，表示我們的單光子非單模；紅線為經過濾波器測量到的訊號，此時就只允許特定頻率透射。][調整溫度測量雙光子產生率（加上濾波器）]
+
+\begin{figure}[!hbt]
+    %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
+    \centering
+    \subcaptionbox
+        {第二個模態
+        \label{fig:subfig_fig1}}
+        {\includegraphics[width=0.4\linewidth]{second_mode_absorption.png}}
+    ~~~~
+    \subcaptionbox
+        {第三個模態
+        \label{fig:subfig_fig2}}
+        {\includegraphics[width=0.4\linewidth]{third_mode_absorption.png}}
+    \caption{經過 Etalon 濾波後光子之吸收}
+    \label{fig:absorption_etalon_temp_scanning}
+\end{figure}
 
 \section{雷射頻譜量測}
 
@@ -110,11 +127,11 @@
 
 當兩台 EOM 皆關閉時，頻寬約為 4.5 MHz 的單光子會幾乎完全被原子吸收，光無法透射氣體管，但若對其進行 $G^{2}(\tau)$ 測量，卻會測到訊號，如\cref{fig:remaining_mod_g2}，原因如 \ref{subsection:single_photon} 所述，是由於我們晶體產生的單光子源非單模 (single-mode)，其中還存在符合別組準相位匹配條件 (quasi phase matching condition) 所產生的光，若要去除那些光子對實驗的影響，在此小節的數據處理上，我們直接將其當作雜訊扣除；下一小節的實驗中，我們會外加一個 Etalon 濾波器，只讓 112 GHz 附近的光通過。
 
-\fig[0.5][fig:remaining_mod_g2][!htb]{temp.png}[單光子通過 $^{87}Rb$ 氣體管之 $G^{2}(\tau)$ 量測]
+\fig[0.75][fig:remaining_mod_g2][!htb]{no_etalon_with_cell.png}[單光子通過 $^{87}Rb$ 氣體管之 $G^{2}(\tau)$ 量測]
 
 若開啟第一台 EOM，使用 10 Gb/s 的隨機訊號對單光子進行相位調製，可以讓單光子的頻寬從 4.5 MHz 展至 10 GHz，使大部分的光可以透射 $^{87}Rb$ 氣體不被吸收，扣除雜訊後的 $G^2(\tau)$ 的測量如\cref{fig:spread_absorption_g2}，透射率為 76\%。另外，此時若將 $^{87}Rb$ 氣體管移除，直接測量展頻後的訊號，能發現單位時間測量到的光子數與調製前相差不多，印證了本章第一小節的結論——相位調製不影響光強。
 
-\fig[0.5][fig:spread_absorption_g2][!htb]{temp.png}[展頻後單光子被部分吸收後之 $G^{2}(\tau)$ 量測]
+\fig[0.7][fig:spread_absorption_g2][!htb]{no_etalon_spread.png}[展頻後單光子被部分吸收後 $G^{2}(\tau)$ 量測]
 
 從前述的結果可知，未經調製的窄頻單光子會幾乎被 $^{87}RB$ 原子吸收，無法透射氣體管，透射率幾乎為零，但經過 10 Gb/s 隨機訊號的調製後，可讓透射率提升至 76％，如同穿上隱形斗篷般，能大部分的光子不會與原子產生交互作用，直接穿透原子團。
 
