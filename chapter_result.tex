@@ -50,9 +50,9 @@
 
 \section{雷射頻譜量測}
 
-實驗光路架設如圖，我們將窄頻雷射通過兩台 EOM 對其進行相位調製，第一台為展頻用，第二台用來做反向的調製還原頻譜，再以 Fabrty-Perot 干涉儀去測量頻譜。
+實驗光路架設如\cref{fig:laser_spectrum_setup}，我們將窄頻雷射通過兩台 EOM 對其進行相位調製，第一台為展頻用，第二台用來做反向的調製還原頻譜，再以 Fabrty-Perot 干涉儀去測量頻譜。
 
-\fig[0.5][fig:label][!htb]{temp.png}[雷射頻譜量測光路圖]
+\fig[0.5][fig:laser_spectrum_setup][!htb]{temp.png}[雷射頻譜量測光路圖]
 
 在兩台 EOM 都關閉的情況下，可以測到波長 795 nm 雷射的頻譜，結果如圖，以此 Fabry-Perot 的解析度掃出的雷射頻寬約為 60 MHz。
 
@@ -108,7 +108,9 @@
 
 當兩台 EOM 同時開啟時，理論上要能將展寬的頻譜還原成調製前的狀態，但從\cref{fig:10gbs_compress_sprectrum}的實驗結果可以看出，壓縮回來的頻譜與調製前相比，中心頻率的強度僅為本來的 80\%，若將電壓放大來看（如\cref{fig:compress_amplified_compare}）可以觀察到，在調製前所有能量皆集中於中心頻率附近，但經過兩台 EOM 調製後，仍有部分能量分散在其他頻率沒被還原，導致中心頻率的強度降低。造成頻譜還原效果不佳的可能原因為，兩個隨機訊號的形狀與穩定度皆不同（如\cref{fig:amplified_signal}），導致無法將相位做反向的調製，使訊號完美還原成最初的狀態。
 
-\fig[0.5][fig:compress_amplified_compare][!htb]{compress_zoom_in.png}[放大後之電訊號，紅線為未經調製的雷射頻譜，黑線為兩次調製後的訊號，雖能大致上將頻寬從 10 GHz 壓回 60 MHz，但從圖中可發現，中心以外的頻率仍能測到一些訊號。]
+\fig[0.5][fig:10gbs_compress_sprectrum][!htb]{compress_comparison_100.png}[10 Gb/s 訊號壓縮後頻譜]
+
+\fig[0.5][fig:compress_amplified_compare][!htb]{compress_zoom_in.png}[放大後之電訊號，紅線為未經調製的雷射頻譜，黑線為兩次調製後的訊號，雖能大致上將頻寬從 10 GHz 壓回 60 MHz，但從圖中可發現，中心以外的頻率仍能測到一些訊號。][初始頻譜與壓縮頻譜放大比較圖]
 
 \begin{figure}[!hbt]
     %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
@@ -116,52 +118,65 @@
     \subcaptionbox
         {第一台 EOM 
         \label{fig:subfig_fig1}}
-        {\includegraphics[width=0.45\linewidth]{EOM_1.png}}
+        {\includegraphics[width=0.4\linewidth]{EOM_1.png}}
     ~~~~
     \subcaptionbox
         {第二台 EOM
         \label{fig:subfig_fig2}}
-        {\includegraphics[width=0.45\linewidth]{EOM_2.png}}
+        {\includegraphics[width=0.4\linewidth]{EOM_2.png}}
     \caption{經過放大器，進入 EOM 用以調製的兩組隨機訊號眼圖}
     \label{fig:amplified_signal}
 \end{figure}
 
-\fig[0.5][fig:10gbs_compress_sprectrum][!htb]{temp.png}[10 Gb/s 訊號壓縮後頻譜]
+\section{$^{87}Rb$ 經相位調製後的原子吸收譜}
 
-\section{$^{87}Rb$ 原子吸收譜}
+如 \ref{section:simulation_absorption} 節所提，當光子的頻率很接近原子的躍遷能階時，光會被吸收，實驗上可以\cref{fig:laser_spectrum_setup}的架設，將 Farby-Perot 干涉儀換成光二極體 (photodiode) 收光，連續調變入射光的頻率，測量透射 $^{87}Rb$ 原子氣體管的光強，從\cref{fig:abs_spec} 藍線可以觀察到，在特定的兩個頻率位置附近光會被原子吸收，穿透率特別低。本實驗主要的目的為透過展頻技術，降低光子與原子的交互作用，使光子能不被吸收而增加透射率，所以若將第一台 EOM 開啟，將雷射的頻寬從 60 MHz 展至 10 GHz，此時的吸收譜如\cref{fig:abs_spec} 紅線，在經過展頻後，無論在哪個頻率下光皆能大部分透射原子，調製前的光在 105 GHz 與 112 GHz 會被完全吸收，調製後卻有 75\% 的光能透射原子，就如隱形了一般，展頻能降低光子受環境的影響。
 
-為了確定相位調製對於銣原子吸收的影響，我們在兩台 EOM 的後面放上一個 $^{87}Rb$ 原子氣體管，並以光二極體 (photodiode) 收光，測量透射的強度。只有在入射頻率與銣原子躍遷能階共振時光子才會被吸收，使透射率降低，所以若連續調整入射光的頻率，則能掃出整個吸收譜，如\cref{fig:abs_spec} 黑線。
-
-\fig[1][fig:abs_spec][!htb]{absorption_spectrum.png}[調製後的銣原子吸收譜]
-
-接著打開第一台 EOM，將頻寬從 30 MHz 展至 10 GHz，結果如\cref{fig:abs_spec} 紫線，可見頻譜展寬之後，光能大部分透射銣原子氣體不被吸收，就像隱形了一樣，能降低光子受環境的影響。
-若同時開啟兩台 EOM 將頻譜壓縮，則能再次看到光被吸收，如\cref{fig:abs_spec} 紅線，但吸收率卻明顯降低，原因如上一小節所述，可能為隨機訊號品質不所致，影響頻譜壓縮的效果，有部分的能量還分散在各個頻率上沒能被還原，那些能量不在銣原子的共振頻率上，所以能夠穿透氣體管，使穿透率上升。
-\todo[inline]{重畫圖，把藍線去掉}
+\fig[0.75][fig:abs_spec][!htb]{absorption_spectrum_spread.png}[調製後的如原子吸收譜，黑線為沒放 $^{87}Rb$ 原子氣體管時的訊號；藍線為調製前 $^{87}Rb$ 原子氣體管的吸收譜；紅線為展頻後的吸收譜。][調製後的銣原子吸收譜]
+\todo[inline]{重畫，調整座標軸}
 
 \section{單光子相位調製對原子吸收之影響}
-從前一小節的實驗結果能得知，$^{87}Rb$ 的躍遷頻率約在 105 GHz 與 112 GHz 附近，這時我們將光源從窄頻雷射換成單光子，並透過改變入射光的頻率與晶體溫度，將單光子的頻率調至 112 GHz，使其能被原子吸收，再以\cref{fig:single_photon_no_etalon}的光路架設，對光子進行相位調製與測量。
+從前一小節的實驗結果能得知，$^{87}Rb$ 的躍遷頻率約在 105 GHz 與 112 GHz 附近，這時我們將光源從窄頻雷射換成單光子，並透過改變入射光的頻率與晶體溫度，將單光子的頻率調至 112300 MHz，使其能被原子吸收，再以\cref{fig:single_photon_no_etalon}的光路架設，對光子進行相位調製與測量。
 
 \fig[0.5][fig:single_photon_no_etalon][!htb]{temp.png}[單光子量測光路圖]
 
-當兩台 EOM 皆關閉時，頻寬約為 4.5 MHz 的單光子會幾乎完全被原子吸收，光無法透射氣體管，但若對其進行 $G^{2}(\tau)$ 測量，卻會測到訊號，如\cref{fig:remaining_mod_g2}，原因如 \ref{subsection:single_photon} 所述，是由於我們晶體產生的單光子源非單模 (single-mode)，其中還存在符合別組準相位匹配條件 (quasi phase matching condition) 所產生的光，若要去除那些光子對實驗的影響，在此小節的數據處理上，我們直接將其當作雜訊扣除；下一小節的實驗中，我們會外加一個 Etalon 濾波器，只讓 112 GHz 附近的光通過。
+當兩台 EOM 皆關閉時，頻寬約為 4.5 MHz 的單光子會幾乎完全被原子吸收，光無法透射氣體管，但若對其進行 $G^{2}(\tau)$ 測量，卻會測到訊號，如\cref{fig:remaining_mod_g2}，原因如 \ref{subsection:single_photon} 節所述，是由於我們晶體產生的單光子源非單模 (single-mode)，其中還存在符合其他組準相位匹配條件 (quasi phase matching condition) 所產生的光，若要去除那些光子對實驗的影響，在此小節的數據處理上，我們直接將其當作雜訊扣除，只保留主要模態的光；下一小節的實驗中，我們會外加一個 Etalon 濾波器，只讓 112300 MHz 附近的光通過。
 
-\fig[0.75][fig:remaining_mod_g2][!htb]{no_etalon_with_cell.png}[單光子通過 $^{87}Rb$ 氣體管之 $G^{2}(\tau)$ 量測]
+\fig[0.75][fig:remaining_mod_g2][!htb]{no_etalon_with_cell.png}[單光子通過 $^{87}Rb$ 氣體管之 $G^{2}(\tau)$ 量測，黑線為沒放氣體管時測到的訊號，放了氣體管後，其他模態的光因不在吸收頻率附近而能透射原子團不吸收，所以會測到紅線的訊號。][單光子通過 $^{87}Rb$ 氣體管之 $G^{2}(\tau)$ 量測]
 
-若開啟第一台 EOM，使用 10 Gb/s 的隨機訊號對單光子進行相位調製，可以讓單光子的頻寬從 4.5 MHz 展至 10 GHz，使大部分的光可以透射 $^{87}Rb$ 氣體不被吸收，扣除雜訊後的 $G^2(\tau)$ 的測量如\cref{fig:spread_absorption_g2}，透射率為 76\%。另外，此時若將 $^{87}Rb$ 氣體管移除，直接測量展頻後的訊號，能發現單位時間測量到的光子數與調製前相差不多，印證了本章第一小節的結論——相位調製不影響光強。
+若開啟第一台 EOM，以 10 Gb/s 的隨機訊號對單光子進行相位調製，可以讓單光子的頻寬從 4.5 MHz 展至 10 GHz，使大部分的光可以透射 $^{87}Rb$ 氣體不被吸收，扣除雜訊後的 $G^2(\tau)$ 的測量結果如\cref{fig:spread_absorption_g2}，透射率為 76\%。另外，此時若將 $^{87}Rb$ 氣體管移除，直接測量展頻後的訊號，能發現單位時間測量到的光子數與調製前相差不多，比較如\cref{fig:spread_or_not}，印證了本章第一小節的結論——相位調製僅改變頻率的分佈，不會影響光強。
 
-\fig[0.7][fig:spread_absorption_g2][!htb]{no_etalon_spread.png}[展頻後單光子被部分吸收後 $G^{2}(\tau)$ 量測]
+\fig[0.7][fig:spread_absorption_g2][!htb]{no_etalon_spread.png}[黑線為沒被放氣體管也沒調製時的 $G^{2}(\tau)$ 量測，紅線為展頻光子被部分吸收後之訊號，可以以兩者 concidence counts（也就是圖下面積）的比值來計算透射率，約為 76\%][展頻單光子被部分吸收後 $G^{2}(\tau)$ 量測]
+
+\begin{figure}[!hbt]
+    %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
+    \centering
+    \subcaptionbox
+        {調製前 
+        \label{fig:subfig_fig1}}
+        {\includegraphics[width=0.4\linewidth]{EOM_1.png}}
+    ~~~~
+    \subcaptionbox
+        {調製後
+        \label{fig:subfig_fig2}}
+        {\includegraphics[width=0.4\linewidth]{EOM_2.png}}
+    \caption{沒放 $^{87}Rb$ 氣體管之 $G^{2}(\tau)$ 量測。有無相位調製時的雙光子產生率幾乎相同}
+    \label{fig:spread_or_not}
+\end{figure}
 
 從前述的結果可知，未經調製的窄頻單光子會幾乎被 $^{87}RB$ 原子吸收，無法透射氣體管，透射率幾乎為零，但經過 10 Gb/s 隨機訊號的調製後，可讓透射率提升至 76％，如同穿上隱形斗篷般，能大部分的光子不會與原子產生交互作用，直接穿透原子團。
 
-由 \ref{section:simulation_absorption} 的模擬可知，使用越高頻的隨機訊號去展頻可提升光子隱形的效果，為驗證此模擬，我們分別使用 2, 4, 6, 8, 10 Gb/s 的隨機訊號去展頻，並經過原子團測量穿透率，實驗結果如\cref{fig:different_gbs_abs}，從結果可看出，使用越高的頻率去進行調製，的確能增加光子的隱匿性，降低環境或竊聽者的影響。而我們實驗上選用 10 Gb/s 的訊號進行量測為訊號產生器和線材的限制。
-
-
-\fig[0.5][fig:different_gbs_abs][!htb]{temp.png}[展頻後單光子被部分吸收後之 $G^{2}(\tau)$ 量測]
-
 \section{雷射光相位調製對原子吸收之影響}
-在上一小節中，我們對單光子進行相位調製，觀察展頻對吸收率之影響，為確定此現象在不同系統下能保持一致性，我們將\cref{fig:single_photon_no_etalon}光路架設的光源改成雷射光，單光子探測器改用光二極體，並將雷射調至與單光子同樣的波長去進行同樣的量測，實驗結果如\cref{fig:laser_no_etalon}，與單光子的量測結果相近，調製前的光通過氣體管後會幾乎全部被吸收，但經過展頻的雷射光能有約 80\% 的穿透率，也能達到隱形斗篷的效果。
+在上一小節中，我們對單光子進行相位調製，觀察展頻對吸收率之影響，為確定此現象在不同系統下能維持一致性，我們將\cref{fig:single_photon_no_etalon}光路架設的光源改為雷射光，單光子探測器改用光二極體，並將雷射調至與單光子同樣的波長去進行相同的量測，實驗結果如\cref{fig:laser_no_etalon}，與單光子的量測結果相近，調製前的光幾乎會全部被原子團吸收，但經過展頻後的雷射光能有約 80\% 的穿透率，也能達到隱形斗篷的效果。
 
-\fig[0.5][fig:laser_no_etalon][!htb]{temp.png}[雷射光相位調製對穿透率之影響]
+\fig[0.5][fig:laser_no_etalon][!htb]{laser_no_etalon.png}[雷射光相位調製對穿透率之影響，最上面三條線（藍、紅與黃色）為沒放$^{87}RB$ 原子氣體管時之量測，無論是展頻還是壓縮，相位調製皆不會影響光強；中間兩條線（綠色與橘色）為展頻後通過氣體管所測得的訊號，與最下面那條線相比，有約 80\% 的光能因相位調製而穿透原子團而不被吸收。][雷射光相位調製對穿透率之影響]
+
+\section{不同展頻頻寬對吸收率之影響}
+由 \ref{section:simulation_absorption} 節的模擬可知，使用越高頻的隨機訊號去展頻可提升光子隱形的效果，為驗證此理論，我們分別使用 2, 4, 6, 8, 10 Gb/s 的隨機訊號去展頻，並透射原子團測量穿透率，實驗結果如\cref{fig:different_gbs_abs}，從結果可看出，無論是雷射光或單光子，頻寬越大，吸收率越低，使用越高的頻率去進行調製，的確能增加光子的隱匿性，降低環境或竊聽者的影響。
+
+\fig[0.5][fig:different_gbs_abs][!htb]{main_result.png}[黑色為理論計算；紅線為古典光量測結果；藍線為單光子量測結果，數據點的值為數次測量的平均，帶狀的寬度為測量的標準差。單光子的標準差較大是實驗穩定度不佳造成的。][改變展頻頻率對吸收率之影響]
+
+此外，可以看出單光子的透射率皆比雷射光低一些，或許是因為單光子較容易被原子團吸收所致。
 
 \section{單光子頻譜壓縮}
 
