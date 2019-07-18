@@ -143,7 +143,7 @@
 
 \fig[0.75][fig:remaining_mod_g2][!htb]{no_etalon_with_cell.png}[單光子通過 $^{87}Rb$ 氣體管之 $G^{2}(\tau)$ 量測，黑線為沒放氣體管時測到的訊號，放了氣體管後，其他模態的光因不在吸收頻率附近而能透射原子團不吸收，所以會測到紅線的訊號。][單光子通過 $^{87}Rb$ 氣體管之 $G^{2}(\tau)$ 量測]
 
-若開啟第一台 EOM，以 10 Gb/s 的隨機訊號對單光子進行相位調製，可以讓單光子的頻寬從 4.5 MHz 展至 10 GHz，使大部分的光可以透射 $^{87}Rb$ 氣體不被吸收，扣除雜訊後的 $G^2(\tau)$ 的測量結果如\cref{fig:spread_absorption_g2}，透射率為 76\%。另外，此時若將 $^{87}Rb$ 氣體管移除，直接測量展頻後的訊號，能發現單位時間測量到的光子數與調製前相差不多，比較如\cref{fig:spread_or_not}，印證了本章第一小節的結論——相位調製僅改變頻率的分佈，不會影響光強。
+若開啟第一台 EOM，以 10 Gb/s 的隨機訊號對單光子進行相位調製，可以讓單光子的頻寬從 4.5 MHz 展至 10 GHz，使大部分的光可以透射 $^{87}Rb$ 氣體不被吸收，扣除雜訊後的 $G^2(\tau)$ 的測量結果如\cref{fig:spread_absorption_g2}，透射率為 76\%。另外，此時若將 $^{87}Rb$ 氣體管移除，直接測量展頻後的訊號，能發現單位時間測量到的光子數與調製前相差不多，比較如\cref{fig:spread_or_not}，可知相位調製僅會改變頻率的分佈，不會影響光強。
 
 \fig[0.7][fig:spread_absorption_g2][!htb]{no_etalon_spread.png}[黑線為沒被放氣體管也沒調製時的 $G^{2}(\tau)$ 量測，紅線為展頻光子被部分吸收後之訊號，可以以兩者 concidence counts（也就是圖下面積）的比值來計算透射率，約為 76\%][展頻單光子被部分吸收後 $G^{2}(\tau)$ 量測]
 
@@ -159,7 +159,7 @@
         {調製後
         \label{fig:subfig_fig2}}
         {\includegraphics[width=0.4\linewidth]{temp.png}}
-    \caption{沒通過 $^{87}Rb$ 氣體管之單光子 $G^{2}(\tau)$ 量測。有無相位調製時的雙光子產生率幾乎相同}
+    \caption{沒通過 $^{87}Rb$ 氣體管之單光子 $G^{2}(\tau)$ 量測。有無相位調製時的雙光子產生率幾乎相同。}
     \label{fig:spread_or_not}
 \end{figure}
 
@@ -203,7 +203,7 @@
 
 為了知道原子吸收對於單光子頻譜的壓縮有何影響，我們以同樣的光路架設，在沒放 Etalon 濾波器時，同時開啟兩台 EOM，測量結果如\cref{fig:nocell_compress_with_etalon}黑線，與調製前的訊號相比，透射率為 77.9\%；放上 $^{87}Rb$ 原子氣體管後的訊號為紅線，透射率為 42.3\%。
 
-\fig[0.75][fig:nocell_compress_with_etalon][!htb]{no_cell_compress_with_etalon.png}[在兩台 EOM 同時開啟時測量 $G^{2}(\tau)$，黑線為沒經過 $^{87}Rb$ 原子氣體管時之量測；紅線為透射 $^{87}Rb$ 原子氣體管之訊號。][原子吸收對單光子壓縮比較圖]
+\fig[0.75][fig:nocell_compress_with_etalon][!htb]{no_cell_compress_with_etalon.png}[在兩台 EOM 同時開啟時測量 $G^{2}(\tau)$，黑線為沒經過 $^{87}Rb$ 原子氣體管時之量測；紅線為透射 $^{87}Rb$ 原子氣體管之訊號，兩者的比值為 54.3\%。][原子吸收對單光子壓縮比較圖]
 
 \section{雷射光頻譜壓縮}
 
@@ -248,9 +248,25 @@
     \label{fig:amp_prbs_eye}
 \end{figure}
 
-為了確認上述的因素所造成的影響，根據\cref{fig:amp_prbs_eye}的測量結果，修正模擬時使用的隨機訊號，修正的參數如 \cref{tab:paras}，並將實驗結果與理論模擬整理成 \cref{tab:spread_abs}
+為了確認上述的因素所造成的影響，根據\cref{fig:amp_prbs_eye}的測量結果，修正模擬時使用的隨機訊號，修正的參數如\cref{tab:paras}，模擬的電訊號如\cref{fig:modify_or_not}。
 
+\begin{figure}[!hbt]
+    %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
+    \centering
+    \subcaptionbox
+        {修正前
+        \label{fig:subfig_fig1}}
+        {\includegraphics[width=0.4\linewidth]{temp.png}}
+    ~~~~
+    \subcaptionbox
+        {修正後
+        \label{fig:subfig_fig2}}
+        {\includegraphics[width=0.4\linewidth]{temp.png}}
+    \caption{理論模擬使用的隨機訊號}
+    \label{fig:modify_or_not}
+\end{figure}
 
+使用修正後的隨機訊號進行展頻、吸收與壓縮的模擬，可讓計算的結果更貼近實驗的測量，以下將整理理論與實驗的結果整理成\cref{tab:spread_abs} 與\cref{tab:compress_abs}
 
 \begin{table}[h]
     \centering
@@ -267,14 +283,31 @@
 
 \begin{table}[h]
     \centering
-    \caption{展頻後的光經過 $^{87}Rb$之穿透率}
+    \caption{展頻後的光經過 $^{87}Rb$ 之透射率（無 Etalon 濾波器）}
     \begin{tabular}{| c | c | c | c | c |}
 \hline
-         & 修正前理論 & 修正後理論 & 雷射光實驗 & 單光實驗
+         & 修正前理論 & 修正後理論 & 雷射光實驗 & 單光子實驗
     \\ \hline
     穿透率 & 79.1\% & 73.8\% & 76.0\% & 79.6\%\\ \hline
     \end{tabular}
     \label{tab:spread_abs}
 \end{table}
+
+\todo[inline]{重新確定\%數}
+
+\begin{table}[h]
+    \centering
+    \caption{展頻後壓縮的光經過 Etalon 濾波器之透射率}
+    \begin{tabular}{| c | c | c | c | c |}
+\hline
+         & 修正前理論 & 修正後理論 & 雷射光實驗 & 單光子實驗
+    \\ \hline
+    無通過氣體管 & 100.0\% & 88.9\% & 77.9\% & 70.9\%\\ \hline
+    有通過氣體管 & 67.6\% & 45.6\% & 42.3\% & 41.0\%\\ \hline
+    \end{tabular}
+    \label{tab:compress_abs}
+\end{table}
+
+從以上的表可以看出，經過修正後的理論更接近實驗的結果，由此可知，想要有效地使用展頻技術，電訊號的品質起了關鍵的作用，需要有更好的訊號產生器與線材才可以將調製的訊號還原成原始的模樣。
 
 \end{document}
