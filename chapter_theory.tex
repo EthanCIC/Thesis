@@ -22,12 +22,12 @@
 $\tilde{E_{0}}(\omega)$ 為入射光之頻譜，所以在頻譜數學分析上，我們可以把入射光頻譜與相位調製的部分分開處理，個別將兩項計算好後再做摺積即可得到調製後的頻譜。
 
 \subsection{單頻波}
-若入射光的頻譜為中心頻率在 $\nu_{0}$ 的勞倫茲分佈(lorenz distribution)，調製函數為頻率 $\nu_{m}$ 的單頻波，意即輸入的電訊號強度隨時間的函數可表示為 $\phi_{0} sin(2\pi \nu_{m} \omega t)$，則可將 (\ref{eq:modulation_function}) 改寫為：
+若入射光的頻譜為中心頻率在 $\nu_{0}$ 的勞倫茲分佈(lorenz distribution)，調製函數為頻率 $\nu_{m}$ 的單頻波，意即輸入的電訊號強度隨時間的函數可表示為 $\phi_{0} sin(2\pi \nu_{m} \omega t)$，則可將\cref{eq:modulation_function} 改寫為：
 \begin{equation}
 \label{eq:convolution_theorem}
     \mathscr{F}\{E_{0}(t)e^{i\phi_{0} sin(2\pi \nu_{m} \omega t)}\}=\tilde{E_{0}}(\omega)*\mathscr{F}\{{e^{i\phi_{0} sin(2\pi \nu_{m} \omega t)}}\}
 \end{equation}
-其中 $\tilde{E_{0}}(\omega)$ 為勞倫茲分佈，另一項傅立葉轉換的結果為第一類貝索函數 （Bessel function of the first kind）：
+其中 $\tilde{E_{0}}(\omega)$ 為勞倫茲分佈，另一項傅立葉轉換的結果為第一類貝索函數（Bessel function of the first kind）：
 \begin{equation}
     \mathscr{F}\{{e^{i\phi_{0} sin(2\pi \nu_{m} \omega t)}}\}=J_{n}(\phi_{0})
 \end{equation}
@@ -37,10 +37,25 @@ $\tilde{E_{0}}(\omega)$ 為入射光之頻譜，所以在頻譜數學分析上�
 \end{equation}
 可從上式看出，調製項的頻譜是由頻率為 $n \nu_{m}$ 的狄拉克函數(Dirac function) 組成，$n=0, \pm1, \pm2, ...$，強度分佈為 $J_{n}(\phi_{0})$。
 
-以 $\phi_{0}=\pi$ 為例，從 (\ref{eq:convolution_theorem}) 可知，將入射光（圖）與調製項的頻譜做摺積可得調製後的結果，如圖：
+以 $\phi_{0}=\pi$ 為例，從\cref{eq:convolution_theorem} 可知，將入射光（\cref{fig:narrowband_laser_simulation}）與調製項的頻譜做摺積可得調製後的結果，如\cref{fig:modulated_laser_simulation}，兩者比較可明顯看出，時域上相位調製能讓改變頻率的分佈。
 
-\fig[0.5][fig:label][!htb]{temp.png}[窄頻雷射頻譜]
 
-兩者比較可明顯看出，時域上相位調製能讓改變頻率的分佈。
+\begin{figure}[!hbt]
+    %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
+    \centering
+    \subcaptionbox
+        {調製前之雷射頻譜
+        \label{fig:narrowband_laser_simulation}}
+        {\includegraphics[width=0.4\linewidth]{temp.png}}
+    ~~~~
+    \subcaptionbox
+        {調製後之雷射頻譜
+        \label{fig:modulated_laser_simulation}}
+        {\includegraphics[width=0.4\linewidth]{temp.png}}
+    \caption{窄頻雷射頻譜相位調製模擬}
+    \label{fig:single_photon_with_etalon}
+\end{figure}
+
+
 
 \end{document}

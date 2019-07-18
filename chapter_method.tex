@@ -6,11 +6,23 @@
 \section{隨機訊號產生器}
 由於實驗上無法產生真正的隨機訊號，只能使用偽隨機訊號產生器 (Pseudo Random Bit Sequence, PRBS)，儀器型號為 Anritsu 的 MP1763C，可以產生 0.5 至 12.5 Gb/s 的訊號。偽隨機訊號實際上為週期訊號，會重複出現特定的隨機序列，其週期可以調整，為了達到最接近隨機的效果，我們選擇使用最長的隨機序列，一個週期內共有 $2^{31}-1$ 的隨機位元。
 
-我們實驗上實際使用的頻率為 10 GHz （或 10 Gb/s），每秒能產生 $10\times 10^{9}$ 個隨機位元，以示波器去測量該訊號的眼圖 (eye diagram) 則可以知道訊號的品質，量測結果如下：
+我們實驗上實際使用的頻率為 10 GHz （或 10 Gb/s），每秒能產生 $10\times 10^{9}$ 個隨機位元，以示波器去測量該訊號的眼圖 (eye diagram) 則可以知道訊號的品質，量測結果如\cref{fig:prbs_eye}，可見實際訊號與理論\cref{fig:PRBS_simulation} 有很大的差異，實際的訊號有著相對大的上升與下降時間，圖形上下也不太對稱，這都會影響到展頻與壓縮的效果，造成實驗與理論的誤差。
 
-\fig[0.5][fig:label][!htb]{temp.png}[隨機訊號眼圖]
-
-可見實際訊號與理論（圖）有蠻大的差異，有著相對大的上升與下降時間，圖形上下也不太對稱，這都會影響到展頻與壓縮的效果，造成實驗與理論的誤差。
+\begin{figure}[!hbt]
+    %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
+    \centering
+    \subcaptionbox
+        {第一台 EOM
+        \label{fig:subfig_fig1}}
+        {\includegraphics[width=0.4\linewidth]{data.bmp}}
+    ~~~~
+    \subcaptionbox
+        {第二台 EOM
+        \label{fig:subfig_fig2}}
+        {\includegraphics[width=0.4\linewidth]{data_bar.bmp}}
+    \caption{PRBS 輸出之訊號眼圖（放大前）}
+    \label{fig:prbs_eye}
+\end{figure}
 
 \section{電光調製器}
 電光調製器 (Electro-Optic Modulator, EOM) 可使用電訊號對光進行調製，一般而言可以分成三種，分別為振幅、相位與偏振的調製，在我們的實驗中需要調製的是相位。使用的儀器為 EOSPACE 的 SN73717 與 SN73718，分別為頻譜的窄寬與壓縮用。
@@ -19,15 +31,43 @@
 
 由上介紹可知，實際使用上需優化進光的偏振以及電訊號的振幅，以達到預期的相位調製效果。
 
-我們使用半波片 (half-wave plate) 調整入射 EOM 偏振的方向，若偏振方向不對的話，調製效果會不佳，如圖，所以實驗上優化的方式為，看著調製後的頻譜，將偏振旋轉到最接近理論模擬時的角度。
+我們使用半波片 (half-wave plate) 調整入射 EOM 偏振的方向，若偏振方向不對的話，調製效果會不佳，如圖\cref{fig:imperfect_polarization}，所以實驗上優化的方式為，看著調製後的頻譜，將偏振旋轉到最接近理論模擬時的角度。
 
-\fig[0.5][fig:label][!htb]{temp.png}[偏振角度不對]
+\begin{figure}[!hbt]
+    %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
+    \centering
+    \subcaptionbox
+        {入射光為線偏且剛好對準晶體快軸
+        \label{fig:perfect_polarization}}
+        {\includegraphics[width=0.4\linewidth]{temp.png}}
+    ~~~~
+    \subcaptionbox
+        {入射光為線偏但沒對準晶體快軸
+        \label{fig:imperfect_polarization}}
+        {\includegraphics[width=0.4\linewidth]{temp.png}}
+    \caption{入射 EOM 光的偏振對相位調製之影響}
+    \label{fig:prbs_eye}
+\end{figure}
 
 \section{高頻電訊號放大器}
-由於我們使用的隨機訊號產生器僅能輸出 0.2 至 2 $V_{pp}$ 的訊號，EOM 的 $V_{\pi}$ 為 2.3 Ｖ，需再經過放大器才能提供足夠的電壓去進行相位調製。
-同樣的，也用示波器去測量眼圖，看放大後的訊號品質，如\cref{fig:amplified_signal}
+由於我們使用的隨機訊號產生器僅能輸出 0.2 至 2 $V_{pp}$ 的訊號，EOM 的 $V_{\pi}$ 高於 2 Ｖ，需再經過放大器才能提供足夠的電壓去進行相位調製。
+同樣的，也用示波器去測量眼圖，看放大後的訊號品質，如\cref{fig:amp_prbs_eye}
 
-\fig[0.5][fig:amplified_signal][!htb]{temp.png}[放大後的隨機訊號眼圖]
+\begin{figure}[!hbt]
+    %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
+    \centering
+    \subcaptionbox
+        {第一台 EOM
+        \label{fig:subfig_fig1}}
+        {\includegraphics[width=0.4\linewidth]{amp_data.bmp}}
+    ~~~~
+    \subcaptionbox
+        {第二台 EOM
+        \label{fig:subfig_fig2}}
+        {\includegraphics[width=0.4\linewidth]{amp_data_bar.bmp}}
+    \caption{PRBS 輸出之訊號眼圖（放大後）}
+    \label{fig:amp_prbs_eye}
+\end{figure}
 
 由於兩台放大器連接 EOM 使用的 SMA 線的材質與長短不同，會有不一樣的頻率響應與耗損，使兩個訊號無法互補，這會對頻譜壓縮與還原的效果造成負面的影響。
 
@@ -46,16 +86,16 @@ n 為共振腔的折射率，L 為腔長，頻率與透射率做圖，其中 $\n
 \begin{equation}
     F=\frac{\pi R^{1/2}}{1-R}
 \end{equation}
-此共振腔的頻寬（解析度） $\delta \lambda$ 與 F 成反比，關係如下式，所以鏡面反射率越高，F越大，解析度越好，此次實驗使用的干涉儀解析度約為 30 MHz。
+此共振腔的頻寬（解析度） $\delta \lambda$ 與 F 成反比，關係如下式，所以鏡面反射率越高，F越大，解析度越好，此次實驗使用的干涉儀解析度約為 60 MHz。
 
 \begin{equation}
     \delta \lambda=\frac{\nu_{F}}{F}
 \end{equation}
 
 \section{Etalon 干涉儀}
-與 Fabry-Perot 干涉儀為相同的原理，只是共振腔使用的鏡子反射率較低，所以頻寬較大（約為 60 MHz），若固定腔長 L，則可做為濾波器使用，僅讓頻率寬度在 60MHz 這區間內的光通過，中心頻率則 $\nu$ 可以由溫度Ｔ改變腔長 $L(T)$ 來調整。
-\todo[inline]{補上型號，確定共振腔的物質，與偏振的關係}
+與 Fabry-Perot 干涉儀為相同的原理，但 Fabry-Perot 干涉儀的共振腔體為自由空間 (free space)，而 Etalon 干涉儀的共振腔體則為一塊雙折射晶體，我們可以用 TEC 和溫控器，精準的調控晶體溫度 T 改變腔長 $L(T)$，只讓特定中心頻率 $\nu$ 附近的光通過。我們實驗使用的型號為 AF023G (MICRO OPTICS, INC.)，頻寬為 60 HMz，FSR 為 13.6 GHz。
 
-
+由於腔體是由雙折射晶體製成，所以不同的偏振在內部會有不一樣的行進速度，而會產生兩組不同的模態，所以在實驗優化上，需要將入射 Etalon 干涉儀的光調成符合
+其中一個晶軸的線偏光，才能最有效率的使用這濾波器。
 
 \end{document}
