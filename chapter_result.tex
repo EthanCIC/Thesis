@@ -248,10 +248,33 @@
     \label{fig:amp_prbs_eye}
 \end{figure}
 
+為了確認上述的因素所造成的影響，根據\cref{fig:amp_prbs_eye}的測量結果，修正模擬時使用的隨機訊號，修正的參數如 \cref{tab:paras}，並將實驗結果與理論模擬整理成 \cref{tab:spread_abs}
 
-\fig[0.5][fig:prbs_signals][!htb]{temp.png}[PRBS 輸出之訊號]
-\fig[0.5][fig:prbs_signals_amplified][!htb]{temp.png}[經放大器之隨機訊號]
 
-為了確認上述的因素所造成的影響，根據\cref{fig:prbs_signals_amplified}的測量結果，修正模擬時使用的隨機訊號，修正的參數如表，若以此隨機訊號進行模擬，則能稍微貼近實驗結果，比較如表：
+
+\begin{table}[h]
+    \centering
+    \caption{數值模擬參數修正}
+    \begin{tabular}{| c | c | c | c |}
+\hline
+         & jitter & amplitidu & rising \& falling
+    \\ \hline
+    \ce{EOM 1} & 14 ps & $\pm$7.7\% & 38 ps\\ \hline
+    \ce{EOM 2} & 16 ps & $\pm$16.7\% & 144 ps\\ \hline
+    \end{tabular}
+    \label{tab:paras}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \caption{展頻後的光經過 $^{87}Rb$之穿透率}
+    \begin{tabular}{| c | c | c | c | c |}
+\hline
+         & 修正前理論 & 修正後理論 & 雷射光實驗 & 單光實驗
+    \\ \hline
+    穿透率 & 79.1\% & 73.8\% & 76.0\% & 79.6\%\\ \hline
+    \end{tabular}
+    \label{tab:spread_abs}
+\end{table}
 
 \end{document}
