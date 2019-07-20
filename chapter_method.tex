@@ -31,27 +31,11 @@
 
 由上介紹可知，實際使用上需優化進光的偏振以及電訊號的振幅，以達到預期的相位調製效果。
 
-我們使用半波片 (half-wave plate) 調整入射 EOM 偏振的方向，若偏振方向不對的話，調製效果會不佳，如圖\cref{fig:imperfect_polarization}，所以實驗上優化的方式為，看著調製後的頻譜，將偏振旋轉到最接近理論模擬時的角度。
-
-\begin{figure}[!hbt]
-    %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
-    \centering
-    \subcaptionbox
-        {入射光為線偏且剛好對準晶體快軸
-        \label{fig:perfect_polarization}}
-        {\includegraphics[width=0.4\linewidth]{temp.png}}
-    ~~~~
-    \subcaptionbox
-        {入射光為線偏但沒對準晶體快軸
-        \label{fig:imperfect_polarization}}
-        {\includegraphics[width=0.4\linewidth]{temp.png}}
-    \caption{入射 EOM 光的偏振對相位調製之影響}
-    \label{fig:prbs_eye}
-\end{figure}
+我們使用半波片 (half-wave plate) 調整入射 EOM 光的偏振方向，若偏振方向不對的話調製效果會不佳，為優化偏振，實驗上會看著調製後的頻譜旋轉半波片，當結果與理論模擬最接近時即為最佳之偏振角度。
 
 \section{高頻電訊號放大器}
 由於我們使用的隨機訊號產生器僅能輸出 0.2 至 2 $V_{pp}$ 的訊號，EOM 的 $V_{\pi}$ 高於 2 Ｖ，需再經過放大器才能提供足夠的電壓去進行相位調製。
-同樣的，也用示波器去測量眼圖，看放大後的訊號品質，如\cref{fig:amp_prbs_eye}
+同樣的，也用示波器去測量眼圖，看放大後的訊號品質，如\cref{fig:amp_prbs_eye}，可明顯看出訊號變得更不穩定，且兩台 EOM 使用的電訊號形狀也不同，這是由兩邊使用的 SMA 線的材質與長度均不同，會有不一樣的頻率響應與耗損，使兩個訊號無法互補，這會對頻譜壓縮與還原的效果造成負面的影響。
 
 \begin{figure}[!hbt]
     %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
@@ -69,33 +53,37 @@
     \label{fig:amp_prbs_eye}
 \end{figure}
 
-由於兩台放大器連接 EOM 使用的 SMA 線的材質與長短不同，會有不一樣的頻率響應與耗損，使兩個訊號無法互補，這會對頻譜壓縮與還原的效果造成負面的影響。
-
 \section{法布立－培若干涉儀}
 古典光可以用法布立－培若 (Fabry-Perot) 干涉儀來掃出頻譜，我們使用的儀器為 THORLABS 的（型號），FSR 為 10 GHz。
-此干涉儀的主體為一個共振腔，由兩面高反射率的鏡子所組成。當光垂直入射腔體時，須滿足以下共振條件的光才能會有建設性干涉，能透射共振腔：
+此干涉儀的主體為一個共振腔，由兩面高反射率的鏡子所組成。當光垂直入射腔體時，須滿足\cref{eq:resonant_condition} 之共振條件的光才會產生建設性干涉，而能透射共振腔。
 
 \begin{equation}
     2nL=m\lambda
+    \label{eq:resonant_condition}
 \end{equation}
 n 為共振腔的折射率，L 為腔長，頻率與透射率做圖，其中 $\nu_{F}$ 稱為 FSR (Free Spectrual Range)，此參數決定了這個干涉儀適用的掃頻範圍，調整腔長 L 的大小能改變允許透射的頻率，所以若在其中一面鏡子黏上 Piezo ，輸入電壓即可微調腔長，達到掃頻的效果。
 
 \fig[0.5][fig:label][!htb]{temp.png}[Fabry-Perot 干涉儀透射頻率]
-此外，另一個重要的參數為 F (Finesse)，為精細度，定義如下：
+此外，另一個重要的參數為精細度 F (Finesse)，定義如\cref{eq:finesse_definition}：
 
 \begin{equation}
     F=\frac{\pi R^{1/2}}{1-R}
+    \label{eq:finesse_definition}
 \end{equation}
-此共振腔的頻寬（解析度） $\delta \lambda$ 與 F 成反比，關係如下式，所以鏡面反射率越高，F越大，解析度越好，此次實驗使用的干涉儀解析度約為 60 MHz。
+此共振腔的頻寬（解析度） $\delta \lambda$ 與 F 成反比，關係如\cref{eq:resolution}，所以鏡面反射率越高，F越大，解析度越好，此次實驗使用的干涉儀解析度約為 60 MHz。
+
+\todo[inline]{型號}
+\todo[inline]{Fabry-Perot 模態圖}
 
 \begin{equation}
     \delta \lambda=\frac{\nu_{F}}{F}
+    \label{eq:resolution}
 \end{equation}
+
 
 \section{Etalon 干涉儀}
 與 Fabry-Perot 干涉儀為相同的原理，但 Fabry-Perot 干涉儀的共振腔體為自由空間 (free space)，而 Etalon 干涉儀的共振腔體則為一塊雙折射晶體，我們可以用 TEC 和溫控器，精準的調控晶體溫度 T 改變腔長 $L(T)$，只讓特定中心頻率 $\nu$ 附近的光通過。我們實驗使用的型號為 AF023G (MICRO OPTICS, INC.)，頻寬為 60 HMz，FSR 為 13.6 GHz。
 
-由於腔體是由雙折射晶體製成，所以不同的偏振在內部會有不一樣的行進速度，而會產生兩組不同的模態，所以在實驗優化上，需要將入射 Etalon 干涉儀的光調成符合
-其中一個晶軸的線偏光，才能最有效率的使用這濾波器。
+由於腔體是由雙折射晶體製成，所以不同的偏振在內部會有不一樣的行進速度，而會產生兩組不同的模態，所以在實驗優化上，需要將入射 Etalon 干涉儀的光調成與晶軸方向相同的線偏光，才能最有效率的使用濾波器。
 
 \end{document}
