@@ -3,7 +3,7 @@
 \begin{document}
 
 \chapter{基本原理介紹}
-實現產頻技術的方式有很多種，本章會介紹展頻技術的基本原理，說明如何以相位調製去實作直接序列展頻 (DSSS)。會從數學出發，瞭解隨時間調變相位如何改變頻率的分佈，並以最簡單的單頻波來舉例，模擬調變後的頻譜。
+實現產頻技術的方式有很多種，本章會介紹展頻技術的基本原理，說明如何以相位調製去實作直接序列展頻 (DSSS)。會從數學原理出發，瞭解隨時間調變相位會如何改變頻率的分佈，再以單頻波之相位調製去模擬，觀察調製前與調製後頻譜的差異。
 
 \section{展頻技術}
 
@@ -36,27 +36,12 @@ $\tilde{E_{0}}(\omega)$ 為入射光之頻譜，所以在頻譜數學分析上�
 \begin{equation}
     e^{i\phi_{0} sin(2\pi \nu_{m} \omega t)}=\sum_{n=-\infty}^{\infty}J_{n}(\phi_{0})e^{i 2 \pi n \nu_{m} t}
 \end{equation}
-可從上式看出，調製項的頻譜是由頻率為 $n \nu_{m}$ 的狄拉克函數(Dirac function) 組成，$n=0, \pm1, \pm2, ...$，強度分佈為 $J_{n}(\phi_{0})$。
+可從上式看出，調製項的頻譜是由頻率為 $n \nu_{m}$ 的狄拉克函數(Dirac function) 組成，$n=0, \pm1, \pm2, ...$，強度分佈為 $J_{n}(\phi_{0})$，如\cref{fig:bessel_function}，可看出在不同的調製電壓（也就是不同的$\phi_{0}$）時會有不一樣強度的頻率分布，以 $\phi_{0}=0.75\pi$ 為例，模擬對一道頻寬為 60 MHz 的雷射做 1 GHz 的正弦波相位調製，從\cref{eq:convolution_theorem} 可知，將入射光（\cref{fig:monocromatic_modulation} 黑線）與調製項的頻譜做摺積可得調製後的結果（\cref{fig:monocromatic_modulation} 紅線），每個頻率的間隔為 1 GHz。兩者比較可明顯看出，時域上相位調製能讓改變頻率的分佈。
 
-以 $\phi_{0}=\pi$ 為例，從\cref{eq:convolution_theorem} 可知，將入射光（\cref{fig:narrowband_laser_simulation}）與調製項的頻譜做摺積可得調製後的結果，如\cref{fig:modulated_laser_simulation}，兩者比較可明顯看出，時域上相位調製能讓改變頻率的分佈。
+\fig[0.75][fig:bessel_function][!htb]{bessel_function.png}[貝索函數]
 
+以 $\phi_{0}=0.75\pi$ 為例，模擬對一道頻寬為 60 MHz 的雷射做 1 GHz 的正弦波相位調製，從\cref{eq:convolution_theorem} 可知，將入射光（\cref{fig:monocromatic_modulation} 黑線）與調製項的頻譜做摺積可得調製後的結果（\cref{fig:monocromatic_modulation} 紅線），且每個頻率的間隔為 1 GHz。兩者比較可明顯看出，時域上相位調製能讓改變頻率的分佈。
 
-\begin{figure}[!hbt]
-    %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
-    \centering
-    \subcaptionbox
-        {調製前之雷射頻譜
-        \label{fig:narrowband_laser_simulation}}
-        {\includegraphics[width=0.4\linewidth]{temp.png}}
-    ~~~~
-    \subcaptionbox
-        {調製後之雷射頻譜
-        \label{fig:modulated_laser_simulation}}
-        {\includegraphics[width=0.4\linewidth]{temp.png}}
-    \caption{窄頻雷射頻譜相位調製模擬}
-    \label{fig:single_photon_with_etalon}
-\end{figure}
-
-\todo[inline]{補上單頻波相位調製模擬圖}
+\fig[0.75][fig:monocromatic_modulation][!htb]{monocromatic_modulation.png}[單頻波相位調製。黑線為調製前；紅線為調製後。][單頻波相位調製]
 
 \end{document}

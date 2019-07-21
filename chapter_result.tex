@@ -73,21 +73,21 @@
 
 \fig[0.75][fig:2gbs_spread][!htb]{2_31_spread_2GHz.png}[2 Gb/s 訊號之展頻頻譜]
 
-頻譜的形狀大致上與理論相符，但在 $\pm$2 GHz 的位置有一個突起的訊號，這是由於隨機訊號的上升與下降時間不夠快所致，若在數值模擬中把隨機訊號加上約 35 ps 的上升與下降時間（如\cref{fig:simulation_rising_falling_prbs}），則會出現類似的結果，如\cref{fig:simulation_rising_falling}。
+頻譜的形狀大致上與理論相符，但在 $\pm$2 GHz 的位置有一個突起的訊號，這是由於隨機訊號的上升與下降時間不夠快所致，若在數值模擬中把隨機訊號加上約 100 ps 的上升與下降時間（如\cref{fig:simulation_rising_falling_prbs}），則會出現類似的結果，如\cref{fig:simulation_rising_falling}。
 
 \begin{figure}[!hbt]
     %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
     \centering
     \subcaptionbox
-        {修正前之隨機訊號
+        {修正前隨機訊號
         \label{fig:subfig_fig1}}
-        {\includegraphics[width=0.4\linewidth]{temp.png}}
+        {\includegraphics[width=0.4\linewidth]{2gbs_prbs.png}}
     ~~~~
     \subcaptionbox
-        {修正後展頻頻譜
+        {修正後隨機訊號
         \label{fig:subfig_fig2}}
-        {\includegraphics[width=0.4\linewidth]{temp.png}}
-    \caption{隨機訊號之上升與下降時間對頻譜之影響}
+        {\includegraphics[width=0.4\linewidth]{2gbs_prbs_rf.png}}
+    \caption{隨機訊號修正，加上上升時間與下降時間。}
     \label{fig:simulation_rising_falling_prbs}
 \end{figure}
 
@@ -95,14 +95,14 @@
     %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
     \centering
     \subcaptionbox
-        {上升與下降時間為 0 ps 之展頻模擬
+        {修正前展頻模擬
         \label{fig:subfig_fig1}}
-        {\includegraphics[width=0.4\linewidth]{temp.png}}
+        {\includegraphics[width=0.4\linewidth]{2gbs_spread.png}}
     ~~~~
     \subcaptionbox
-        {上升與下降時間為 35 ps 之展頻模擬
+        {修正後展頻模擬
         \label{fig:subfig_fig2}}
-        {\includegraphics[width=0.4\linewidth]{temp.png}}
+        {\includegraphics[width=0.4\linewidth]{2gbs_spread_rf.png}}
     \caption{隨機訊號之上升與下降時間對頻譜之影響，隨機訊號加了上升與下降時間後的模擬更貼近實驗結果。}
     \label{fig:simulation_rising_falling}
 \end{figure}
@@ -286,13 +286,13 @@
     \subcaptionbox
         {修正前
         \label{fig:subfig_fig1}}
-        {\includegraphics[width=0.4\linewidth]{temp.png}}
+        {\includegraphics[width=0.4\linewidth]{10gbs_prbs.png}}
     ~~~~
     \subcaptionbox
         {修正後
         \label{fig:subfig_fig2}}
-        {\includegraphics[width=0.4\linewidth]{temp.png}}
-    \caption{理論模擬使用的隨機訊號}
+        {\includegraphics[width=0.4\linewidth]{10gbs_prbs_rf.png}}
+    \caption{理論模擬使用的隨機訊號，黑線與紅線分別為輸入第一台和第二台 EOM 之電訊號。}
     \label{fig:modify_or_not}
 \end{figure}
 
