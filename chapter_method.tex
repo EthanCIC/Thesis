@@ -55,26 +55,28 @@
 \end{figure}
 
 \section{法布立－培若干涉儀}
-古典光可以用法布立－培若 (Fabry-Perot) 干涉儀來掃出頻譜，我們使用的儀器為 THORLABS 的（型號），FSR 為 10 GHz。
-此干涉儀的主體為一個共振腔，由兩面高反射率的鏡子所組成。當光垂直入射腔體時，須滿足\cref{eq:resonant_condition} 之共振條件的光才會產生建設性干涉，而能透射共振腔。
+雷射光的頻譜可以用掃描式法布立－培若干涉儀（Scanning Fabry-Perot Interferometer）掃出，我們使用的儀器為 SA210-5B (THORLABS)，FSR 為 10 GHz。
+此干涉儀的主體為一個共振腔，由兩個高反射率的凹面鏡所組成。當光正向入射腔體時，須滿足\cref{eq:resonant_condition} 之共振條件的光才會產生建設性干涉，而能透射共振腔。
 
 \begin{equation}
     2nL=m\lambda
     \label{eq:resonant_condition}
 \end{equation}
-n 為共振腔的折射率，L 為腔長，頻率與透射率做圖，其中 $\nu_{F}$ 稱為 FSR (Free Spectrual Range)，此參數決定了這個干涉儀適用的掃頻範圍，調整腔長 L 的大小能改變允許透射的頻率，所以若在其中一面鏡子黏上 Piezo ，輸入電壓即可微調腔長，達到掃頻的效果。
+n 為共振腔的折射率，L 為腔長，頻率與透射率的關係圖，其中 $\nu_{F}$ 稱為 FSR (Free Spectrual Range)，定義如\cref{eq:fsr}，此參數決定了這個干涉儀適用的掃頻範圍，調整腔長 L 的大小能改變允許透射的頻率，所以若在其中一面鏡子黏上 Piezo ，輸入電壓即可微調腔長，改變允許出光的頻率，達到掃頻的效果。
 
-\fig[0.5][fig:label][!htb]{temp.png}[Fabry-Perot 干涉儀透射頻率]
+\fig[1][fig:fsr][!htb]{fsr.png}[Fabry-Perot 干涉儀透射頻率]
+
+\begin{equation}
+    \nu_{F}=\frac{c}{4nd}(for confocal Fabry-Perot cavity)
+    \label{eq:fsr}
+\end{equation}
 此外，另一個重要的參數為精細度 F (Finesse)，定義如\cref{eq:finesse_definition}：
 
 \begin{equation}
     F=\frac{\pi R^{1/2}}{1-R}
     \label{eq:finesse_definition}
 \end{equation}
-此共振腔的頻寬（解析度） $\delta \lambda$ 與 F 成反比，關係如\cref{eq:resolution}，所以鏡面反射率越高，F越大，解析度越好，此次實驗使用的干涉儀解析度約為 60 MHz。
-
-\todo[inline]{型號}
-\todo[inline]{Fabry-Perot 模態圖}
+此共振腔的頻寬（解析度） $\delta \lambda$ 與 F 成反比，關係如\cref{eq:resolution}，所以鏡面反射率越高，F越大，解析度越好，本次實驗使用的干涉儀解析度約為 60 MHz。
 
 \begin{equation}
     \delta \lambda=\frac{\nu_{F}}{F}
