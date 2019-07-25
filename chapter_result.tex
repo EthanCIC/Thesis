@@ -16,13 +16,9 @@
 \label{subsection:single_photon}
 雙光子的產生機制為 SPDC，入射一道波長 397.5 nm 的藍光雷射進入 PPKTP （Periodically Poled KTP）晶體，產生 Type-II 的時間 - 能量糾纏光子對 (time-energy entangled biphoton)，波長為 795 nm。
 
-在晶體設計中，我們在晶體的末端鍍上 397.5 nm 的高反射薄膜，使入射藍光在末端被反射，此舉等效於將晶體變為兩倍長，從\cref{eq:gain_curve} 增益曲線（gain curve）中可知，若晶體長度 L 變兩倍，增益曲線會變窄。除此之外，還會在晶體兩端都度上 795nm 的高反射薄膜，使晶體本身形成一個紅光的共振腔，所以除了增益曲線外，還必須符合共振條件才會產生雙光子對。基於上述的兩種鍍膜帶來的效果，我們能產生出接近單模（single mode）的窄頻光子，且相對的會有較長的相干時間 (coherence time) ，利於我們對光子的時間波包進行調製。
+在晶體設計中，我們在晶體的末端鍍上 397.5 nm 的高反射薄膜，使入射藍光在末端被反射，此舉等效於將晶體變為兩倍長，從\cref{fig:gain_curve} 的增益曲線（gain curve）中可知，當晶體長度 L 變兩倍，增益曲線會變窄。除此之外，還會在晶體兩端都度上 795nm 的高反射薄膜，使晶體本身形成一個紅光的共振腔，只有在增益曲線內且符合能量守恆的共振模態才會產生雙光子對。基於上述的兩種鍍膜帶來的效果，這樣的設計能讓我們產生出接近單模（single mode）的窄頻光子，且相對的會有較長的相干時間 (coherence time) ，利於我們對光子的時間波包進行調製。
 
-
-\begin{equation}
-    S＝sinc^2(\Delta k L)
-\label{eq:gain_curve}
-\end{equation}
+\fig[0.75][fig:gain_curve][!htb]{gain_curve.png}[雙光子產生機制，下半部為晶體之增益曲線；上半部為共振模態，$\omega_s$ 與 $\omega_i$ 互相重疊的部分為符合能量守恆條件的模態。僅有在增益曲線內且符合能量守恆的模態會被產生。][雙光子產生機制]
 
 實驗上會將產生出來的雙光子對經過 PBS，將訊號分為 signal 和 idler，以 idler 做為觸發訊號，使 signal 經過 $^{87}Rb$ 原子氣體管與 EOM，讓光子被吸收或對其進行相位的調製，並做 $G^{2}(\tau)$ 的測量，$G^{2}(\tau)$ 的定義如 (\ref{eq:g2_definition})。
 
@@ -34,13 +30,12 @@
 \label{eq:g2_definition}
 \end{equation}
 
-此為二階強度關聯函數 (second-order intenstiy correlation function)，$\tau$ 為兩顆單光子抵達探測器的時間差。在符合準相位匹配條件 (quasi phase matching condition) 時能最有效率的產生雙光子，實際測量結果如\cref{fig:single_photon_g2}，此光子之時間波包寬度約為 50 ns，對此時間波包做傅立葉轉換，可計算出光子的頻寬約為 4.5 MHz。
+此為二階強度關聯函數 (second-order intenstiy correlation function)，$\tau$ 為兩顆單光子抵達探測器（SPCM-AQRH-14-FC, Excelitas Technologies）的時間差。在符合準相位匹配條件 (quasi phase matching condition) 時能最有效率的產生雙光子，實際測量結果如\cref{fig:single_photon_g2}，此光子之時間波包寬度約為 50 ns，對此時間波包做傅立葉轉換，可計算出光子的頻寬約為 4.5 MHz。
 
 \fig[0.75][fig:single_photon_g2][!htb]{nocell_spread_no_etalon.png}[糾纏光子對之 $G^{2}(\tau)$ 量測]
 
 
 為了找到符合準項未匹配條件的入射光波長與晶體溫度，實驗上會以\cref{fig:temp_scanning_setup} 的光路架設，將入射紅光的頻率固定在 377105489 MHz，改變 PPKTP 晶體溫度測量雙光子的產生率 (biphton rate)，結果如\cref{fig:temp_scan_g2}，在 39.91$^{\circ}C$ 至 40.10$^{\circ}C$ 有四組符合條件的模態，紅線與黑線分別為有放與沒放 $^{87}Rb$ 原子氣體管時之測量結果，兩者比較可以發現在第二和第三個的模態中雖有明顯的吸收，但吸收率不高，我們認為這是因為在頻域上晶體所產生的光子為多模 (multi-mode) 而非單模 (single-mode)，同時產生了兩種以上頻率的單光子，儘管其中一個頻率的光子能完全被原子吸收，其他頻率的光子仍會透射，因此無法讓透射率趨近於零。
-\todo[inline]{SPCM 型號}
 
 \fig[0.75][fig:temp_scanning_setup][!htb]{temp_scanning_setup.png}[固定入射光頻率，調整 PPKTP 晶體溫度測量雙光子的產生率]
 
@@ -175,9 +170,9 @@
 \fig[0.75][fig:abs_spec][!htb]{absorption_spectrum_spread.png}[調製後的 $^{87}Rb$ 原子吸收譜，黑線為沒放 $^{87}Rb$ 原子氣體管時的訊號；藍線為調製前 $^{87}Rb$ 原子氣體管的吸收譜；紅線為展頻後的吸收譜。][調製後的 $^{87}Rb$ 原子吸收譜]
 
 \section{單光子隨機相位調製對原子吸收之影響}
-從前一小節的實驗結果能得知，$^{87}Rb$ 的躍遷頻率約在 377105 GHz 與 377112 GHz 附近，這時我們將光源從窄頻雷射換成單光子，並透過改變入射光的頻率與晶體溫度，將單光子的頻率調至 377112294 MHz，使其能被原子吸收，再以\cref{fig:single_photon_no_etalon} 的光路架設對光子進行相位調製與測量。
+從\cref{fig:absorption_etalon_temp_scanning} 的量測結果可知，當我們將紅光雷射的頻率固定於 37710589 MHz，將晶體溫度調至 40.023$^{\circ}C$ 時能產生會被 $^{87}Rb$ 原子吸收之單光子，為了確定該光子之頻率，我們使用 Etalon 濾波器，連續的調整濾波器的溫度，改變允許光通過的頻率，直到能在濾波器後面測到單光子的訊號，在測到訊號時固定濾波器的溫度，將光源改為紅光雷射，且連續的改變其頻率，直到雷射光能通過 Etalon 濾波器，此時的雷射光頻率為 377112294 MHz，即是單光子之頻率。
 
-\todo[inline]{如何用 Etalon 確定單光子頻率}
+知道單光子的頻率後，即可開始對光子進行相位調製與相關測量，光路架設如\cref{fig:single_photon_no_etalon} 在這個架設中，我們可以測量隨機相位調製對於 $^{87}Rb$ 原子吸收率之影響。
 
 \fig[0.75][fig:single_photon_no_etalon][!htb]{single_photon_no_etalon_setup.png}[單光子量測光路圖]
 
@@ -255,8 +250,9 @@
 
 \section{雷射光頻譜壓縮}
 
-同樣的，我們以上一小節相同的架設，將光源換成雷射光，單光子探測器改為光二極體，且進行同樣的測量，結果如\cref{fig:no_cell_compress_laser}，與單光子的量測結果相近，經展頻後再壓縮的光，約 70\% 能通過 Etalon 濾波器，若在中間放氣體管使部分光被吸收，僅 40\% 的光能通過 Etalon，被重新將頻寬還原至 60 MHz 內。
+同樣的，我們將上一小節的架設中的光源換成雷射光，單光子探測器改為光二極體，如\cref{fig:laser_with_etalon_setup}，且進行同樣的測量，結果如\cref{fig:no_cell_compress_laser}，與單光子的量測結果相近，經展頻後再壓縮的光，約 70\% 能通過 Etalon 濾波器，若在中間放氣體管使部分光被吸收，僅 40\% 的光能通過 Etalon，被重新將頻寬還原至 60 MHz 內。
 
+\fig[0.75][fig:laser_with_etalon_setup][!htb]{laser_with_etalon_setup.png}[加上濾波器之雷射光量測光路圖]
 \fig[0.75][fig:no_cell_compress_laser][!htb]{laser_modulation_with_etalon.png}[原子吸收對雷射光壓縮品質比較圖]
 
 \section{誤差分析與模擬修正}

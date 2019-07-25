@@ -7,6 +7,7 @@
 本章的內容主要能分成兩個部分，第一部分延續上一章的數學原理，改以隨機訊號作為調製函數，模擬相位調製後的頻率分佈，觀察調製函數與頻寬的關係，驗證理論的正確性。第二部為探討如何降低傳輸中的光子與原子之交互作用，模擬不同展頻頻率與原子吸收率之關係。
 
 \section{展頻及壓縮}
+\label{section:time_delay}
 從上一章單頻波的例子可看出，相位調製可將原先頻率集中於 $\nu_{0}$ 的光，分散至 $\nu_{0}\pm\nu_{m}, \nu_{0}\pm2\nu_{m},\dots$。若調製函數改用時間寬度為 $\Delta T$ 的隨機方波 $PRBS(t)$ （如\cref{fig:PRBS_simulation}），則可將\cref{eq:modulation_function} 的右式寫成：
 \begin{equation}
     \tilde{E_{0}}(\omega)*\mathscr{F}\{{e^{i PRBS(t)}}\}

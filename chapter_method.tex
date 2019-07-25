@@ -4,10 +4,13 @@
 \chapter{實驗儀器與優化流程}
 本章會簡單介紹實驗上會用到的關鍵儀器，說明其特性與相關設定，並描述元件使用的優化方式與可能造成誤差之原因。
 
-\section{隨機訊號產生器}
-由於實驗上無法產生真正的隨機訊號，只能使用偽隨機訊號產生器 (Pseudo Random Bit Sequence, PRBS)，儀器型號為 MP1763C (Anritsu)，可以產生 0.5 至 12.5 Gb/s 的偽隨機訊號。偽隨機訊號實際上為週期訊號，會重複出現特定的隨機序列，其週期可以調整，為了達到最接近隨機的效果，我們選擇使用最長的隨機序列，一個週期內共有 $2^{31}-1$ 的隨機位元。
+\section{偽隨機訊號產生器}
+由於實驗上無法產生真正的隨機訊號，只能使用偽隨機訊號產生器 (Pseudo Random Bit Sequence, PRBS)，儀器型號為 MP1763C (Anritsu)，可以產生 0.5 至 12.5 Gb/s 的偽隨機訊號，裝置如\cref{fig:PRBS_machine}。偽隨機訊號實際上為週期訊號，會重複出現特定的隨機序列，其週期可以調整，為了達到最接近隨機的效果，我們選擇使用最長的隨機序列，一個週期內共有 $2^{31}-1$ 的隨機位元。
 
 我們實驗上實際使用的偽隨機訊號產生率 10 Gb/s，每秒能產生 $10\times 10^{9}$ 個隨機位元，以示波器（Infiniium DCA-J 86100C, Agilent，使用的模組為 86112A, Agilent）去測量該訊號的眼圖 (eye diagram) 可以看出訊號的品質，量測結果如\cref{fig:prbs_eye}，可見實際訊號與理論\cref{fig:PRBS_simulation} 有很大的差異，實際的訊號會有不小的上升與下降時間，圖形的上下也不太對稱，這都會影響到展頻與壓縮的效果，造成實驗與理論的誤差。
+
+\fig[0.5][fig:PRBS_machine][!htb]{PRBS_machine.jpg}[高頻偽隨機訊號產生器裝置圖]
+
 
 \begin{figure}[!hbt]
     %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
@@ -42,13 +45,13 @@
 
 由於我們使用的隨機訊號產生器僅能輸出 0.2 至 2 $V_{pp}$ 的訊號，而 EOM 的 $V_{\pi}$ 高於 2 Ｖ，所以需再經過放大器才能提供足夠的電壓去進行相位調製。
 
-我們使用的放大器型號為 OA3MVM (Centallax)，輸入的訊號會經過三階段的放大，每一階段各需要兩個電壓去驅動，分別為 $V_{g}$ 與 $V_{d}$，這組電壓的大小會影響放大的大小與速度，因此我們做了一個穩壓電路，能一次輸出 3 個 $V_{g}$ 與 3 個 $V_{d}$，裝置如\cref{fig:amplider_machine}。
+我們使用的放大器型號為 OA3MVM (Centallax)，輸入的訊號會經過三階段的放大，每一階段各需要兩個電壓去驅動，分別為 $V_{g}$ 與 $V_{d}$，這組電壓的大小會影響放大的大小與速度，因此我們做了一個穩壓電路，能一次輸出 3 個 $V_{g}$ 與 3 個 $V_{d}$，裝置如\cref{fig:amp_circuit}。
 
-\fig[0.75][fig:amplider_machine][!htb]{temp.png}[放大器與穩壓電路]
+\fig[0.75][fig:amp_circuit][!htb]{amp_circuit.png}[放大器與穩壓電路]
 
 同樣的，也用示波器去測量眼圖，架設如\cref{fig:amplifier_setup}，觀察經放大後的訊號品質，如\cref{fig:amp_prbs_eye}，可明顯看出訊號變得更不穩定，且兩台 EOM 使用的電訊號形狀也不同，這是由兩邊使用的 SMA 線的材質與長度均不同，會有不一樣的頻率響應與耗損，使兩個訊號無法互補，這會對頻譜壓縮與還原的效果造成負面的影響。
 
-\fig[0.75][fig:amplifier_setup][!htb]{amplifier_setup.png}[將隨機訊號放大後以示波器測量眼圖]
+\fig[0.75][fig:amplifier_setup][!htb]{amplifier_setup.png}[將隨機訊號經過放大器並以示波器測量眼圖之電路架設]
 
 \begin{figure}[!hbt]
     %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
@@ -67,6 +70,9 @@
 \end{figure}
 
 我們可從眼圖的測量結果去量化訊號品質，放大前後的比較如表，可見經過放大器與額外的電線連接後的訊號，波形會有所改變且穩定度會下降。
+
+\section{相位延遲器}
+如\cref{section:time_delay} 所述
 
 \section{法布立－培若干涉儀}
 雷射光的頻譜可以用掃描式法布立－培若干涉儀（Scanning Fabry-Perot Interferometer）掃出，我們使用的儀器為 SA210-5B (THORLABS)，FSR 為 10 GHz，實際儀器如\cref{fig:fabry_perot}。
@@ -94,15 +100,18 @@ n 為共振腔的折射率，L 為腔長，頻率與透射率的關係\cref{fig:
     F=\frac{\pi R^{1/2}}{1-R}
     \label{eq:finesse_definition}
 \end{equation}
-此共振腔的頻寬（解析度） $\delta \lambda$ 與 F 成反比，關係如\cref{eq:resolution}，所以鏡面反射率越高，F越大，解析度越好，本次實驗使用的干涉儀解析度約為 60 MHz，以頻寬約 1 MHz 掃頻結果如\cref{fig:fabry_perot_demo}。
+此共振腔的頻寬（解析度） $\delta \lambda$ 與 F 成反比，關係如\cref{eq:resolution}，所以鏡面反射率越高，F越大，解析度越好。
 
 \begin{equation}
     \delta \lambda=\frac{\nu_{F}}{F}
     \label{eq:resolution}
 \end{equation}
 
-\fig[0.75][fig:fabry_perot_demo][!htb]{temp.png}[以此 Fabry-Perot 掃出之窄頻雷射頻譜]
-\todo[inline]{雷射頻譜}
+為了知道此 Fabry-Perot 干涉儀的頻寬，我們在\cref{fig:laser_bandwidth_setup} 的光路架設下，以 Fabry-Perot 干涉儀對我們的窄頻雷射（頻寬約 1 MHz）掃頻。使用時要先調整輸入 Piezo 的週期訊號的電壓大小，直到能在一個振盪週期內看到兩個訊號為止，測量結果如\cref{fig:FSR_laser}，此時兩個訊號的間距即為一個 FSR，也就是 10 GHz。但以示波器（DPO4104B, Tektronix）測得的頻譜橫軸為時間（單位為秒），我們可從測量結果求得間與頻率之對應關係（0.8459 秒對應 10 GHz）。接著放大其中一個訊號，測量結果如圖\cref{fig:laser_bandwidth}，其半高全寬（Full Width at Half Maximum, FWHM）的時間寬度為 0.000498 秒，利用上述之對應關係，即可算出此 Fabry-Perot 干涉儀之頻寬為 58 MHz。
+
+\fig[0.75][fig:laser_bandwidth_setup][!htb]{laser_bandwidth_setup.png}[Fabry-Perot 干涉儀頻寬測量架設圖]
+\fig[0.75][fig:FSR_laser][!htb]{FSR_laser.png}[Fabry-Perot 干涉儀 FSR 測量]
+\fig[0.75][fig:laser_bandwidth][!htb]{laser_bandwidth.png}[Fabry-Perot 干涉儀頻寬測量]
 
 \section{Etalon 干涉儀}
 與 Fabry-Perot 干涉儀為相同的原理，但 Fabry-Perot 干涉儀的共振腔體為自由空間 (free space)，而 Etalon 干涉儀的共振腔體則為一塊雙折射晶體，兩端為布拉格光柵結構，用以反射光形成共振腔，我們可以用 TEC 和溫控器，精準的調控晶體溫度 T 改變腔長 $L(T)$，只讓特定中心頻率 $\nu$ 附近的光通過。我們實驗使用的型號為 AF023G (MICRO OPTICS, INC.)，頻寬為 60 HMz，FSR 為 13.6 GHz，裝置如\cref{fig:etalon}。
