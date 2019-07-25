@@ -32,8 +32,7 @@
 
 電光調製器 (Electro-Optic Modulator, EOM) 可使用電訊號對光進行調製，一般而言可以分成三種，分別為振幅、相位與偏振的調製，在我們的實驗中需要調製的是相位。使用的儀器為 EOSPACE 的 SN73717 與 SN73718，分別為頻譜的展寬與壓縮用，裝置如\cref{fig:eom}。
 
-\fig[0.75][fig:eom][!htb]{temp.png}[實驗使用之兩台電光調製器]
-\todo[inline]{補上 EOM 的照片}
+\fig[0.7][fig:eom][!htb]{eom_machine.png}[我們分別將兩台 EOM 置於盒中提供保護，並以塔狀堆疊節省光路空間。][實驗使用之兩台電光調製器]
 
 相位調制器由鈮酸鋰 ($LiNbO_{3}$) 雙折射晶體製成，因泡克耳斯效應 (Pockels effect)，外加電場能線性的改變作用方向上之晶體折射率，進而達到改變相位的效果，我們定義能入射光相位改變 $\pi$ 之電訊號電壓為 $V_{\pi}$。
 
@@ -71,8 +70,11 @@
 
 我們可從眼圖的測量結果去量化訊號品質，放大前後的比較如表，可見經過放大器與額外的電線連接後的訊號，波形會有所改變且穩定度會下降。
 
-\section{相位延遲器}
-如\cref{section:time_delay} 所述
+\section{電訊號相位延遲器}
+如\cref{section:time_delay} 所述，想要對已展頻的光做反向的調製，必須精準的控制兩台 EOM 電訊號的時間差，所以我們會在其中一邊的電路加上一個相位延遲器，其型號為 Model 981（api technologies corp.），如\cref{fig:phase_shifter}，可以藉由調整側邊拉桿的長度來微調電訊號的相位。根據其規格書上的標示，此相位延遲器最多能讓 1 GHz 的訊號延遲 60 度的相位，相當於 1.67 ns 的時間差。若電訊號的傳輸速度以三分之二光速來計算的話，此時間差等同於 3.33 公分的電路長度差。
+
+\fig[0.6][fig:phase_shifter][!htb]{phase_shifter.png}[電訊號相位延遲器]
+
 
 \section{法布立－培若干涉儀}
 雷射光的頻譜可以用掃描式法布立－培若干涉儀（Scanning Fabry-Perot Interferometer）掃出，我們使用的儀器為 SA210-5B (THORLABS)，FSR 為 10 GHz，實際儀器如\cref{fig:fabry_perot}。
@@ -86,7 +88,6 @@
     \label{eq:resonant_condition}
 \end{equation}
 n 為共振腔的折射率，L 為腔長，頻率與透射率的關係\cref{fig:fsr}，其中 $\nu_{F}$ 稱為 FSR (Free Spectrual Range)，定義如\cref{eq:fsr}，此參數決定了這個干涉儀適用的掃頻範圍，調整腔長 L 的長度能改變允許透射的頻率，所以若在其中一面鏡子黏上 Piezo ，輸入電壓即可微調腔長，改變允許出光的頻率，達到掃頻的效果。
-\todo[inline]{確認公式}
 
 \fig[1][fig:fsr][!htb]{fsr.png}[Fabry-Perot 干涉儀透射頻率]
 
@@ -109,9 +110,9 @@ n 為共振腔的折射率，L 為腔長，頻率與透射率的關係\cref{fig:
 
 為了知道此 Fabry-Perot 干涉儀的頻寬，我們在\cref{fig:laser_bandwidth_setup} 的光路架設下，以 Fabry-Perot 干涉儀對我們的窄頻雷射（頻寬約 1 MHz）掃頻。使用時要先調整輸入 Piezo 的週期訊號的電壓大小，直到能在一個振盪週期內看到兩個訊號為止，測量結果如\cref{fig:FSR_laser}，此時兩個訊號的間距即為一個 FSR，也就是 10 GHz。但以示波器（DPO4104B, Tektronix）測得的頻譜橫軸為時間（單位為秒），我們可從測量結果求得間與頻率之對應關係（0.8459 秒對應 10 GHz）。接著放大其中一個訊號，測量結果如圖\cref{fig:laser_bandwidth}，其半高全寬（Full Width at Half Maximum, FWHM）的時間寬度為 0.000498 秒，利用上述之對應關係，即可算出此 Fabry-Perot 干涉儀之頻寬為 58 MHz。
 
-\fig[0.75][fig:laser_bandwidth_setup][!htb]{laser_bandwidth_setup.png}[Fabry-Perot 干涉儀頻寬測量架設圖]
-\fig[0.75][fig:FSR_laser][!htb]{FSR_laser.png}[Fabry-Perot 干涉儀 FSR 測量]
-\fig[0.75][fig:laser_bandwidth][!htb]{laser_bandwidth.png}[Fabry-Perot 干涉儀頻寬測量]
+\fig[0.6][fig:laser_bandwidth_setup][!htb]{laser_bandwidth_setup.png}[Fabry-Perot 干涉儀頻寬測量架設圖]
+\fig[0.6][fig:FSR_laser][!htb]{FSR_laser.png}[Fabry-Perot 干涉儀 FSR 測量]
+\fig[0.6][fig:laser_bandwidth][!htb]{laser_bandwidth.png}[Fabry-Perot 干涉儀頻寬測量]
 
 \section{Etalon 干涉儀}
 與 Fabry-Perot 干涉儀為相同的原理，但 Fabry-Perot 干涉儀的共振腔體為自由空間 (free space)，而 Etalon 干涉儀的共振腔體則為一塊雙折射晶體，兩端為布拉格光柵結構，用以反射光形成共振腔，我們可以用 TEC 和溫控器，精準的調控晶體溫度 T 改變腔長 $L(T)$，只讓特定中心頻率 $\nu$ 附近的光通過。我們實驗使用的型號為 AF023G (MICRO OPTICS, INC.)，頻寬為 60 HMz，FSR 為 13.6 GHz，裝置如\cref{fig:etalon}。
