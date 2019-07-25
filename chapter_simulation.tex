@@ -29,7 +29,7 @@
     e^{i PRBS(t)}\times e^{i \overline{PRBS}(t)}=1
 \end{equation}
 
-若光子在兩台 EOM 行經的時間間距為 $\Delta t_{p}$，兩個電訊號抵達的時間差為 $\Delta t_{RF}$，當 $\Delta t_{p}=\Delta t_{RF}$ 時，理論上可以對相位進行反向的調製，將展頻後的訊號壓縮，還原成原本的頻率分布，但若 $\Delta t_{p}>\Delta t_{RF}$ 或 $\Delta t_{p}>\Delta t_{RF}$，則無法完全還原頻譜，比較如\cref{fig:electric_mismatch}，所以在實驗架設上，必須要能精確的控制電路與光路的長度，讓兩個電訊號匹配，才能達到最好的還原效果。
+若光子在兩台 EOM 行經的時間間距為 $\Delta t_{p}$，兩個電訊號抵達的時間差為 $\Delta t_{RF}$，當 $\Delta t_{p}=\Delta t_{RF}$ 時，理論上可以對相位進行反向的調製，將展頻後的訊號壓縮，還原成原本的頻率分布，但若 $\Delta t_{p}>\Delta t_{RF}$ 或 $\Delta t_{p}<\Delta t_{RF}$，則無法完全還原頻譜，比較如\cref{fig:electric_mismatch}，所以在實驗架設上，必須要能精確的控制電路與光路的長度，讓兩個電訊號匹配，才能達到最好的還原效果。
 
 \fig[0.7][fig:electric_mismatch][!htb]{phase_mismatch.png}[不同電訊號時間差之頻譜壓縮。黑線為 $\Delta t_{p}=\Delta t_{RF}$；紅線為 $\Delta t_{p} \neq \Delta t_{RF}$。][不同電訊號時間差之頻譜壓縮]
 
@@ -37,17 +37,17 @@
 
 \subsection{展頻對吸收率的影響}
 \label{section:simulation_absorption}
-在光通訊中，以光作為資訊的載體，在空氣中傳輸的過程中光子會與原子產生交互作用，當光子的頻率接近原子的耀遷能階時有很大的機率會被吸收。以波長約為 795  nm 的窄頻雷射為例，將此道光打入溫度約 70 度的 $^{87}Rb$ 原子氣體管，調整入射光頻率測量穿透率即可掃出 $^{87}Rb$ 的吸收譜，結果如\cref{fig:rb87_abs}，從圖中可知，在頻率 105 GHz 與 112 GHz 的頻率位置分別約有 ２GHz 與 1 GHz 寬的吸收區域，其吸收的中心頻率是被原子的能階給決定，可從飽和吸收光譜 (saturated absorption spectroscopy) 得知；吸收的寬度則是與原子蒸氣壓和溫度有關，不同的原子運動速度分佈會有不一樣的寬度，此為效應都卜勒增寬 (Doppler broadening)。
+在光通訊中，以光作為資訊的載體，在空氣中傳輸的過程中光子會與原子產生交互作用，當光子的頻率接近原子的耀遷能階時有很大的機率會被吸收。以波長約為 795  nm 的窄頻雷射為例，將功率為 1 $\mu W$ 的光打入溫度約 70 度的 $^{87}Rb$ 原子氣體管，調整入射光頻率測量穿透率即可掃出 $^{87}Rb$ 的吸收譜，結果如\cref{fig:rb87_abs}，從圖中可知，在頻率 377105 GHz 與 377112 GHz 的頻率位置分別約有 ２GHz 與 1 GHz 寬的吸收區域，其吸收的中心頻率是被原子的能階給決定，可從飽和吸收光譜 (saturated absorption spectroscopy) 得知；吸收的寬度則是與原子蒸氣壓和溫度有關，不同的原子運動速度分佈會有不一樣的寬度，此為效應都卜勒增寬 (Doppler broadening)。
 
 \fig[0.75][fig:rb87_abs][!htb]{absorption_spectrum.png}[$^{87}Rb$ 原子吸收譜]
 
-為降低環境對光子的影響，我們可用上述之展頻技術，對光進行相位調製，將頻譜展寬，減少光對原子的吸收率。我們分別使用 1 Gb/s、5 Gb/s、10 Gb/s 與 20 Gb/s 的隨機訊號去模擬，在有展頻的狀態下，中心頻率與穿透率之關係，結果如\cref{fig:different_gbs_transmission}，未經調製的光在 105 GHz 與 112 GHz 附近會被完全吸收，若將光的頻譜展寬則能顯著的降低吸收率，隨機訊號的頻率越高，原子對光子的影響越小。
+為降低環境對光子的影響，我們可用上述之展頻技術，對光進行相位調製，將頻譜展寬，減少光對原子的吸收率。我們分別使用 1 Gb/s、5 Gb/s、10 Gb/s 與 20 Gb/s 的隨機訊號去模擬，在有展頻的狀態下，中心頻率與穿透率之關係，結果如\cref{fig:different_gbs_transmission}，未經調製的光在 377105 GHz 與 377112 GHz 附近會被完全吸收，若將光的頻譜展寬則能顯著的降低吸收率，隨機訊號的頻率越高，原子對光子的影響越小。
 
 \fig[0.75][fig:different_gbs_transmission][!htb]{different_gbs_spectroscopy.png}[展頻頻寬對吸收之影響。使用越快的隨機訊號對光進行相位調製，能降低光在原子躍遷能階附近的吸收率。][展頻頻寬對吸收之影響]
 
 \subsection{吸收對頻譜還原的影響}
 如前所述，對已調製過的光進行反向的調製，理論上可將頻譜壓窄，完美還原成調製前的頻率分佈。但若先讓已展頻的光通過原子團使其被部分吸收，再進行反向的調製，則還原回來的頻譜會與原始的有些差異，比較如\cref{fig:compress_comparison}。
 
-\fig[0.75][fig:compress_comparison][!htb]{abs_compress_compare.png}[展頻後吸收對頻譜壓縮之影響。黑線為沒放 $^{87}Rb$ 原子氣體管；紅線為有 $^{87}Rb$ 原子氣體管。][展頻後吸收對壓縮之影響]
+\fig[0.75][fig:compress_comparison][!htb]{abs_compress_compare.png}[在沒放 $^{87}Rb$ 原子氣體管時，兩次的相位調製可將頻譜還原成初始的狀態，如圖黑線，但若在光路中加上 $^{87}Rb$ 原子氣體管，讓已展頻的光通過原子團，則會有部分的光被吸收，使光無法經由第二次的相位調製還原成最初的狀態，如圖紅線。][原子吸收對頻譜壓縮之影響]
 
 \end{document}
