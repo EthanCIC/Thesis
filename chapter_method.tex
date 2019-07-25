@@ -7,18 +7,18 @@
 \section{隨機訊號產生器}
 由於實驗上無法產生真正的隨機訊號，只能使用偽隨機訊號產生器 (Pseudo Random Bit Sequence, PRBS)，儀器型號為 MP1763C (Anritsu)，可以產生 0.5 至 12.5 Gb/s 的偽隨機訊號。偽隨機訊號實際上為週期訊號，會重複出現特定的隨機序列，其週期可以調整，為了達到最接近隨機的效果，我們選擇使用最長的隨機序列，一個週期內共有 $2^{31}-1$ 的隨機位元。
 
-我們實驗上實際使用的偽隨機訊號產生率 10 Gb/s，每秒能產生 $10\times 10^{9}$ 個隨機位元，以示波器去測量該訊號的眼圖 (eye diagram) 可以知道訊號的品質，量測結果如\cref{fig:prbs_eye}，可見實際訊號與理論\cref{fig:PRBS_simulation} 有很大的差異，實際的訊號會有不小的上升與下降時間，圖形的上下也不太對稱，這都會影響到展頻與壓縮的效果，造成實驗與理論的誤差。
+我們實驗上實際使用的偽隨機訊號產生率 10 Gb/s，每秒能產生 $10\times 10^{9}$ 個隨機位元，以示波器（Infiniium DCA-J 86100C, Agilent，使用的模組為 86112A, Agilent）去測量該訊號的眼圖 (eye diagram) 可以看出訊號的品質，量測結果如\cref{fig:prbs_eye}，可見實際訊號與理論\cref{fig:PRBS_simulation} 有很大的差異，實際的訊號會有不小的上升與下降時間，圖形的上下也不太對稱，這都會影響到展頻與壓縮的效果，造成實驗與理論的誤差。
 
 \begin{figure}[!hbt]
     %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
     \centering
     \subcaptionbox
-        {第一台 EOM
+        {輸入第一台 EOM 之隨機訊號
         \label{fig:subfig_fig1}}
         {\includegraphics[width=0.4\linewidth]{data.bmp}}
     ~~~~
     \subcaptionbox
-        {第二台 EOM
+        {輸入第二台 EOM 之隨機訊號
         \label{fig:subfig_fig2}}
         {\includegraphics[width=0.4\linewidth]{data_bar.bmp}}
     \caption{PRBS 輸出之訊號眼圖（放大前）}
@@ -26,48 +26,66 @@
 \end{figure}
 
 \section{電光調製器}
-電光調製器 (Electro-Optic Modulator, EOM) 可使用電訊號對光進行調製，一般而言可以分成三種，分別為振幅、相位與偏振的調製，在我們的實驗中需要調製的是相位。使用的儀器為 EOSPACE 的 SN73717 與 SN73718，分別為頻譜的窄寬與壓縮用。
 
-相位調制器由鈮酸鋰 ($LiNbO_{3}$) 雙折射晶體製成，因泡克耳斯效應 (Pockels effect)，外加電場能線性的改變快軸上的折射率，進而達到改變相位的效果，且我們稱能將 45 度線偏旋轉至 -45 度的電壓為 $V_{\pi}$。
+電光調製器 (Electro-Optic Modulator, EOM) 可使用電訊號對光進行調製，一般而言可以分成三種，分別為振幅、相位與偏振的調製，在我們的實驗中需要調製的是相位。使用的儀器為 EOSPACE 的 SN73717 與 SN73718，分別為頻譜的展寬與壓縮用，裝置如\cref{fig:eom}。
 
-由上介紹可知，實際使用上需優化進光的偏振以及電訊號的振幅，以達到預期的相位調製效果。
+\fig[0.75][fig:eom][!htb]{temp.png}[實驗使用之兩台電光調製器]
+\todo[inline]{補上 EOM 的照片}
 
-我們使用半波片 (half-wave plate) 調整入射 EOM 光的偏振方向，若偏振方向不對的話調製效果會不佳，為優化偏振，實驗上會看著調製後的頻譜旋轉半波片，當結果與理論模擬最接近時即為最佳之偏振角度。
+相位調制器由鈮酸鋰 ($LiNbO_{3}$) 雙折射晶體製成，因泡克耳斯效應 (Pockels effect)，外加電場能線性的改變作用方向上之晶體折射率，進而達到改變相位的效果，我們定義能入射光相位改變 $\pi$ 之電訊號電壓為 $V_{\pi}$。
+
+由上介紹可知，實際使用上需優化進光的偏振以及電訊號的振幅，以達到預期的相位調製效果。所以我們會在 EOM 前放置一個偏極片（Polarizer）半波片 (half-wave plate) ，如\cref{fig:eom_setup}，藉由調整兩者的角度，使光能以最佳的線偏角度入射 EOM。
+
+\fig[0.75][fig:eom_setup][!htb]{eom_setup.png}[EOM 及相關元件架設。使用上我們會先讓光通過一偏極片，確定光為線偏振，再以半波片旋轉偏振的角度，優化調製之效果。][EOM 及相關元件架設]
 
 \section{高頻電訊號放大器}
+
 由於我們使用的隨機訊號產生器僅能輸出 0.2 至 2 $V_{pp}$ 的訊號，而 EOM 的 $V_{\pi}$ 高於 2 Ｖ，所以需再經過放大器才能提供足夠的電壓去進行相位調製。
-同樣的，也用示波器去測量眼圖，觀察經放大後的訊號品質，如\cref{fig:amp_prbs_eye}，可明顯看出訊號變得更不穩定，且兩台 EOM 使用的電訊號形狀也不同，這是由兩邊使用的 SMA 線的材質與長度均不同，會有不一樣的頻率響應與耗損，使兩個訊號無法互補，這會對頻譜壓縮與還原的效果造成負面的影響。
+
+我們使用的放大器型號為 OA3MVM (Centallax)，輸入的訊號會經過三階段的放大，每一階段各需要兩個電壓去驅動，分別為 $V_{g}$ 與 $V_{d}$，這組電壓的大小會影響放大的大小與速度，因此我們做了一個穩壓電路，能一次輸出 3 個 $V_{g}$ 與 3 個 $V_{d}$，裝置如\cref{fig:amplider_machine}。
+
+\fig[0.75][fig:amplider_machine][!htb]{temp.png}[放大器與穩壓電路]
+
+同樣的，也用示波器去測量眼圖，架設如\cref{fig:amplifier_setup}，觀察經放大後的訊號品質，如\cref{fig:amp_prbs_eye}，可明顯看出訊號變得更不穩定，且兩台 EOM 使用的電訊號形狀也不同，這是由兩邊使用的 SMA 線的材質與長度均不同，會有不一樣的頻率響應與耗損，使兩個訊號無法互補，這會對頻譜壓縮與還原的效果造成負面的影響。
+
+\fig[0.75][fig:amplifier_setup][!htb]{amplifier_setup.png}[將隨機訊號放大後以示波器測量眼圖]
 
 \begin{figure}[!hbt]
     %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
     \centering
     \subcaptionbox
-        {第一台 EOM
+        {輸入第一台 EOM 之隨機訊號
         \label{fig:subfig_fig1}}
         {\includegraphics[width=0.4\linewidth]{amp_data.bmp}}
     ~~~~
     \subcaptionbox
-        {第二台 EOM
+        {輸入第二台 EOM 之隨機訊號
         \label{fig:subfig_fig2}}
         {\includegraphics[width=0.4\linewidth]{amp_data_bar.bmp}}
     \caption{PRBS 輸出之訊號眼圖（放大後）}
     \label{fig:amp_prbs_eye}
 \end{figure}
 
+我們可從眼圖的測量結果去量化訊號品質，放大前後的比較如表，可見經過放大器與額外的電線連接後的訊號，波形會有所改變且穩定度會下降。
+
 \section{法布立－培若干涉儀}
-雷射光的頻譜可以用掃描式法布立－培若干涉儀（Scanning Fabry-Perot Interferometer）掃出，我們使用的儀器為 SA210-5B (THORLABS)，FSR 為 10 GHz。
+雷射光的頻譜可以用掃描式法布立－培若干涉儀（Scanning Fabry-Perot Interferometer）掃出，我們使用的儀器為 SA210-5B (THORLABS)，FSR 為 10 GHz，實際儀器如\cref{fig:fabry_perot}。
+
+\fig[0.5][fig:fabry_perot][!htb]{fabry_perot.jpg}[實驗使用之 Fabry-Perot 干涉儀]
+
 此干涉儀的主體為一個共振腔，由兩個高反射率的凹面鏡所組成。當光正向入射腔體時，須滿足\cref{eq:resonant_condition} 之共振條件的光才會產生建設性干涉，而能透射共振腔。
 
 \begin{equation}
-    2nL=m\lambda
+    4nL=m\lambda
     \label{eq:resonant_condition}
 \end{equation}
 n 為共振腔的折射率，L 為腔長，頻率與透射率的關係\cref{fig:fsr}，其中 $\nu_{F}$ 稱為 FSR (Free Spectrual Range)，定義如\cref{eq:fsr}，此參數決定了這個干涉儀適用的掃頻範圍，調整腔長 L 的長度能改變允許透射的頻率，所以若在其中一面鏡子黏上 Piezo ，輸入電壓即可微調腔長，改變允許出光的頻率，達到掃頻的效果。
+\todo[inline]{確認公式}
 
 \fig[1][fig:fsr][!htb]{fsr.png}[Fabry-Perot 干涉儀透射頻率]
 
 \begin{equation}
-    \nu_{F}=\frac{c}{4nd}(for confocal Fabry-Perot cavity)
+    \nu_{F}=\frac{c}{4nd}
     \label{eq:fsr}
 \end{equation}
 此外，另一個重要的參數為精細度 F (Finesse)，定義如\cref{eq:finesse_definition}：
@@ -76,16 +94,20 @@ n 為共振腔的折射率，L 為腔長，頻率與透射率的關係\cref{fig:
     F=\frac{\pi R^{1/2}}{1-R}
     \label{eq:finesse_definition}
 \end{equation}
-此共振腔的頻寬（解析度） $\delta \lambda$ 與 F 成反比，關係如\cref{eq:resolution}，所以鏡面反射率越高，F越大，解析度越好，本次實驗使用的干涉儀解析度約為 60 MHz。
+此共振腔的頻寬（解析度） $\delta \lambda$ 與 F 成反比，關係如\cref{eq:resolution}，所以鏡面反射率越高，F越大，解析度越好，本次實驗使用的干涉儀解析度約為 60 MHz，以頻寬約 1 MHz 掃頻結果如\cref{fig:fabry_perot_demo}。
 
 \begin{equation}
     \delta \lambda=\frac{\nu_{F}}{F}
     \label{eq:resolution}
 \end{equation}
 
+\fig[0.75][fig:fabry_perot_demo][!htb]{temp.png}[以此 Fabry-Perot 掃出之窄頻雷射頻譜]
+\todo[inline]{雷射頻譜}
 
 \section{Etalon 干涉儀}
-與 Fabry-Perot 干涉儀為相同的原理，但 Fabry-Perot 干涉儀的共振腔體為自由空間 (free space)，而 Etalon 干涉儀的共振腔體則為一塊雙折射晶體，我們可以用 TEC 和溫控器，精準的調控晶體溫度 T 改變腔長 $L(T)$，只讓特定中心頻率 $\nu$ 附近的光通過。我們實驗使用的型號為 AF023G (MICRO OPTICS, INC.)，頻寬為 60 HMz，FSR 為 13.6 GHz。
+與 Fabry-Perot 干涉儀為相同的原理，但 Fabry-Perot 干涉儀的共振腔體為自由空間 (free space)，而 Etalon 干涉儀的共振腔體則為一塊雙折射晶體，兩端為布拉格光柵結構，用以反射光形成共振腔，我們可以用 TEC 和溫控器，精準的調控晶體溫度 T 改變腔長 $L(T)$，只讓特定中心頻率 $\nu$ 附近的光通過。我們實驗使用的型號為 AF023G (MICRO OPTICS, INC.)，頻寬為 60 HMz，FSR 為 13.6 GHz，裝置如\cref{fig:etalon}。
+
+\fig[0.75][fig:etalon][!htb]{etalon.png}[Etalon 濾波器裝置圖]
 
 由於腔體是由雙折射晶體製成，所以不同的偏振在內部會有不一樣的行進速度，而會產生兩組不同的模態，所以在實驗優化上，需要將入射 Etalon 干涉儀的光調成與晶軸方向相同的線偏光，才能最有效率的使用濾波器。
 

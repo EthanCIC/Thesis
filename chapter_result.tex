@@ -9,14 +9,22 @@
 \subsection{雷射光}
 雷射光源為 TOPTICA 的 DLC TA-SHG PRO 雷射系統，可產生中心波長約為 795 nm 的窄頻雷射。此雷射的特點為出光頻率可調，可以透過電壓控制共振腔上光柵的角度來調整出光的頻率。
 
-除了波長 795 nm 的紅外，雷射系統內還有一塊在共振腔內的非線性晶體，可將前述的紅光打入內，以倍頻效應 (Simple-Harmonic Gemeration, SHG) 產生波長為 397.5 nm 的藍光，可用來打入另一塊非線性晶體，以自發參量下轉換 (Spontaneous Parametric Down-Conversion, SPDC) 的過程產生 975 nm 的光子。
+\todo[inline]{TOPTICA 簡圖，鎖頻方法}
+
+除了波長 795 nm 的紅外，雷射系統內還有一塊在共振腔內的非線性晶體，可將前述的紅光打入內，以倍頻效應 (Simple-Harmonic Gemeration, SHG) 產生波長為 397.5 nm 的藍光，可用來打入另一塊非線性晶體，以自發參量下轉換 (Spontaneous Parametric Down-Conversion, SPDC) 的過程產生 795 nm 的光子。
 
 
 \subsection{單光子}
 \label{subsection:single_photon}
-雙光子的產生機制為 SPDC，入射一道波長 397.5 nm 的藍光雷射進入 PPKTP 晶體，產生 Type-II 的時間 - 能量糾纏光子對 (time-energy entangled biphoton)，波長為 795 nm。
+雙光子的產生機制為 SPDC，入射一道波長 397.5 nm 的藍光雷射進入 PPKTP （Periodically Poled KTP）晶體，產生 Type-II 的時間 - 能量糾纏光子對 (time-energy entangled biphoton)，波長為 795 nm。
 
-藉由在 PPKTP 晶體雙邊鍍上 795nm 的高反射薄膜，右邊鍍上 397.5 nm 的高反射薄膜，可形成一個共振腔，讓產生出來的光子對有相對長的相干時間 (coherence time) 與較窄的頻寬。
+在晶體設計中，我們在晶體的末端鍍上 397.5 nm 的高反射薄膜，讓入射藍光能被反射多走一趟，等效於將晶體變為兩倍長，從\cref{eq:gain_curve} 增益曲線（gain curve）中可知這個做法可使增益曲線變得更窄，除此之外，還會在晶體兩端都度上 795nm 的高反射薄膜，使晶體本身形成一個紅光的共振腔，所以除了除了增益曲線外，還須符合共振條件才能產生雙光子對。基於上述的兩種鍍膜帶來的效果，我們能產生出接近單模（single mode）的窄頻單光子，相對的會有較長的相干時間 (coherence time) ，便於我們在光子的時間波包進行調製。
+
+
+\begin{equation}
+    S＝sinc^2(\Delta k L)
+\label{eq:gain_curve}
+\end{equation}
 
 實驗上會將產生出來的雙光子對經過 PBS，將訊號分為 signal 和 idler，以 idler 做為觸發訊號，使 signal 經過 $^{87}Rb$ 原子氣體管與 EOM，讓光子被吸收或對其進行相位的調製，並做 $G^{2}(\tau)$ 的測量，$G^{2}(\tau)$ 的定義如 (\ref{eq:g2_definition})。
 
@@ -28,12 +36,14 @@
 \label{eq:g2_definition}
 \end{equation}
 
-此為二階強度關聯函數 (second-order intenstiy correlation function)，$\tau$ 為兩顆單光子抵達探測器的時間差。在符合準相位匹配條件 (quasi phase matching condition) 時能最有效率的產生雙光子，實際測量結果如\cref{fig:single_photon_g2}，此光子之時間波包寬度約為 100 ns，頻寬為 4.5 MHz。
+此為二階強度關聯函數 (second-order intenstiy correlation function)，$\tau$ 為兩顆單光子抵達探測器的時間差。在符合準相位匹配條件 (quasi phase matching condition) 時能最有效率的產生雙光子，實際測量結果如\cref{fig:single_photon_g2}，此光子之時間波包寬度約為 50 ns，將其做傅立葉轉換可計算出光子的頻寬約為 4.5 MHz。
 
 \fig[0.75][fig:single_photon_g2][!htb]{nocell_spread_no_etalon.png}[糾纏光子對之 $G^{2}(\tau)$ 量測]
 
 
-為了找到符合準項未匹配條件的入射光波長與晶體溫度，實驗上我們先將入射光的頻率固定在 105489 MHz，改變晶體溫度測量雙光子的產生率 (biphton rate)，結果如\cref{fig:temp_scan_g2}黑線，在 39.91$^{\circ}C$ 至 40.10$^{\circ}C$ 有四組符合條件的模態，若讓其中一顆光子經過 $^{87}Rb$ 原子氣體管，並做相同的量測，結果如\cref{fig:temp_scan_g2}紅線，可以發現第二和第三個的模態雖有明顯的吸收，但吸收率不高，我們認為這是因為晶體所產生的光子為多模 (multi-mode) 而非單模 (single-mode)，同時產生了兩種以上頻率的單光子，儘管其中一個頻率的光子能完全被吸收，其他頻率的光子仍會透射，因此無法讓透射率趨近於零。為了確認這想法，我們在探測器前面加上一個頻寬為 60 MHz 的 Etalon 濾波器，只允許特定頻率附近的光通過，並在沒放 $^{87}Rb$ 原子氣體管時改變晶體溫度，重新測量產生率，有無 Etalon 濾波器測量之結果比較如\cref{fig:temp_scan_g2_with_etalon}，黑色為沒放 Etalon 濾波器時測量到的訊號，紅色經過濾波後之訊號，兩者相比可明顯看出，有放濾波器時能將其他產生效率較低的模態過濾掉，一次只讓一個特定頻率區間內的光通過。此時再將 $^{87}Rb$ 原子氣體管放回，並對其中第二和第三個模態進行相同的量測，結果如\cref{fig:absorption_etalon_temp_scanning}，黑線為加上 Etalon 過濾之後測到的訊號，若放上 $^{87}Rb$ 原子氣體管讓光子通過，測量結果如藍線，光子幾乎完全被吸收，與\cref{fig:temp_scan_g2}相比，可明顯看出，在過濾前的光源的確有其他頻率的成分，要避免其他頻率成分影響後續的實驗與分析，需加上 Etalon 濾波器。
+為了找到符合準項未匹配條件的入射光波長與晶體溫度，實驗上我們先將入射光的頻率固定在 377105489 MHz，改變晶體溫度測量雙光子的產生率 (biphton rate)，結果如\cref{fig:temp_scan_g2}黑線，在 39.91$^{\circ}C$ 至 40.10$^{\circ}C$ 有四組符合條件的模態，若讓其中一顆光子經過 $^{87}Rb$ 原子氣體管，並做相同的量測，結果如\cref{fig:temp_scan_g2}紅線，可以發現第二和第三個的模態雖有明顯的吸收，但吸收率不高，我們認為這是因為在頻域上晶體所產生的光子為多模 (multi-mode) 而非單模 (single-mode)，同時產生了兩種以上頻率的單光子，儘管其中一個頻率的光子能完全被吸收，其他頻率的光子仍會透射，因此無法讓透射率趨近於零。為了確認這想法，我們在探測器前面加上一個頻寬為 60 MHz 的 Etalon 濾波器，只允許特定頻率附近的光通過，並在沒放 $^{87}Rb$ 原子氣體管時改變晶體溫度，重新測量產生率，有無 Etalon 濾波器測量之結果比較如\cref{fig:temp_scan_g2_with_etalon}，黑色為沒放 Etalon 濾波器時測量到的訊號，紅色經過濾波後之訊號，兩者相比可明顯看出，有放濾波器時能將其他產生效率較低的模態過濾掉，一次只讓一個特定頻率區間內的光通過。此時再將 $^{87}Rb$ 原子氣體管放回，並對其中第二和第三個模態進行相同的量測，結果如\cref{fig:absorption_etalon_temp_scanning}，黑線為加上 Etalon 過濾之後測到的訊號，若放上 $^{87}Rb$ 原子氣體管讓光子通過，測量結果如藍線，光子幾乎完全被吸收，與\cref{fig:temp_scan_g2}相比，可明顯看出，在過濾前的光源的確有其他頻率的成分，要避免其他頻率成分影響後續的實驗與分析，需加上 Etalon 濾波器。
+
+\todo[inline]{SPCM 型號}
 
 \fig[0.75][fig:temp_scan_g2][!htb]{temp_scanning.png}[調整溫度測量雙光子產生率，黑線為直接對雙光子進行量測；紅線為先讓其中一顆單光子通過 $^{87}Rb$ 氣體管再測量，其中第二和第三個模態有部分吸收。][調整溫度測量雙光子產生率]
 
@@ -51,7 +61,7 @@
         {第三個模態
         \label{fig:subfig_fig2}}
         {\includegraphics[width=0.4\linewidth]{third_mode_absorption.png}}
-    \caption{經過 Etalon 濾波後光子之吸收}
+    \caption{加上 Etalon 濾波器之後，測量光子對原子之穿透率。黑色為未放原子時測量到的訊號，紅色為放了原子後測量到的訊號，可觀察到經過 Etalon 濾波器後的光子能完全被原子吸收，此時的光子為單模。}
     \label{fig:absorption_etalon_temp_scanning}
 \end{figure}
 
@@ -66,7 +76,7 @@
 \fig[0.7][fig:laser_spectrum][!htb]{laser_spectrum.png}[以頻寬 60MHz 的 Fabry-Perot 干涉儀掃出之雷射頻譜][雷射頻譜]
 
 
-若只開啟第一台 EOM，在 10 Gb/s 隨機訊號的調製下可將窄頻雷射光的頻譜展至 10 GHz 寬，但由於我們的使用的 Fabry-Perot FSR 僅 10 GHz，無法涵蓋完整的頻率區間，會使測量的結果失真，要想掃出完整展開的頻譜需使用 FSR 20 GHz 以上的干涉儀，所以下面會先以 2 Gb/s 的訊號來測試展頻的結果是否符合理論模擬。
+若只開啟第一台 EOM，在 10 Gb/s 隨機訊號的調製下可將窄頻雷射光的頻譜展至正負 10 GHz 寬，但由於我們的使用的 Fabry-Perot 干涉儀 FSR 僅 10 GHz，無法涵蓋完整的頻率分佈區間，這會使測量的結果失真，所以下面會先以 2 Gb/s 的訊號來測試展頻的結果是否符合理論模擬。
 
 \subsection{2 Gb/s 隨機訊號之相位調製}
 先以 2 Gb/s 隨機訊號進行相位調製，只開啟第一台能將頻譜展至 $\pm$5 GHz 寬，如\cref{fig:2gbs_spread}。
@@ -113,15 +123,15 @@
     %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
     \centering
     \subcaptionbox
-        {週期 $2^{15}-1$ 位元之偽隨機訊號
+        {以週期為 $2^{15}-1$ 位元之偽隨機訊號對雷射光進行相位調製後的展頻頻譜
         \label{fig:subfig_fig1}}
         {\includegraphics[width=0.4\linewidth]{2_15_spread_2GHz.png}}
     ~~~~
     \subcaptionbox
-        {週期 $2^{7}-1$ 位元之偽隨機訊號
+        {以週期為 $2^{7}-1$ 位元之偽隨機訊號對雷射光進行相位調製後的展頻頻譜
         \label{fig:subfig_fig2}}
         {\includegraphics[width=0.4\linewidth]{2_7_spread_2GHz.png}}
-    \caption{偽隨機訊號週期與展頻頻譜震盪之關係}
+    \caption{偽隨機訊號週期與展頻頻譜振盪之關係}
     \label{fig:different_length_PRBS}
 \end{figure}
 
@@ -139,30 +149,36 @@
     %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
     \centering
     \subcaptionbox
-        {第一台 EOM 
+        {輸入第一台 EOM 之隨機訊號
         \label{fig:subfig_fig1}}
         {\includegraphics[width=0.4\linewidth]{amp_data.bmp}}
     ~~~~
     \subcaptionbox
-        {第二台 EOM
+        {輸入第二台 EOM 之隨機訊號
         \label{fig:subfig_fig2}}
         {\includegraphics[width=0.4\linewidth]{amp_data_bar.bmp}}
     \caption{經過放大器，進入 EOM 用以調製的兩組隨機訊號眼圖}
     \label{fig:amplified_signal}
 \end{figure}
 
-\section{經相位調製後之 $^{87}Rb$ 原子吸收譜}
+\section{經隨機相位調製後之 $^{87}Rb$ 原子吸收譜}
 
-如\cref{section:simulation_absorption} 所提，當光子的頻率很接近原子的躍遷能階時，光會被吸收，實驗上可以\cref{fig:laser_spectrum_setup} 的架設，將 Farby-Perot 干涉儀換成光二極體 (photodiode) 收光，連續調變入射光的頻率，測量透射 $^{87}Rb$ 原子氣體管的光強，從\cref{fig:abs_spec} 藍線可以觀察到，在特定的兩個頻率位置附近光會被原子吸收，穿透率特別低。本實驗主要的目的為透過展頻技術，降低光子與原子的交互作用，使光子能不被吸收而增加透射率，所以若將第一台 EOM 開啟，將雷射的頻寬從 60 MHz 展至 10 GHz，此時的吸收譜如\cref{fig:abs_spec} 紅線，在經過展頻後，無論在哪個頻率下光皆能大部分透射原子，調製前的光在 105 GHz 與 112 GHz 會被完全吸收，調製後卻有 75\% 能透射原子團，就如隱形了一般，展頻能部分避免光子被吸收，降低受環境的影響。
+在\cref{section:simulation_absorption} 中，我們探討了隨機相位調製對於 $^{87}Rb$ 原子吸收率之影響，特定頻率光能被原子完全吸收，但在經過隨機相位調製後能大幅降低原子的吸收率。在此小節中，我們會對光進行隨機相位調製，並連續的調整雷射光頻率，去測量調製後的光對 $^{87}Rb$ 原子的穿透率，以掃出此時的 $^{87}Rb$ 原子吸收譜。
+
+實驗架設如\cref{fig:laser_no_etalon_setup}，只開啟第一台 EOM 將雷射光的頻寬從約 1 MHz 展至 10 GHz，再讓光通入 $^{87}Rb$ 原子氣體管，測量結果如\cref{fig:abs_spec} 紅線，經展頻後，無論在哪個頻率下光皆能大部分透射原子，若與調製前測得的頻譜（\cref{fig:abs_spec} 黑線）相比，在 377105 GHz 與 377112 GHz 時光本來會被完全吸收，調製後卻有 75\% 能透射原子團，如隱形了一般，由此可知，展頻能部分避免光子被吸收，有效降低環境的影響。
+
+\fig[0.75][fig:laser_no_etalon_setup][!htb]{laser_no_etalon_setup.png}[展頻雷射光 $^{87}Rb$ 原子吸收譜測量光路圖]
 
 \fig[0.75][fig:abs_spec][!htb]{absorption_spectrum_spread.png}[調製後的 $^{87}Rb$ 原子吸收譜，黑線為沒放 $^{87}Rb$ 原子氣體管時的訊號；藍線為調製前 $^{87}Rb$ 原子氣體管的吸收譜；紅線為展頻後的吸收譜。][調製後的 $^{87}Rb$ 原子吸收譜]
 
-\section{單光子相位調製對原子吸收之影響}
-從前一小節的實驗結果能得知，$^{87}Rb$ 的躍遷頻率約在 105 GHz 與 112 GHz 附近，這時我們將光源從窄頻雷射換成單光子，並透過改變入射光的頻率與晶體溫度，將單光子的頻率調至 112300 MHz，使其能被原子吸收，再以\cref{fig:single_photon_no_etalon} 的光路架設對光子進行相位調製與測量。
+\section{單光子隨機相位調製對原子吸收之影響}
+從前一小節的實驗結果能得知，$^{87}Rb$ 的躍遷頻率約在 377105 GHz 與 377112 GHz 附近，這時我們將光源從窄頻雷射換成單光子，並透過改變入射光的頻率與晶體溫度，將單光子的頻率調至 377112294 MHz，使其能被原子吸收，再以\cref{fig:single_photon_no_etalon} 的光路架設對光子進行相位調製與測量。
+
+\todo[inline]{如何用 Etalon 確定單光子頻率}
 
 \fig[0.75][fig:single_photon_no_etalon][!htb]{single_photon_no_etalon_setup.png}[單光子量測光路圖]
 
-當兩台 EOM 皆關閉時，頻寬約為 4.5 MHz 的單光子會幾乎完全被原子吸收，光無法透射氣體管，但若對其進行 $G^{2}(\tau)$ 測量，卻會測到訊號，如\cref{fig:remaining_mod_g2}，原因如\cref{subsection:single_photon} 所述，是由於我們晶體產生的單光子源非單模 (single-mode)，其中還存在符合其他組準相位匹配條件 (quasi phase matching condition) 所產生的光，若要去除那些光子對實驗的影響，在此小節的數據處理上，我們直接將其當作雜訊扣除，只保留主要模態的光；下一小節的實驗中，我們會外加一個 Etalon 濾波器，只讓 112300 MHz 附近的光通過。
+如\cref{subsection:single_photon} 所述，我們晶體產生的單光子源非單模 (single-mode)，在這組準相位匹配條件 (quasi phase matching condition) 下，同時有兩種以上頻率的光符合共振條件而被產生，所以在兩台 EOM 都關閉時，未經調製的窄頻光子通過 $^{87}Rb$ 原子氣體管不會完全被吸收，若對其進行 $G^{2}(\tau)$ 測量，會測到一些訊號，如\cref{fig:remaining_mod_g2}，若要去除那些光子對實驗的影響，在此小節的數據處理上，我們直接將其當作雜訊扣除，只保留主要模態的光；下一小節的實驗中，我們會外加一個 Etalon 濾波器，只讓 377112294 MHz 附近的光通過。
 
 \fig[0.75][fig:remaining_mod_g2][!htb]{initial_heatcell_no_etalon.png}[單光子通過 $^{87}Rb$ 原子氣體管之 $G^{2}(\tau)$ 量測，黑線為沒放氣體管時測到的訊號，放了氣體管後，其他模態的光因不在吸收頻率附近而能透射原子團不吸收，所以會測到紅線的訊號。][單光子通過 $^{87}Rb$ 原子氣體管之 $G^{2}(\tau)$ 量測]
 
@@ -194,7 +210,7 @@
 
 從前述的結果可知，未經調製的窄頻單光子會幾乎被 $^{87}Rb$ 原子吸收，無法透射氣體管，透射率幾乎為零，但經過 10 Gb/s 隨機訊號的調製後，可讓透射率提升至 76％，如同穿上隱形斗篷般，能大部分的光子不會被吸收，不與原子產生交互作用，會直接穿透原子團。
 
-\section{雷射光相位調製對原子吸收之影響}
+\section{雷射光隨機相位調製對原子吸收之影響}
 在上一小節中，我們對單光子進行相位調製，觀察展頻對吸收率之影響，為確定此現象在不同系統下能維持一致性，我們將\cref{fig:single_photon_no_etalon} 光路架設的光源改為雷射光，單光子探測器改用光二極體，並將雷射調至與單光子同樣的波長去進行相同的量測，實驗結果如\cref{fig:laser_no_etalon}，與單光子的量測結果相近，調製前的光幾乎會全部被原子團吸收，但經過展頻後的雷射光能有約 80\% 的穿透率，也能達到隱形斗篷的效果。
 
 \fig[0.75][fig:laser_no_etalon][!htb]{laser_no_etalon.png}[雷射光相位調製對穿透率之影響，最上面三條線（藍、紅與黃色）為沒放$^{87}Rb$ 原子氣體管時之量測，無論是展頻還是壓縮，相位調製皆不會影響光強；中間兩條線（綠色與橘色）為展頻後通過氣體管所測得的訊號，約 80\% 的光能因相位調製而穿透原子團而不被吸收；最下面的藍線為兩台 EOM 關閉時測到的訊號，未經調製的光會幾乎都被原子吸收。][雷射光相位調製對穿透率之影響]
