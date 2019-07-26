@@ -68,7 +68,24 @@
     \label{fig:amp_prbs_eye}
 \end{figure}
 
-我們可從眼圖的測量結果去量化訊號品質，放大前後的比較如表，可見經過放大器與額外的電線連接後的訊號，波形會有所改變且穩定度會下降。
+我們可從眼圖的測量結果去量化訊號品質，放大前後的比較如\cref{tab:amplifier_compare}，從圖和表中能觀察到，輸入第二台 EOM 用的訊號在放大後變得很不穩定，這是因為那端使用的電線長度很長（長邊約 400 公分，短邊約 80 公分），且那條線材已經放了十年，傳輸品質會下降，會有較大的損耗以及較明顯的色散現象，使訊號失真，這會降低我們頻譜壓縮的效果。
+
+\begin{table}[h]
+    \centering
+    \caption{數值模擬參數修正}
+    \begin{tabular}{| c | c | c | c |}
+\hline
+         & jitter & amplitidu & rising \& falling
+    \\ \hline
+    \multicolumn{4}{|c|}{輸入第一台 EOM 用之隨機訊號}\\ \hline
+    放大前 & 10 ps & $\pm$5.8\% & 38 ps\\ \hline
+    放大後 & 14 ps & $\pm$7.7\% & 38 ps\\ \hline
+    \multicolumn{4}{|c|}{輸入第二台 EOM 用之隨機訊號}\\ \hline
+    放大前 & 9 ps & $\pm$6.5\% & 35 ps\\ \hline
+    放大後 & 17 ps & $\pm$16.7\% & 74 ps\\ \hline
+    \end{tabular}
+    \label{tab:amplifier_compare}
+\end{table}
 
 \section{電訊號相位延遲器}
 如\cref{section:time_delay} 所述，想要對已展頻的光做反向的調製，必須精準的控制兩台 EOM 電訊號的時間差，所以我們會在其中一邊的電路加上一個相位延遲器，其型號為 Model 981（api technologies corp.），如\cref{fig:phase_shifter}，可以藉由調整側邊拉桿的長度來微調電訊號的相位。根據其規格書上的標示，此相位延遲器最多能讓 1 GHz 的訊號延遲 60 度的相位，相當於 1.67 ns 的時間差。若電訊號的傳輸速度以三分之二光速來計算的話，此時間差等同於 3.33 公分的電路長度差。
