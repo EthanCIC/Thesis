@@ -1996,6 +1996,10 @@
     <bcf:datasource type="file" datatype="bibtex">demo.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1">chuu2012miniature</bcf:citekey>
+    <bcf:citekey order="2">wu2017bright</bcf:citekey>
+    <bcf:citekey order="3">PhysRevLett.101.103601</bcf:citekey>
+    <bcf:citekey order="4">chuu2012miniature</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

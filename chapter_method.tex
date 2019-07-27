@@ -1,5 +1,6 @@
 \documentclass[class=NCU_thesis, crop=false]{standalone}
 \usepackage{braket}
+\usepackage{mathtools}
 
 \begin{document}
 
@@ -9,8 +10,8 @@
 \section{偽隨機訊號產生器}
 由於實驗上無法產生真正的隨機訊號，只能使用偽隨機訊號產生器 (Pseudo Random Bit Sequence, PRBS)，儀器型號為 MP1763C (Anritsu)，可以產生 0.5 至 12.5 Gb/s 的偽隨機訊號，裝置如\cref{fig:PRBS_machine}。偽隨機訊號實際上為週期訊號，會重複出現特定的隨機序列，其週期可以調整，為了達到最接近隨機的效果，我們選擇使用最長的隨機序列，一個週期內共有 $2^{31}-1$ 的隨機位元。
 
-我們實驗上實際使用的偽隨機訊號產生率 10 Gb/s，每秒能產生 $10\times 10^{9}$ 個隨機位元，以示波器（Infiniium DCA-J 86100C, Agilent，使用的模組為 86112A, Agilent）去測量該訊號的眼圖 (eye diagram) 可以看出訊號的品質，量測結果如\cref{fig:prbs_eye}，可見實際訊號與理論\cref{fig:PRBS_simulation} 有很大的差異，實際的訊號會有不小的上升與下降時間，圖形的上下也不太對稱，這都會影響到展頻與壓縮的效果，造成實驗與理論的誤差。
-\todo[inline]{描述眼圖能幹嘛}
+我們實驗上實際使用的偽隨機訊號產生率 10 Gb/s，每秒能產生 $10\times 10^{9}$ 個隨機位元，以示波器（Infiniium DCA-J 86100C, Agilent，使用的模組為 86112A, Agilent）去測量該訊號的眼圖 (eye diagram) ，眼圖是一種用來檢測訊號品質之測量示波器顯示模式，會以資料速度（data rate）作為觸發水平更新，將特定時間內的測量結果重疊於畫面中，並計算訊號的上升與下降時間（rising and falling time）、抖動（jitter）、交叉振幅（crossing）\dots 等資訊，量測結果如\cref{fig:prbs_eye}，可見實際訊號與理論\cref{fig:PRBS_simulation} 有很大的差異，實際的訊號會有不小的上升與下降時間，圖形的上下也不太對稱，這都會影響到展頻與壓縮的效果，造成實驗與理論的誤差。
+
 \fig[0.5][fig:PRBS_machine][!htb]{PRBS_machine.jpg}[高頻偽隨機訊號產生器裝置圖]
 
 
@@ -101,16 +102,24 @@
 
 除了波長 795 nm 的紅光外，雷射系統內還有一塊置於共振腔內的非線性晶體，可將前述的紅光打入內，以倍頻效應 (Simple-Harmonic Gemeration, SHG) 產生波長為 397.5 nm 的藍光，可用來打入另一塊非線性晶體，以自發參量下轉換 (Spontaneous Parametric Down-Conversion, SPDC) 的過程產生 795 nm 的雙光子。
 
-
 \subsection{單光子}
 \label{subsection:single_photon}
-雙光子的產生機制為 SPDC，入射一道波長 397.5 nm 的藍光雷射進入 PPKTP （Periodically Poled KTP）晶體，產生 Type-II 的時間 - 能量糾纏光子對 (time-energy entangled biphoton)，波長為 795 nm。
+雙光子的產生機制為 SPDC，入射一道波長 397.5 nm 的藍光雷射進入 PPKTP （Periodically Poled KTP）晶體，產生 Type-II 的時間 - 能量糾纏光子對 (time-energy entangled biphoton)，波長約為 795 nm，產生出來的光須滿足能量守恆與動量守恆，如\cref{eq:quasi_phase_matching} ，我們稱其為準相位匹配條件 (quasi phase matching condition) ，其中 $\vec{k_m}$ 為晶體週期性極化反轉提供之動量補償項。
 
-在晶體設計中，我們在晶體的末端鍍上 397.5 nm 的高反射薄膜，使入射藍光在末端被反射，此舉等效於將晶體變為兩倍長，從\cref{fig:gain_curve} 的增益曲線（gain curve）中可知，當晶體長度 L 變兩倍，增益曲線會變窄\cite{chuu2012miniature}。除此之外，還會在晶體兩端都度上 795nm 的高反射薄膜，使晶體本身形成一個紅光的共振腔，只有在增益曲線內且符合能量守恆的共振模態才會產生雙光子對。基於上述的兩種鍍膜帶來的效果，這樣的設計能讓我們產生出接近單模（single mode）的窄頻光子\cite{wu2017bright}，且相對的會有較長的相干時間 (coherence time) ，利於我們對光子的時間波包進行調製。
+\begin{equation}
+\begin{split}
+    \omega_p &=\omega_s+\omega_i\\
+    \vec{k_p} &=\vec{k_s}+\vec{k_i}+\vec{k_m}
+\label{eq:quasi_phase_matching}  
+\end{split}
+\end{equation}
+    
+
+在晶體設計中，我們會在晶體的末端鍍上 397.5 nm 的高反射薄膜，使入射藍光在末端被反射，此舉等效於將晶體變為兩倍長，從\cref{fig:gain_curve} 的增益曲線（gain curve）中可知，當晶體長度 L 變兩倍，增益曲線會變窄\cite{chuu2012miniature}。除此之外，還會在晶體兩端都度上 795nm 的高反射薄膜，使晶體本身形成一個紅光的共振腔，只有在增益曲線內且符合能量守恆的共振模態才會產生雙光子對。基於上述的兩種鍍膜帶來的效果，這樣的設計能讓我們產生出接近單模（single mode）的窄頻光子\cite{wu2017bright}，且相對的會有較長的相干時間 (coherence time) ，利於我們對光子的時間波包進行調製。
 
 \fig[0.75][fig:gain_curve][!htb]{gain_curve.png}[雙光子產生機制，下半部為晶體之增益曲線；上半部為共振模態，$\omega_s$ 與 $\omega_i$ 互相重疊的部分為符合能量守恆條件的模態。僅有在增益曲線內且符合能量守恆的模態會被產生。][雙光子產生機制]
 
-實驗上會將產生出來的雙光子對經過 PBS (polarization beam splitter)，將訊號分為 signal 和 idler，以 idler 做為觸發訊號，先對 idler 進行測量，這時另一顆光子 signal 被稱為前驅單光子（heralded single photon），此為我們實驗使用之單光子源，會再讓其經過 $^{87}Rb$ 原子氣體管與 EOM，讓光子被吸收或對其進行相位的調製，並做 $G^{2}(\tau)$ 的測量\cite{PhysRevLett.101.103601}，$G^{2}(\tau)$ 的定義如 (\ref{eq:g2_definition})。
+實驗上會將產生出來的雙光子對經過 PBS (polarization beam splitter)，將訊號分為 signal 和 idler，以 idler 做為觸發訊號，先對 idler 進行測量，這時另一顆光子 signal 被稱為前驅單光子（heralded single photon），此為我們實驗使用之單光子源，會再讓其經過 $^{87}Rb$ 原子氣體管與 EOM，讓光子被吸收或對其進行相位的調製，並做 $G^{2}(\tau)$\cite{PhysRevLett.101.103601} 的測量，$G^{2}(\tau)$ 的定義如 (\ref{eq:g2_definition_original})。
 
 \begin{equation}
 \begin{split}
@@ -119,23 +128,36 @@
         e^{\Gamma_{s}\tau} & ,\tau<0\\
         e^{-\Gamma_{i}\tau} & ,\tau>0
         \end{matrix}\right.
-\label{eq:g2_definition}
+\label{eq:g2_definition_original}
 \end{split}
 \end{equation}
 
-此為二階強度關聯函數 (second-order intenstiy correlation function)，$\tau$ 為兩顆單光子抵達探測器（SPCM-AQRH-14-FC, Excelitas Technologies）的時間差，實驗上先對 idler 。在符合準相位匹配條件 (quasi phase matching condition) 時能最有效率的產生雙光子，實際測量結果如\cref{fig:single_photon_g2}，此光子之時間波包寬度約為 50 ns，對此時間波包做傅立葉轉換\cite{chuu2015narrowband}，可計算出光子的頻寬約為 4.5 MHz。
-\todo[inline]{準相位匹配條件的說明和式子}
-\todo[inline]{單光子頻寬的計算方式}
-\fig[0.75][fig:single_photon_g2][!htb]{nocell_spread_no_etalon.png}[糾纏光子對之 $G^{2}(\tau)$ 量測]
+此為二階強度關聯函數 (second-order intenstiy correlation function)，$\tau$ 為兩顆單光子抵達探測器（SPCM-AQRH-14-FC, Excelitas Technologies）的時間差，\cref{eq:g2_definition_original} 中的 $R^2$ 項為不具時間關聯之單光子，在激發強度弱的時候它會遠小於雙光子的訊號，所以實驗上我們可以將\cref{eq:g2_definition_original} 簡化成 \cref{eq:g2_definition_original} 來分析。在符合準相位匹配條件時能最有效率的產生雙光子，實際測量結果如\cref{fig:single_photon_g2}，此光子之時間波包寬度約為 50 ns，將波包雙邊的衰減時間$\Gamma_{s}$ 及 $\Gamma_{i}$ 帶入\cref{eq:bandwidth}\cite{chuu2012miniature}，可計算出光子的頻寬約為 4.5 MHz。
 
+\begin{equation}
+    \begin{split}
+        G^{2}(\tau)=\frac{4\Gamma_{s}\Gamma_{i}}{\Gamma_{s}+\Gamma_{i}}\left\{\begin{matrix}
+            e^{\Gamma_{s}\tau} & ,\tau<0\\
+            e^{-\Gamma_{i}\tau} & ,\tau>0
+            \end{matrix}\right.
+    \label{eq:g2_definition}
+    \end{split}
+\end{equation}
+
+\begin{equation}
+        \Delta \omega=[(\sqrt{\Gamma^4_s+6\Gamma^2_s \Gamma^2_i+\Gamma^4_i}-\Gamma^2_s-\Gamma^2_i)/2]^{1/2}
+    \label{eq:bandwidth}
+\end{equation}
+
+\fig[0.75][fig:single_photon_g2][!htb]{nocell_spread_no_etalon.png}[糾纏光子對之 $G^{2}(\tau)$ 量測]
 
 為了找到符合準項未匹配條件的入射光波長與晶體溫度，實驗上會以\cref{fig:temp_scanning_setup} 的光路架設，將入射紅光的頻率固定在 3771054890 MHz，改變 PPKTP 晶體溫度測量雙光子的產生率 (biphton rate)，結果如\cref{fig:temp_scan_g2}，在 39.91$^{\circ}C$ 至 40.10$^{\circ}C$ 有四組符合條件的模態，紅線與黑線分別為有放與沒放 $^{87}Rb$ 原子氣體管時之測量結果，兩者比較可以發現在第二和第三個的模態中雖有明顯的吸收，但吸收率不高，我們認為這是因為在頻域上晶體所產生的光子為多模 (multi-mode) 而非單模 (single-mode)，同時產生了兩種以上頻率的單光子，儘管其中一個頻率的光子能完全被原子吸收，其他頻率的光子仍會透射，因此無法讓透射率趨近於零。
 
 \fig[0.75][fig:temp_scanning_setup][!htb]{temp_scanning_setup.png}[固定入射光頻率，調整 PPKTP 晶體溫度測量雙光子的產生率]
 
 \fig[0.75][fig:temp_scan_g2][!htb]{temp_scanning.png}[調整溫度測量雙光子產生率，黑線為直接對雙光子進行量測；紅線為先讓其中一顆單光子通過 $^{87}Rb$ 氣體管再測量，其中第二和第三個模態穿透率下降，表示有部分的光被 $^{87}Rb$ 原子吸收。][調整溫度測量雙光子產生率]
-\todo[inline]{若為multimode，mode spacing是多少？我們怎麼知道etalon的頻寬夠窄？}
-為了確認光是否為多模，我們在 $^{87}Rb$ 氣體管前面加上一個頻寬為 60 MHz 的 Etalon 濾波器（參見\cref{section:etalon}），只允許特定頻率附近的光通過，實驗架設如 \cref{fig:temp_scanning_setup_with_etalon}，先不放 $^{87}Rb$ 原子氣體管時，比較有無 Etalon 濾波器時測量之結果，如\cref{fig:temp_scan_g2_with_etalon}，黑色為沒放 Etalon 濾波器時測量到的訊號，紅色為經過 Etalon 濾波後之訊號，兩者相比可看出，有放 Etalon 濾波器時能將其他產生效率較低的模態過濾掉，一次只讓一個特定頻率區間內的光通過。此時再將 $^{87}Rb$ 原子氣體管放回光路，並對其中第二和第三個模態進行相同的量測，結果如\cref{fig:absorption_etalon_temp_scanning} 藍線，濾波後的光幾乎完全被 $^{87}Rb$ 原子吸收，與\cref{fig:temp_scan_g2} 相比可明顯看出，我們的單光子源的確是多模，含有兩種以上的頻率的成分，所以光才無法被完全吸收。
+
+以我們使用之晶體的長度與折射率估計，FSR 約為 5 GHz，所以兩個模態的頻率差一定大於 5 GHz，我們可在 $^{87}Rb$ 氣體管前面加上一個頻寬為 60 MHz 的 Etalon 濾波器（參見\cref{section:etalon}），只允許特定頻率附近的光通過，實驗架設如 \cref{fig:temp_scanning_setup_with_etalon}，先不放 $^{87}Rb$ 原子氣體管時，比較有無 Etalon 濾波器時測量之結果，如\cref{fig:temp_scan_g2_with_etalon}，黑色為沒放 Etalon 濾波器時測量到的訊號，紅色為經過 Etalon 濾波後之訊號，兩者相比可看出，有放 Etalon 濾波器時能將其他產生效率較低的模態過濾掉，一次只讓一個特定頻率區間內的光通過。此時再將 $^{87}Rb$ 原子氣體管放回光路，並對其中第二和第三個模態進行相同的量測，結果如\cref{fig:absorption_etalon_temp_scanning} 藍線，濾波後的光幾乎完全被 $^{87}Rb$ 原子吸收，與\cref{fig:temp_scan_g2} 相比可明顯看出，我們的單光子源的確是多模，含有兩種以上的頻率的成分，所以光才無法被完全吸收。
 
 \fig[0.75][fig:temp_scanning_setup_with_etalon][!htb]{temp_scanning_setup_with_etalon.png}[固定入射光頻率，調整 PPKTP 晶體溫度測量雙光子的產生率（加上 Etalon 濾波器）]
 

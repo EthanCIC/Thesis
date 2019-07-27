@@ -4,20 +4,15 @@
 \begin{document}
 
 \chapter{理論模擬}
-\todo[inline]{重新編排架構後，重寫引言}
-
-本章的內容主要能分成兩個部分，第一部分延續上一章的數學原理，改以隨機訊號作為調製函數，模擬相位調製後的頻率分佈，觀察調製函數與頻寬的關係，驗證理論的正確性。第二部為探討如何降低傳輸中的光子與原子之交互作用，模擬不同展頻頻率與原子吸收率之關係。
+本章為理論模擬，主要分成三個部分，第一部分會介紹展頻技術的基本原理，說明如何以相位調製去實作直接序列展頻 (DSSS)。會先從數學原理出發，瞭解隨時間調變相位會如何改變頻率的分佈，再以單頻波之相位調製去模擬調製後的頻譜變化。第二部會將調製函數改為隨機訊號，模擬經隨機相位調製後的頻率分佈。第三部份為探討如何降低傳輸中的光子與原子之交互作用，模擬不同展頻頻率與原子吸收率之關係。
 
 
 \section{基本原理介紹}
-實現展頻技術的方式有很多種，本章會介紹展頻技術的基本原理，說明如何以相位調製去實作直接序列展頻 (DSSS)。會從數學原理出發，瞭解隨時間調變相位會如何改變頻率的分佈，再以單頻波之相位調製去模擬，觀察調製前與調製後頻譜的差異。
-
-\subsection{展頻技術}
-
 展頻技術 (spread spectrum technology) 是一種可將原訊號的頻譜打散分佈到比原始頻寬更寬的技術。我們的實驗選用的方法為直接序列展頻，能將窄頻雷射 (narrow-band laser) 與單光子的頻寬從約 10 MHz 展至 10 GHz，其作法為，以 PRBS（pseudo-random binary sequence）產生器產生高頻隨機訊號，並使用光電調製器 (EOM) 對入射光進行相位調製，此在時域上的操作，經傅立葉轉換後等效於增加其他頻率成分，以達到展寬頻率的效果。
-\subsection{相位調製}
 
-\subsubsection{數學形式}
+\section{相位調製}
+
+\subsection{數學形式}
 此小節介紹相位調製的數學形式。設入射 EOM 的雷射波函數為 $E_{0}(t)$，調製函數 (modulation function) 為 $M(t)$，經調製後的波函數 $E_{m}(t)$ 可表示成：
 \begin{equation}
     E_{m}(t)=E_{0}(t)e^{iM(t)}
@@ -29,7 +24,7 @@
 \end{equation}
 $\tilde{E_{0}}(\omega)$ 為入射光之頻譜，所以在頻譜數學分析上，我們可以把入射光頻譜與相位調製的部分分開處理，個別將兩項計算好後再做摺積即可得到調製後的頻譜。
 
-\subsubsection{以單頻波之相位調製為例}
+\subsection{以單頻波之相位調製為例}
 若入射光的頻譜為中心頻率在 $\nu_{0}$ 的勞倫茲分佈(lorenz distribution)，調製函數為頻率 $\nu_{m}$ 的單頻波，意即輸入的電訊號強度隨時間的函數可表示為 $\phi_{0} sin(2\pi \nu_{m} t)$，則可將\cref{eq:modulation_function} 改寫為：
 \begin{equation}
 \label{eq:convolution_theorem}
@@ -53,13 +48,13 @@ $\tilde{E_{0}}(\omega)$ 為入射光之頻譜，所以在頻譜數學分析上�
 \section{展頻及壓縮}
 \label{section:time_delay}
 從上一節單頻波的例子可看出，相位調製可將原先頻率集中於 $\nu_{0}$ 的光，分散至 $\nu_{0}\pm\nu_{m}, \nu_{0}\pm2\nu_{m},\dots$。若調製函數改用時間寬度為 $\Delta T$ 的隨機方波 $PRBS(t)$ （如\cref{fig:PRBS_simulation}），則可將\cref{eq:modulation_function} 的右式寫成：
-\todo[inline]{說明這個很重要的函數}
+
 \begin{equation}
     \tilde{E_{0}}(\omega)*\mathscr{F}\{{e^{i PRBS(t)}}\}
 \end{equation}
 經計算，展寬後的頻譜如\cref{fig:spread_sprectrum_simulation} 藍線，其包絡線為 $sinc$ 的平方（黑色虛線），展開的寬度為 $\pm\frac{1}{\Delta T}$，在我們實驗中使用的隨機訊號的產生率為 10 Gb/s，單一位元的時間寬度為 100 ps，相當於能將頻譜從 10 MHz 展至 10 GHz 寬。
 
-\fig[0.6][fig:PRBS_simulation][!htb]{prbs.png}[隨機訊號 $PRBS(t)$]
+\fig[0.6][fig:PRBS_simulation][!htb]{prbs.png}[隨機訊號 $PRBS(t)$，為隨機產生之二位元訊號，每個位元的時間寬度為 $\Delta T$。實驗上會以隨機訊號產生器產生出振幅分別為 $\frac{1}{2}V_\pi$ 與 $-\frac{1}{2}V_\pi$ 之電訊號，能用來對光的相位做 $\pm \frac{1}{2}\pi$ 之調製] 
 
 \fig[0.75][fig:spread_sprectrum_simulation][!htb]{spread_sinc.png}[展寬後頻譜模擬圖]
 
@@ -87,10 +82,9 @@ $\tilde{E_{0}}(\omega)$ 為入射光之頻譜，所以在頻譜數學分析上�
 \label{section:simulation_absorption}
 在光通訊中，以光作為資訊的載體，在空氣中傳輸的過程中光子會與原子產生交互作用，當光子的頻率接近原子的耀遷能階時有很大的機率會被吸收。以波長約為 795 nm 的窄頻雷射為例，將功率為 1 $\mu W$ 的光打入溫度約 70 度的 $^{87}Rb$ 原子氣體管，調整入射光頻率測量穿透率即可掃出 $^{87}Rb$ 的吸收譜，結果如\cref{fig:rb87_abs}，從圖中可知，在頻率 377105000 MHz 與 377112000 MHz 的頻率位置分別約有 ２GHz 與 1 GHz 寬的吸收區域，其吸收的中心頻率是被原子的能階給決定，可從飽和吸收光譜 (saturated absorption spectroscopy) 得知；吸收的寬度則是與原子蒸氣壓和溫度有關，不同的原子運動速度分佈會有不一樣的寬度，此為效應都卜勒增寬 (Doppler broadening)。
 
-\fig[0.75][fig:rb87_abs][!htb]{absorption_spectrum.png}[$^{87}Rb$ 原子吸收譜]
+\fig[0.75][fig:rb87_abs][!htb]{absorption_spectrum.png}[$^{87}Rb$ 原子吸收譜，圖上的標示為躍遷能階]
 
 為降低環境對光子的影響，我們可用上述之展頻技術，對光進行相位調製，將頻譜展寬，減少光對原子的吸收率。我們分別使用 1 Gb/s、5 Gb/s、10 Gb/s 與 20 Gb/s 的隨機訊號去模擬，在有展頻的狀態下，中心頻率與穿透率之關係，結果如\cref{fig:different_gbs_transmission}，未經調製的光在 377105000 MHz 與 377112000 MHz 附近會被完全吸收，若將光的頻譜展寬則能顯著的降低吸收率，隨機訊號的頻率越高，原子對光子的影響越小。
-\todo[inline]{給出對應的譜線名稱和躍遷態}
 
 \fig[0.75][fig:different_gbs_transmission][!htb]{different_gbs_spectroscopy.png}[展頻頻寬對吸收之影響。使用越快的隨機訊號對光進行相位調製，能降低光在原子躍遷能階附近的吸收率。][展頻頻寬對吸收之影響]
 

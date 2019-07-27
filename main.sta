@@ -15,7 +15,7 @@
 \usepackage {mathrsfs,amsmath}
 \endsubpreamble
 \subpreamble{chapter_method.tex}
-\usepackage {braket}
+\usepackage {braket}\usepackage {mathtools}
 \endsubpreamble
 \subpreamble{chapter_result.tex}
 
@@ -26,7 +26,10 @@
 \subpreamble{bibliography.tex}
 
 \endsubpreamble
-\subpreamble{appendix_device.tex}
+\subpreamble{appendix_Fabry_Perot.tex}
+
+\endsubpreamble
+\subpreamble{appendix_Etalon.tex}
 
 \endsubpreamble
 \endstandalonepreambles
