@@ -8,20 +8,14 @@
 \subpreamble{abstract_en.tex}
 
 \endsubpreamble
-\subpreamble{acknowledgements.tex}
-
-\endsubpreamble
 \subpreamble{chapter_introduction.tex}
 
-\endsubpreamble
-\subpreamble{chapter_theory.tex}
-\usepackage {mathrsfs,amsmath}
 \endsubpreamble
 \subpreamble{chapter_simulation.tex}
 \usepackage {mathrsfs,amsmath}
 \endsubpreamble
 \subpreamble{chapter_method.tex}
-
+\usepackage {braket}
 \endsubpreamble
 \subpreamble{chapter_result.tex}
 
@@ -30,6 +24,9 @@
 
 \endsubpreamble
 \subpreamble{bibliography.tex}
+
+\endsubpreamble
+\subpreamble{appendix_device.tex}
 
 \endsubpreamble
 \endstandalonepreambles

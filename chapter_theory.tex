@@ -2,44 +2,5 @@
 \usepackage{mathrsfs,amsmath}
 \begin{document}
 
-\chapter{基本原理介紹}
-實現產頻技術的方式有很多種，本章會介紹展頻技術的基本原理，說明如何以相位調製去實作直接序列展頻 (DSSS)。會從數學原理出發，瞭解隨時間調變相位會如何改變頻率的分佈，再以單頻波之相位調製去模擬，觀察調製前與調製後頻譜的差異。
-
-\section{展頻技術}
-
-展頻技術 (spread spectrum technology) 是一種可將原訊號的頻譜打散分佈到比原始頻寬更寬的技術。我們的實驗選用的方法為直接序列展頻，能將窄頻雷射 (narrow-band laser) 與單光子的頻寬從約 10 MHz 展至 10 GHz，其作法為，以 PRBS 產生高頻隨機訊號，使用光電調製器 (EOM) 對入射光進行相位調製，此在時域上的操作，經傅立葉轉換後等效於增加其他頻率成分，以達到展寬頻率的效果。
-\section{相位調製}
-
-\subsection{數學形式}
-此小節介紹相位調製的數學形式。設入射 EOM 的雷射波函數為 $E_{0}(t)$，調製函數 (modulation function) 為 $M(t)$，經調製後的波函數 $E_{m}(t)$ 可表示成：
-\begin{equation}
-    E_{m}(t)=E_{0}(t)e^{iM(t)}
-\end{equation}
-若對此式做傅立葉轉換，根據 convolution theorem，可得：
-\begin{equation}
-\label{eq:modulation_function}
-    \mathscr{F}\{E_{0}(t)e^{iM(t)}\}=\tilde{E_{0}}(\omega)*\mathscr{F}\{{e^{iM(t)}}\}
-\end{equation}
-$\tilde{E_{0}}(\omega)$ 為入射光之頻譜，所以在頻譜數學分析上，我們可以把入射光頻譜與相位調製的部分分開處理，個別將兩項計算好後再做摺積即可得到調製後的頻譜。
-
-\subsection{以單頻波之相位調製為例}
-若入射光的頻譜為中心頻率在 $\nu_{0}$ 的勞倫茲分佈(lorenz distribution)，調製函數為頻率 $\nu_{m}$ 的單頻波，意即輸入的電訊號強度隨時間的函數可表示為 $\phi_{0} sin(2\pi \nu_{m} \omega t)$，則可將\cref{eq:modulation_function} 改寫為：
-\begin{equation}
-\label{eq:convolution_theorem}
-    \mathscr{F}\{E_{0}(t)e^{i\phi_{0} sin(2\pi \nu_{m} \omega t)}\}=\tilde{E_{0}}(\omega)*\mathscr{F}\{{e^{i\phi_{0} sin(2\pi \nu_{m} \omega t)}}\}
-\end{equation}
-其中 $\tilde{E_{0}}(\omega)$ 為勞倫茲分佈，另一項傅立葉轉換的結果為第一類貝索函數（Bessel function of the first kind）：
-\begin{equation}
-    \mathscr{F}\{{e^{i\phi_{0} sin(2\pi \nu_{m} \omega t)}}\}=J_{n}(\phi_{0})
-\end{equation}
-或在時域上看，將調製項做傅立葉級數展開：
-\begin{equation}
-    e^{i\phi_{0} sin(2\pi \nu_{m} \omega t)}=\sum_{n=-\infty}^{\infty}J_{n}(\phi_{0})e^{i 2 \pi n \nu_{m} t}
-\end{equation}
-可從上式看出，調製項的頻譜是由頻率為 $n \nu_{m}$ 的狄拉克函數(Dirac function) 組成，$n=0, \pm1, \pm2, ...$，強度分佈為 $J_{n}(\phi_{0})$，如\cref{fig:bessel_function}，可看出在不同的調製電壓（也就是不同的$\phi_{0}$）時會有不一樣強度的頻率分布，以 $\phi_{0}=0.75\pi$ 為例，模擬對一道頻寬為 60 MHz 的雷射做 1 GHz 的正弦波相位調製，從\cref{eq:convolution_theorem} 可知，將入射光（\cref{fig:monocromatic_modulation} 黑線）與調製項的頻譜做摺積可得調製後的結果（\cref{fig:monocromatic_modulation} 紅線），每個頻率的間隔為 1 GHz。兩者比較可明顯看出，時域上相位調製能讓改變頻率的分佈。
-
-\fig[0.75][fig:bessel_function][!htb]{bessel_function.png}[貝索函數]
-
-\fig[0.75][fig:monocromatic_modulation][!htb]{monocromatic_modulation.png}[單頻波相位調製。黑線為調製前；紅線為調製後。][單頻波相位調製]
 
 \end{document}
