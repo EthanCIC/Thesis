@@ -155,14 +155,28 @@
 
 \fig[0.75][fig:temp_scanning_setup][!htb]{temp_scanning_setup.png}[固定入射光頻率，調整 PPKTP 晶體溫度測量雙光子的產生率]
 
-\fig[0.75][fig:temp_scan_g2][!htb]{temp_scanning.png}[調整溫度測量雙光子產生率，黑線為直接對雙光子進行量測；紅線為先讓其中一顆單光子通過 $^{87}Rb$ 氣體管再測量，其中第二和第三個模態穿透率下降，表示有部分的光被 $^{87}Rb$ 原子吸收。][調整溫度測量雙光子產生率]
+\fig[0.75][fig:temp_scan_g2][!htb]{temp_scanning.png}[調整溫度測量雙光子產生率，黑線為直接對雙光子進行量測；紅線為先讓其中一顆單光子通過 $^{87}Rb$ 氣體管再測量，其中第二和第三個模態的穿透率下降，表示有部分的光被 $^{87}Rb$ 原子吸收。][調整溫度測量雙光子產生率]
 
 以我們使用之晶體的長度與折射率估計，FSR 約為 5 GHz，所以兩個模態的頻率差一定大於 5 GHz，我們可在 $^{87}Rb$ 氣體管前面加上一個頻寬為 60 MHz 的 Etalon 濾波器（參見\cref{section:etalon}），只允許特定頻率附近的光通過，實驗架設如 \cref{fig:temp_scanning_setup_with_etalon}，先不放 $^{87}Rb$ 原子氣體管時，比較有無 Etalon 濾波器時測量之結果，如\cref{fig:temp_scan_g2_with_etalon}，黑色為沒放 Etalon 濾波器時測量到的訊號，紅色為經過 Etalon 濾波後之訊號，兩者相比可看出，有放 Etalon 濾波器時能將其他產生效率較低的模態過濾掉，一次只讓一個特定頻率區間內的光通過。此時再將 $^{87}Rb$ 原子氣體管放回光路，並對其中第二和第三個模態進行相同的量測，結果如\cref{fig:absorption_etalon_temp_scanning} 藍線，濾波後的光幾乎完全被 $^{87}Rb$ 原子吸收，與\cref{fig:temp_scan_g2} 相比可明顯看出，我們的單光子源的確是多模，含有兩種以上的頻率的成分，所以光才無法被完全吸收。
 
 \fig[0.75][fig:temp_scanning_setup_with_etalon][!htb]{temp_scanning_setup_with_etalon.png}[固定入射光頻率，調整 PPKTP 晶體溫度測量雙光子的產生率（加上 Etalon 濾波器）]
 
-\fig[0.75][fig:temp_scan_g2_with_etalon][!htb]{temp_scanning_with_etalon.png}[在沒放 $^{87}Rb$ 原子氣體管時之測量。黑色為無 Etalon 濾波器時測量之訊號，紅線為有加上 Etalon 濾波器測量到的訊號，兩者相比可看出，加上 Etalon 濾波器後測量到的頻寬較小，代表有部分的光被濾掉了][調整溫度測量雙光子產生率（加上濾波器）]
-\todo[inline]{重畫圖}
+\begin{figure}[!hbt]
+    %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
+    \centering
+    \subcaptionbox
+        {第二個模態
+        \label{fig:subfig_fig1}}
+        {\includegraphics[width=0.4\linewidth]{no2_temp_etalon.png}}
+    ~~~~
+    \subcaptionbox
+        {第三個模態
+        \label{fig:subfig_fig2}}
+        {\includegraphics[width=0.4\linewidth]{no3_temp_etalon.png}}
+    \caption[調整溫度測量雙光子產生率（加上濾波器）]{在沒放 $^{87}Rb$ 原子氣體管時之測量。黑色為無 Etalon 濾波器時測量之訊號，紅線為有加上 Etalon 濾波器測量到的訊號，兩者相比可看出，加上 Etalon 濾波器後測量到的頻寬較小，且明顯有部分的光被濾掉，可確定本來的光源為多模。}
+    \label{fig:temp_scan_g2_with_etalon}
+\end{figure}
+
 \begin{figure}[!hbt]
     %\captionsetup[subfigure]{labelformat=empty} % 完全隱藏圖號
     \centering
